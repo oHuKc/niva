@@ -138,7 +138,7 @@ public class GoodsDAOImpl extends DAOImplement {
         }
     }
 
-    int recordscount() throws DBException, SQLException {
+   public int recordscount() throws DBException, SQLException {
         Connection connection = null;
         try {
             connection = getConnection();
