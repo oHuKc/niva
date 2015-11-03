@@ -54,5 +54,6 @@ connection.close();
   %>
 </table>
 </form>
+<h1><%=request.getAttribute("model")%></h1>
 </body>
 </html>

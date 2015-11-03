@@ -5,6 +5,20 @@
                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
+    <filter>
+        <filter-name>MVCFIlter</filter-name>
+        <filter-class>internetshop.niva.il.servlet.mvc.MVCFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>MVCFIlter</filter-name>
+        <url-pattern>/mvc</url-pattern>
+        <url-pattern>/products</url-pattern>
+        <url-pattern>/shopcart</url-pattern>
+        <url-pattern>/select</url-pattern>
+        <url-pattern>/menu</url-pattern>
+    </filter-mapping>
+    <!--
     <servlet>
         <servlet-name>HelloWorldServlet</servlet-name>
         <servlet-class>lv.javaguru.java2.servlet.HelloWorldServlet</servlet-class>
@@ -71,5 +85,13 @@
         <servlet-name>SelectServlet</servlet-name>
         <url-pattern>/select</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>internetshop.niva.il.servlet.MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/menu</url-pattern>
+    </servlet-mapping>
+   -->
 </web-app>
