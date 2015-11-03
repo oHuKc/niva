@@ -1,5 +1,7 @@
 package internetshop.niva.il.servlet;
 
+import internetshop.niva.il.domain.Goods;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,8 +23,13 @@ public class ShoppingCartServlet extends HttpServlet {
         //PrintWriter out = resp.getWriter();
         //out.println("<center>" + "Shopping Cart" + "</center>" );
 
+        Goods goods = new Goods();
+        goods.getGoodsName();
+        req.setAttribute("price",goods);
+
+
         ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/ShoppingCart.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/ShoppingCart.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

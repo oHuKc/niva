@@ -12,8 +12,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<jsp:include page="ShoppingCart.jsp"></jsp:include>
+
 <head>
+  <jsp:include page="ShoppingCart.jsp"></jsp:include>
     <title>ProductPage</title>
 </head>
 <body>

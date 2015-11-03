@@ -1,5 +1,4 @@
 <%@ page import="internetshop.niva.il.database.jdbc.GoodsDAOImpl" %>
-<%@ page import="internetshop.niva.il.database.GoodsDAO" %>
 <%@ page import="internetshop.niva.il.domain.Goods" %>
 <%--
   Created by IntelliJ IDEA.
@@ -16,12 +15,12 @@
 <body>
 
 <form>
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
 <% GoodsDAOImpl goodsdaoimpl = new GoodsDAOImpl();
     Long longstr = 33L;
     Goods goods = goodsdaoimpl.getById(longstr);
 %>
-    <h2>Shopping Cart</h2>
+    <img src="images/cart.png"><h2>Shopping Cart</h2>
         <table border="1" style="width: auto">
             <tr>
                 <th><h3>Item Name</h3></th>

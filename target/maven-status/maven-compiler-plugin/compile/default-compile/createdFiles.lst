@@ -21,3 +21,4 @@ internetshop\niva\il\database\GoodsDAO.class
 internetshop\niva\il\servlet\ProductServlet.class
 lv\javaguru\java2\database\jdbc\DAOImpl.class
 lv\javaguru\java2\database\UserDAO.class
+internetshop\niva\il\servlet\SelectServlet.class
