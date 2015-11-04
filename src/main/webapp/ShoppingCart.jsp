@@ -21,7 +21,7 @@
     Goods goods = goodsdaoimpl.getById(longstr);
 %>
     <img src="images/cart.png"><h2>Shopping Cart</h2>
-        <table border="1" style="width: auto">
+        <table border="2" style="width: 100%; height: auto" >
             <tr>
                 <th><h3>Item Name</h3></th>
                 <th><h3>Item Type</h3></th>
@@ -33,12 +33,12 @@
             <input type="hidden" name="ProductId" value=""/>
             <input type="hidden" name="ProductPrice" value=""/>
             <tr>
-                <td><%=goods.getGoodsName()%></td>
-                <td><%=goods.getGoodsType()%></td>
+                <td></td>
+                <td></td>
                 <td>
-                    <input type="text" style=" background-color: #FF9f00" name="ProdQuantity" size="6"  value="<%=goodsdaoimpl.recordscount()%>"/>
+                    <input type="text" style=" background-color: #FF9f00" name="ProdQuantity" size="6"  value=""/>
                 </td>
-                <td><%=goods.getGoodsPrice()%></td>
+                <td></td>
                 <td>
                     <input type="submit" name="action" value="Add" onclick=""/>
                     <input type="submit" name="action" value="Delete"/>

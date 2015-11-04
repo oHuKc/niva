@@ -1,9 +1,10 @@
 body {
     font-family: Verdana, Arial, sans-serif;
     font-size: smaller;
-    padding: 50px;
+    padding: 25px;
     color: #555;
     background-color: #FF9f00;
+
 }
 
 h1 {
@@ -47,6 +48,7 @@ table {
 th {
     text-align: left;
     border-bottom: 1px solid;
+
 }
 
 td{
