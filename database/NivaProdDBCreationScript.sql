@@ -142,8 +142,6 @@ CREATE TABLE niva_production.wearable_technology
 #------------------------------------------------------------------------------
 # INSERTING DATA IN TO niva_production.TV_HomeTheater
 #------------------------------------------------------------------------------
-DELETE FROM niva_productiontv_hometheater;
-
 INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$788.66','2160p (4K)','2160p resolution.Motion Rate 120.Smart TV, apps, Web browser included');
 INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$1,099.98','2160p (4K)','2160p resolution.Clear Motion Rate 240.Smart TV, Samsung Smart Hub, Web browser included.3D TV');
 INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$788.66','2160p (4K)','2160p resolution.Motion Rate 120.Smart TV, apps, Web browser included');
