@@ -144,7 +144,7 @@ CREATE TABLE niva_production.wearable_technology
 #------------------------------------------------------------------------------
 DELETE FROM niva_productiontv_hometheater;
 
-INSERT INTO INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$788.66','2160p (4K)','2160p resolution.Motion Rate 120.Smart TV, apps, Web browser included');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$788.66','2160p (4K)','2160p resolution.Motion Rate 120.Smart TV, apps, Web browser included');
 INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$1,099.98','2160p (4K)','2160p resolution.Clear Motion Rate 240.Smart TV, Samsung Smart Hub, Web browser included.3D TV');
 INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$788.66','2160p (4K)','2160p resolution.Motion Rate 120.Smart TV, apps, Web browser included');
 INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','46" - 49"','LG','$899.98','2160p (4K)','2160p resolution.TruMotion 120Hz refresh rate.Smart TV, LG Content Store, Web browser included');
