@@ -10,7 +10,6 @@
   <title>Menu</title>
   <%@ page contentType="text/html;charset=UTF-8" language="java" %>
   <link rel="stylesheet" type="text/css" href="styles/style.css">
-  <!--<jsp:include page="ShoppingCart.jsp"></jsp:include> -->
   <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
   <link rel="stylesheet" href="styles/fly_outMenu_vert.css" type="text/css" />
 </head>
@@ -22,7 +21,7 @@
      <ul>
         <li><a href="#">4K Ultra HD TVs</a>
           <ul>
-            <li><a href="SelectPage.jsp">40" - 45"</a></li>
+            <li><a data-item="tv-s40" href="TV.jsp">40" - 45"</a></li>
             <li><a href="">46" - 49"</a></li>
             <li><a href="">50" - 54"</a></li>
             <li><a href="">55" - 59"</a></li>

@@ -11,12 +11,14 @@
     </filter>
 
     <filter-mapping>
-        <filter-name>MVCFIlter</filter-name>
-        <url-pattern>/mvc</url-pattern>
-        <url-pattern>/products</url-pattern>
-        <url-pattern>/shopcart</url-pattern>
-        <url-pattern>/select</url-pattern>
-        <url-pattern>/menu</url-pattern>
+       <filter-name>MVCFIlter</filter-name>
+          <!--<url-pattern>/mvc</url-pattern>
+          <url-pattern>/products</url-pattern>
+          <url-pattern>/shopcart</url-pattern>
+          <url-pattern>/select</url-pattern>
+          <url-pattern>/menu</url-pattern>
+          <url-pattern>/tv</url-pattern> -->
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
     <!--
     <servlet>

@@ -12,7 +12,8 @@ import java.util.Properties;
  * Created by ilugovecs on 2015.10.19..
  */
 public class DAOImplement {
-    private static final String DB_CONFIG_FILE = "nivadatabase.properties";
+   // private static final String DB_CONFIG_FILE = "nivadatabase.properties"; //TEST DB
+    private static final String DB_CONFIG_FILE = "nivaproductiondb.properties"; //PRODUCTION DB
 
     private String dbUrl = null;
     private String userName = null;

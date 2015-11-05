@@ -24,11 +24,12 @@ public class MVCFilter implements Filter {
         controllers.put("/shopcart", new ShoppingCartController());
         controllers.put("/select", new SelectController());
         controllers.put("/menu", new MenuController());
+        controllers.put("/tv", new TVController());
     }
 
     public void doFilter(ServletRequest request,
                          ServletResponse response,
-                         FilterChain chain) throws IOException, ServletException {
+                         FilterChain filterchain) throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
@@ -48,7 +49,7 @@ public class MVCFilter implements Filter {
             requestDispatcher.forward(req, resp);
 
         }
-        else chain.doFilter(request, response);
+        else filterchain.doFilter(request, response);
     }
     public void destroy() {
 

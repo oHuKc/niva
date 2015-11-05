@@ -5,6 +5,7 @@ internetshop\niva\il\servlet\mvc\HelloWorldController.class
 internetshop\niva\il\database\CustomerDAO.class
 internetshop\niva\il\database\jdbc\GoodsDAOImpl.class
 internetshop\niva\il\servlet\MenuServlet.class
+internetshop\niva\il\database\TVDAO.class
 internetshop\niva\il\database\AdminDBAccess.class
 internetshop\niva\il\servlet\mvc\MVCModel.class
 lv\javaguru\java2\servlet\HelloWorldServlet.class
@@ -12,14 +13,17 @@ lv\javaguru\java2\servlet\ParameterProcessingServlet.class
 internetshop\niva\il\domain\Goods.class
 internetshop\niva\il\database\DBException.class
 lv\javaguru\java2\domain\User.class
+internetshop\niva\il\domain\TV.class
 internetshop\niva\il\domain\Customer.class
 internetshop\niva\il\servlet\ShoppingCartServlet.class
 lv\javaguru\java2\servlet\SessionUsageServlet.class
 lv\javaguru\java2\servlet\RedirectToJSPServlet.class
 internetshop\niva\il\servlet\mvc\MVCFilter.class
 internetshop\niva\il\servlet\mvc\MenuController.class
+internetshop\niva\il\database\jdbc\TVDAOImpl.class
 internetshop\niva\il\servlet\mvc\ProductController.class
 lv\javaguru\java2\database\DBException.class
+internetshop\niva\il\servlet\mvc\TVController.class
 internetshop\niva\il\database\jdbc\CustomerDAOImpl.class
 internetshop\niva\il\servlet\mvc\MVCController.class
 internetshop\niva\il\database\jdbc\DAOImplement.class
