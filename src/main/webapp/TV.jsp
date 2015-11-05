@@ -8,23 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <jsp:useBean id="tv" scope="session" class="internetshop.niva.il.database.jdbc.TVDAOImpl"/>
-<%@ page import="internetshop.niva.il.domain.TV" %>
-<%@ page import="java.io.PrintWriter" %>
-<%@ page import="internetshop.niva.il.database.jdbc.TVDAOImpl" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <title>TV & Home Theater</title>
 </head>
 <body>
-
-<form name="TV List" action="get">
-  <h2>TV & HomeTheater :</h2>
+<%
+if (session.getAttribute("parameter") != null ) { %>
+<h2><%=session.getAttribute("parameter")%></h2>
   <c:forEach items="${tv.all}" var="tv">
     <h4><c:out value="${tv.tvtype}  ${tv.tvscreensize}   ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
   </c:forEach>
-</form>
-
-
+<% } request.getSession(false).invalidate();%>
 </body>
 </html>

@@ -12,16 +12,25 @@
   <link rel="stylesheet" type="text/css" href="styles/style.css">
   <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
   <link rel="stylesheet" href="styles/fly_outMenu_vert.css" type="text/css" />
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 </br>
 <body>
 
+<form  method="post" action="TV.jsp">
+  <%
+    String parameter = request.getParameter("parameter");
+    if(parameter == null) {
+      parameter="TV & Home Theater : ";
+      session.setAttribute("parameter", parameter);
+    }
+  %>
 <ul id="navmenu-v">
   <li><a href="#">TV & Home Theater</a>
      <ul>
         <li><a href="#">4K Ultra HD TVs</a>
           <ul>
-            <li><a data-item="tv-s40" href="TV.jsp">40" - 45"</a></li>
+            <li><a href="TV.jsp">40" - 45"</a></li>
             <li><a href="">46" - 49"</a></li>
             <li><a href="">50" - 54"</a></li>
             <li><a href="">55" - 59"</a></li>
@@ -260,6 +269,6 @@
     </ul>
   </li>
 </ul>
-
+</form>
 </body>
 </html>
