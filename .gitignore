@@ -6,6 +6,5 @@
 *.iml
 
 
-*.properties
 
-test_jsp/
+src/main/webapp/test_jsp/*
