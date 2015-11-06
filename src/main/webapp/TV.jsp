@@ -14,12 +14,16 @@
   <title>TV & Home Theater</title>
 </head>
 <body>
+<h4>TV.jsp session Id:<%=session.getId()%></h4>
+<h4>Menu.jsp session Id:<%=session.getAttribute("menusessionid")%></h4>
 <%
 if (session.getAttribute("parameter") != null ) { %>
 <h2><%=session.getAttribute("parameter")%></h2>
-  <c:forEach items="${tv.all}" var="tv">
-    <h4><c:out value="${tv.tvtype}  ${tv.tvscreensize}   ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
+  <c:forEach items="${tv.get4KUHD(1)}" var="tv">
+    <h4><c:out value="${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
   </c:forEach>
-<% } request.getSession(false).invalidate();%>
+<% } %>
+<%--request.getSession(false).invalidate()
+--%>
 </body>
 </html>

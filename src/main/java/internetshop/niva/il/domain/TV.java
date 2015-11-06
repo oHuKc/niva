@@ -1,5 +1,7 @@
 package internetshop.niva.il.domain;
 
+import java.util.List;
+
 /**
  * Created by ilugovecs on 2015.11.05..
  */
@@ -11,6 +13,7 @@ public class TV {
     private String tvprice;
     private String tvresolution;
     private String tvdescription;
+    private int tvscreentypeid;
 
     public long getTvid() {return tvid;}
 
@@ -39,4 +42,9 @@ public class TV {
     public String getTvdescription() {return tvdescription;}
 
     public void setTvdescription(String tvdescription) {this.tvdescription = tvdescription;}
+
+    public int getTvscreentypeid() {return tvscreentypeid;}
+
+    public void setTvscreentypeid(int tvscreentypeid) {this.tvscreentypeid = tvscreentypeid;}
+
 }

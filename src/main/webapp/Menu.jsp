@@ -1,3 +1,8 @@
+<%@ page import="javax.swing.plaf.basic.BasicHTML" %>
+<%@ page import="internetshop.niva.il.database.jdbc.TVDAOImpl" %>
+<%@ page import="internetshop.niva.il.domain.TV" %>
+<%@ page import="java.util.List" %>
+<%@ page import="internetshop.niva.il.database.TVDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: voyager
@@ -7,36 +12,52 @@
 --%>
 <br>
 <head>
+  <jsp:useBean id="tv_hometheater" class="internetshop.niva.il.database.jdbc.TVDAOImpl" scope="request"/>
   <title>Menu</title>
   <%@ page contentType="text/html;charset=UTF-8" language="java" %>
   <link rel="stylesheet" type="text/css" href="styles/style.css">
   <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
   <link rel="stylesheet" href="styles/fly_outMenu_vert.css" type="text/css" />
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 </head>
 </br>
 <body>
-
+<script>
+  var screensize = document.getElementById("4K-Ultra-HD")
+</script>
 <form  method="post" action="TV.jsp">
+<!--<%=session.getId()%> -->
   <%
+    TVDAOImpl tvdaoimpl = new TVDAOImpl();
+
+    String sessionid = session.getId();
+
+    String sid = request.getParameter("menusessionid");
+    if (sid == null){
+      sid=sessionid;
+      session.setAttribute("menusessionid", sid);
+    }
+
     String parameter = request.getParameter("parameter");
-    if(parameter == null) {
+    if(parameter == null ) {
       parameter="TV & Home Theater : ";
       session.setAttribute("parameter", parameter);
     }
   %>
-<ul id="navmenu-v">
+
+  <ul id="navmenu-v">
   <li><a href="#">TV & Home Theater</a>
      <ul>
         <li><a href="#">4K Ultra HD TVs</a>
-          <ul>
-            <li><a href="TV.jsp">40" - 45"</a></li>
-            <li><a href="">46" - 49"</a></li>
-            <li><a href="">50" - 54"</a></li>
-            <li><a href="">55" - 59"</a></li>
-            <li><a href="">60" - 64"</a></li>
-            <li><a href="">65" - 69"</a></li>
-            <li><a href="">70" or More</a></li>
+          <ul id="4K-Ultra-HD">
+            <li><a href="TV.jsp" oncklick="1"><%=tvdaoimpl.getByScreenSize("1").getTvscreensize()%></a></li>
+            <li><a href="TV.jsp"><%=tvdaoimpl.getByScreenSize("2").getTvscreensize()%></a></li>
+            <li><a href="TV.jsp"><%=tvdaoimpl.getByScreenSize("3").getTvscreensize()%></a></li>
+            <li><a href="TV.jsp"><%=tvdaoimpl.getByScreenSize("4").getTvscreensize()%></a></li>
+            <li><a href="TV.jsp"><%=tvdaoimpl.getByScreenSize("5").getTvscreensize()%></a></li>
+            <li><a href="TV.jsp"><%=tvdaoimpl.getByScreenSize("6").getTvscreensize()%></a></li>
+            <li><a href="TV.jsp"><%=tvdaoimpl.getByScreenSize("7").getTvscreensize()%></a></li>
           </ul>
         </li>
        <li><a href="#">LED TVs</a>

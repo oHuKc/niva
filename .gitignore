@@ -6,6 +6,4 @@
 *.iml
 
 
-*.properties
-
-test_jsp/
+target/classes/*.properties

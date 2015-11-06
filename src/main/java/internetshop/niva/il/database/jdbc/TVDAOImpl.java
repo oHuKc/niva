@@ -23,13 +23,14 @@ public class TVDAOImpl extends DAOImplement {
 
         try{
             connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tv_hometheater VALUES (id, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tv_hometheater VALUES (id, ?, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, tv.getTvtype());
             preparedStatement.setString(2, tv.getTvscreensize());
             preparedStatement.setString(3 ,tv.getTvebrand());
             preparedStatement.setString(4, tv.getTvprice());
             preparedStatement.setString(5, tv.getTvresolution());
             preparedStatement.setString(5, tv.getTvdescription());
+            preparedStatement.setInt(6, tv.getTvscreentypeid());
 
 
             preparedStatement.executeUpdate();
@@ -65,6 +66,7 @@ public class TVDAOImpl extends DAOImplement {
                 tv.setTvprice(resultSet.getString("PRICE"));
                 tv.setTvresolution(resultSet.getString("RESOLUTION"));
                 tv.setTvdescription(resultSet.getString("DESCRIPTION"));
+                tv.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
             }
             return tv;
         } catch (Throwable e) {
@@ -86,6 +88,34 @@ public class TVDAOImpl extends DAOImplement {
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
                 TV tvs = new TV();
+              tvs.setTvid(resultSet.getLong("id"));
+              tvs.setTvtype(resultSet.getString("TV_TYPE"));
+                tvs.setTvscreensize(resultSet.getString("TV_SCREEN_SIZE"));
+              tvs.setTvebrand(resultSet.getString("BRAND"));
+              tvs.setTvprice(resultSet.getString("PRICE"));
+              tvs.setTvresolution(resultSet.getString("RESOLUTION"));
+              tvs.setTvdescription(resultSet.getString("DESCRIPTION"));
+                tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
+                tv.add(tvs);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Exception woccured while getting goods list TVDAOImpl.getAll()");
+            e.printStackTrace();
+        }
+        return tv;
+    }
+
+    public List<TV> get4KUHD(int id) throws DBException {
+        List<TV> tv = new ArrayList<TV>();
+        Connection connection = null;
+        try{
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from tv_hometheater where SCREEN_TYPE_ID = ?");
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                TV tvs = new TV();
                 tvs.setTvid(resultSet.getLong("id"));
                 tvs.setTvtype(resultSet.getString("TV_TYPE"));
                 tvs.setTvscreensize(resultSet.getString("TV_SCREEN_SIZE"));
@@ -93,13 +123,46 @@ public class TVDAOImpl extends DAOImplement {
                 tvs.setTvprice(resultSet.getString("PRICE"));
                 tvs.setTvresolution(resultSet.getString("RESOLUTION"));
                 tvs.setTvdescription(resultSet.getString("DESCRIPTION"));
+                tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
                 tv.add(tvs);
             }
-
         } catch (SQLException e) {
-            System.out.println("Exception woccured while getting goods list TVDAOImpl.getList()");
+            System.out.println("Exception occured while getting goods list TVDAOImpl.get4KUHD4045()");
             e.printStackTrace();
         }
         return tv;
     }
+
+
+    public TV getByScreenSize(String id) throws DBException {
+
+        Connection connection = null;
+
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select TV_SCREEN_SIZE FROM tv_hometheater  where SCREEN_TYPE_ID = ?");
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            TV tv = null;
+            if (resultSet.next()) {
+                tv = new TV();
+               //tv.setTvid(resultSet.getLong("id"));
+              // tv.setTvtype(resultSet.getString("TV_TYPE"));
+                tv.setTvscreensize(resultSet.getString("TV_SCREEN_SIZE"));
+               //tv.setTvebrand(resultSet.getString("BRAND"));
+              // tv.setTvprice(resultSet.getString("PRICE"));
+               // tv.setTvresolution(resultSet.getString("RESOLUTION"));
+              //  tv.setTvdescription(resultSet.getString("DESCRIPTION"));
+            }
+            return tv;
+        } catch (Throwable e) {
+            System.out.println("Exception occured while execute TVDAOImpl.getByScreenSize()");
+            e.printStackTrace();
+            throw  new DBException(e);
+        } finally {
+            closeConnection(connection);
+        }
+    }
+
+
 }

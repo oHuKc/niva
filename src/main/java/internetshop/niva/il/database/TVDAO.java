@@ -20,4 +20,8 @@ public interface TVDAO {
     List<TV> getAll() throws DBException;
 
     int recordscount() throws DBException;
+
+    List<TV> get4KUHD(int id) throws DBException;
+
+    TV getByScreenSize(String id) throws DBException;
 }
