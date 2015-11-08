@@ -15,7 +15,8 @@ CREATE TABLE niva_production.TV_HomeTheater
          BRAND CHAR(40) NOT NULL,
          PRICE CHAR(40) NOT NULL,
          RESOLUTION CHAR(40) NOT NULL,
-         DESCRIPTION CHAR(100) NOT NULL
+         DESCRIPTION CHAR(100) NOT NULL,
+         SCREEN_TYPE_ID INT(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
 
 #------------------------------------------------------------------------------
@@ -139,19 +140,93 @@ CREATE TABLE niva_production.wearable_technology
   PRICE CHAR(40) NOT NULL,
   DESCRIPTION CHAR(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
-#------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # INSERTING DATA IN TO niva_production.TV_HomeTheater
-#------------------------------------------------------------------------------
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$788.66','2160p (4K)','2160p resolution.Motion Rate 120.Smart TV, apps, Web browser included');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$1,099.98','2160p (4K)','2160p resolution.Clear Motion Rate 240.Smart TV, Samsung Smart Hub, Web browser included.3D TV');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$788.66','2160p (4K)','2160p resolution.Motion Rate 120.Smart TV, apps, Web browser included');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','46" - 49"','LG','$899.98','2160p (4K)','2160p resolution.TruMotion 120Hz refresh rate.Smart TV, LG Content Store, Web browser included');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','46" - 49"','LG','$749.99','2160p (4K)','2160p resolution.Ultra Clarity Index 1080.LG Smart TV, Premium VOD Services');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','50" - 54"','Westinghouse','$699.99','2160p (4K)','2160p resolution.60Hz refresh rate.Smart TV');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','55" - 59"','Sony','$999.99','2160p (4K)','2160p resolution.Smart TV');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','55" - 59"','Sony','$1,399.99','2160p (4K)','2160p resolution.Motionflow XR 960.Smart Android TV with Google Play and Google Cast built-in.3D TV');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','55" - 59"','Sony','$1,999.98','2160p (4K)','2160p resolution.Motionflow XR 960.Smart Android TV with Google Play and Google Cast built-in.3D TV');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','55" - 59"','Sony','$1,098.00','2160p (4K)','2160p resolution.Motionflow XR 240.Smart TV');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','60" - 64"','VIZIO','$1,199.99','2160p (4K)','2160p resolution.Clear Action 720.Smart TV, VIZIO Internet Apps Plus');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','65" - 69"','Sharp','$1,221.76','2160p (4K)','2160p resolution.AquoMotion 240.Smart TV, SmartCentral, Web browser included');
-INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','70" or More','Samsung','$19,999.98','2160p (4K)','2160p resolution.Motion Rate 240.Smart TV, Samsung Smart Hub, Web browser included.3D TV');
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$788.66','2160p (4K)','2160p resolution.Motion Rate 120.Smart TV, apps, Web browser included','1' );
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$1,099.98','2160p (4K)','2160p resolution.Clear Motion Rate 240.Smart TV, Samsung Smart Hub, Web browser included.3D TV','1');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','40" - 45"','Samsung','$788.66','2160p (4K)','2160p resolution.Motion Rate 120.Smart TV, apps, Web browser included','1');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','46" - 49"','LG','$899.98','2160p (4K)','2160p resolution.TruMotion 120Hz refresh rate.Smart TV, LG Content Store, Web browser included','2');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','46" - 49"','LG','$749.99','2160p (4K)','2160p resolution.Ultra Clarity Index 1080.LG Smart TV, Premium VOD Services','2');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','50" - 54"','Westinghouse','$699.99','2160p (4K)','2160p resolution.60Hz refresh rate.Smart TV','3');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','55" - 59"','Sony','$999.99','2160p (4K)','2160p resolution.Smart TV','4');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','55" - 59"','Sony','$1,399.99','2160p (4K)','2160p resolution.Motionflow XR 960.Smart Android TV with Google Play and Google Cast built-in.3D TV','4');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','55" - 59"','Sony','$1,999.98','2160p (4K)','2160p resolution.Motionflow XR 960.Smart Android TV with Google Play and Google Cast built-in.3D TV','4');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','55" - 59"','Sony','$1,098.00','2160p (4K)','2160p resolution.Motionflow XR 240.Smart TV','4');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','60" - 64"','VIZIO','$1,199.99','2160p (4K)','2160p resolution.Clear Action 720.Smart TV, VIZIO Internet Apps Plus','5');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','65" - 69"','Sharp','$1,221.76','2160p (4K)','2160p resolution.AquoMotion 240.Smart TV, SmartCentral, Web browser included','6');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'4K UHD','70" or More','Samsung','$19,999.98','2160p (4K)','2160p resolution.Motion Rate 240.Smart TV, Samsung Smart Hub, Web browser included.3D TV','7');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','27 and Under','Insignia','$99.99','720p','Insignia- 19" Class (18.5" Diag.) LED 720p HDTVBlack','10' );
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','27 and Under','Insignia','$129.99','1080p','Insignia - 24" Class (23.8" Diag.) LED 1080p HDTV Black','10' );
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','27 and Under','Insignia','$89.99','720p','Insignia - 19" Class (18-1/2" Diag.) LED 720p HDTVBlack 60Hz refresh rate ENERGY STAR Certified','10' );
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','28" - 32"','SunBrite TV','1,499.99','1080p','SunBrite TV - Signature Series - 32" Class (32" Diag.) LED Outdoor 1080p 60Hz HDTV Silver','11');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','28" - 32"','SunBrite TV','$4,595.98','1080p','SunBrite TV - Pro Series - 32" Class (31.5" Diag.) LED Outdoor Touch Screen 1080p Display Silver','11');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','28" - 32"','SunBrite TV','$5,195.98','1080p','SunBrite TV Pro Series 32" Class (31.5" Diag.) LED Outdoor Touch Screen 1080p Display Silver','11');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','28" - 32"','SunBrite TV','$3,295.98','1080p','SunBrite TV - Pro Series - 32" Class (32" Diag.)  LED  Outdoor Touch Screen 1080p Display Silver','11');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','28" - 32"','SunBrite TV','$5,195.98','1080p','SunBrite TV - Pro Series - 32" Class (32" Diag.) LED OutdoorTouch Screen 1080p Display Black','11');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','33" - 39"','Insignia','$199.99','720p','Insignia - 39" Class (38.5" Diag.) - LED - 720p - HDTV - Black','12');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','40" - 45"','Toshiba','$249.99','1080p ','Toshiba - 40" Class (39.5" Diag.) - LED - 1080p - HDTV - Black','13');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','40" - 45"','Toshiba','$279.99','1080p ','Toshiba - 43" Class (42.5" Diag.) - LED - 1080p - HDTV - Black','13');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','40" - 45"','Toshiba','$364.64','1080p ','Toshiba - 40" Class (40" Diag.) - LED-LCD TV - 1080p - Gunmetal','13');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','46" - 49"','LG','$749.99','2160p','LG - 49" Class (48.5" Diag.) - LED - 2160p - Smart - 4K Ultra HD TV - Black','14');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','46" - 49"','LG','$479.99','1080p','LG - 49" Class (48.5" Diag.) - LED - 1080p - HDTV - Black','14');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','46" - 49"','LG','$899.98','2160p','LG - 49" Class (48.5" Diag.) - LED - 2160p - Smart - 4K Ultra HD TV - Black','14');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','46" - 49"','LG','$749.99','2160p','LG - UB8200 Series - 49" Class (48-1/2" Diag.) - LED - 2160p - Smart - 4K Ultra HD TV - Black','14');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','46" - 49"','LG','$786.99','1080p','LG - 47" Class (46-9/10" Diag.) - LED - 1080p - 240Hz - Smart - 3D - HDTV','14');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','46" - 49"','LG','$697.99','1080p','LG - 49" Class (48.5" Diag.) - LED - 1080p - Smart - HDTV - Black','14');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','50" - 54"','Sharp','$429.99','1080p','Sharp - 50" Class (49.7" Diag.) - LED - 1080p - HDTV - Black','15');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','50" - 54"','Sharp','$499.99','1080p','Sharp - 50" Class (49.7" Diag.) - LED - 1080p - Smart HDTV Roku TV Black','15');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','50" - 54"','Sharp','$899.99','1080p','Sharp - AQUOS - 50" Class (49.6" Diag.) - LED - 2160p - Smart - 4K Ultra HD TV - Black','15');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','55" - 59"','Sony','$999.99','2160p','Sony - 55" Class (54.6" Diag.) - LED - 2160p - Smart - 4K Ultra HD TV - Black','16');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','55" - 59"','Sony','$1,399.99','2160p','Sony - 55" Class (54.6" Diag.) - LED - 2160p - Smart - 3D - 4K Ultra HD TV - Black','16');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','55" - 59"','Sony','$799.99','1080p','Sony - 55" Class (54.6" Diag.) - LED - 1080p - Smart - 3D - HDTV - Black','16');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','55" - 59"','Sony','$1,799.98','2160p','Sony - 55" Class (54-1/2" Diag.) - LED - 2160p - Smart - 3D - 4K Ultra HD TV - Black','16');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','55" - 59"','Sony','$1,098.00','2160p','Sony - 55" Class (54.6" Diag.) - LED - 2160p - Smart - 4K Ultra HD TV - Silver','16');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','55" - 59"','Sony','$998.00','1080p ','Sony - 55" Class (54-5/8" Diag.) - LED - 1080p - Smart - 3D - HDTV - Black','16');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','60" - 64"','VIZIO','$749.99','1080p','VIZIO - 60" Class (60" Diag.) - LED - 1080p - Smart - HDTV - Black','17');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','60" - 64"','VIZIO','$1,199.99','2160p','VIZIO - 60" Class (60" Diag.) - LED - 2160p - Smart - 4K Ultra HD TV - Black','17');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','60" - 64"','VIZIO','$749.99','1080p','VIZIO - E-Series - 60" Class (60-1/8" Diag.) - LED - 1080p - Smart - HDTV - Black','17');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','65" - 69"','Samsung','$2,499.99','2160p','Samsung - 65" Class (64.5" Diag.) - Smart TV, Web browser - Silver','18');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','65" - 69"','Samsung','$2,299.99','2160p','Samsung - 65" Class (64.5" Diag.) - LED - 2160p - Smart - 3D - 4K Ultra HD TV - Silver','18');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','65" - 69"','Samsung','$2,499.98','2160p','Samsung - 65" Class (64.5" Diag.) Smart TV, Samsung Smart Hub, Web browser included','18');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','65" - 69"','Samsung','$2,499.00','2160p','Samsung - 65" Class (64-1/2" Diag.) - LED - 2160p - Smart - 3D - 4K Ultra HD TV - Silver','18');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$2,199.99','1080p','Samsung - 75" Class (74.5" Diag.) - LED - 1080p - Smart - HDTV - Black','19');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$9,999.98','2160p','Samsung - 78" Class (78" Diag.) - LED - Curved - 2160p - Smart - 3D - 4K Ultra HD TV - Black','19');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$8,999.98','2160p','Samsung - 85" Class (84.5" Diag.) - LED - 2160p - Smart - 3D - 4K Ultra HD TV - Silver','19');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$5,499.98','2160p','Samsung - 78" Class (78" Diag.) - LED - Curved - 2160p - Smart - 3D - 4K Ultra HDTV - Silver','19');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$6,999.98','2160p','Samsung - 78" Class (78" Diag.) - LED - 2160p - Smart - 4K Ultra HD TV - Silver','19');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$19,999.98','2160p','Samsung - 88" Class (88" Diag.) - LED - Curved - 2160p - Smart - 3D - 4K Ultra HD TV - Silver','19');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$19,999.99','2160p','Samsung - 88" Class (88" Diag.) - LED - Curved - 2160p - Smart - 3D - 4K Ultra HD TV - Silver','19');
+INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$9,997.99','2160p','Samsung - 85" Class (84-1/2" Diag.) - LED - 2160p - Smart - 3D - 4K Ultra HD TV - Black','19');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

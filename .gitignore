@@ -5,7 +5,4 @@
 .idea/
 *.iml
 
-
-*.properties
-
-test_jsp/
+src/main/resources/*.properties
