@@ -1,3 +1,6 @@
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Set" %>
+<%@ page import="java.util.Iterator" %>
 <%--
   Created by IntelliJ IDEA.
   User: ilugovecs
@@ -15,94 +18,44 @@
 </head>
 <body>
 
-
 <h4>TV.jsp session Id:<%=session.getId()%></h4>
 <h4>Menu.jsp session Id:<%=session.getAttribute("menusessionid")%></h4>
 
 <%
+  HashMap<Integer, String> hmp = new HashMap<Integer, String>();
+
+  hmp.put(1, "4kid1");
+  hmp.put(2, "4kid2");
+  hmp.put(3, "4kid3");
+  hmp.put(4, "4kid4");
+  hmp.put(5, "4kid5");
+  hmp.put(6, "4kid6");
+  hmp.put(7, "4kid7");
+  hmp.put(10, "4kid10");
+  hmp.put(11, "4kid11");
+  hmp.put(12, "4kid12");
+  hmp.put(13, "4kid13");
+  hmp.put(14, "4kid14");
+  hmp.put(15, "4kid15");
+  hmp.put(16, "4kid16");
+  hmp.put(17, "4kid17");
+  hmp.put(18, "4kid18");
+  hmp.put(19, "4kid19");
+
   String tvid = request.getParameter("screenID");
 
-/*
-  do {
-  tvid =request.getParameter("4kid1");
-    session.setAttribute("screenID", tvid);
-  }
-  while(tvid == null);
-*/
-
   if(tvid == null) {
-    tvid = request.getParameter("4kid1");
-    session.setAttribute("screenID", tvid);
-    if( tvid == null) {
-      tvid = request.getParameter("4kid2");
-      session.setAttribute("screenID", tvid);
-      if( tvid == null) {
-        tvid = request.getParameter("4kid3");
+   int i = 1;
+    do {
+      for ( i = 0; i < 30 ; i++ ) {
+        tvid = request.getParameter(String.valueOf(hmp.get(i)));
+        if(tvid != null) {
         session.setAttribute("screenID", tvid);
-        if( tvid == null) {
-          tvid = request.getParameter("4kid4");
-          session.setAttribute("screenID", tvid);
-          if( tvid == null) {
-            tvid = request.getParameter("4kid5");
-            session.setAttribute("screenID", tvid);
-            if( tvid == null ) {
-              tvid = request.getParameter("4kid6");
-              session.setAttribute("screenID", tvid);
-              if ( tvid == null ) {
-               tvid = request.getParameter("4kid7");
-                session.setAttribute("screenID", tvid);
-                if (tvid == null) {
-                  tvid = request.getParameter("4kid10");
-                  session.setAttribute("screenID", tvid);
-                  if ( tvid == null ) {
-                    tvid = request.getParameter("4kid11");
-                    session.setAttribute("screenID", tvid);
-                    if ( tvid == null ) {
-                      tvid = request.getParameter("4kid12");
-                      session.setAttribute("screenID", tvid);
-                      if (tvid == null ) {
-                        tvid = request.getParameter("4kid13");
-                        session.setAttribute("screenID", tvid);
-                        if (tvid == null) {
-                          tvid = request.getParameter("4kid14");
-                          session.setAttribute("screenID", tvid);
-                          if (tvid == null) {
-                            tvid = request.getParameter("4kid15");
-                            session.setAttribute("screenID", tvid);
-                            if (tvid == null) {
-                              tvid = request.getParameter("4kid16");
-                              session.setAttribute("screenID", tvid);
-                              if (tvid == null) {
-                                tvid = request.getParameter("4kid17");
-                                session.setAttribute("screenID", tvid);
-                                if (tvid == null) {
-                                  tvid = request.getParameter("4kid18");
-                                  session.setAttribute("screenID", tvid);
-                                  if (tvid == null) {
-                                    tvid = request.getParameter("4kid19");
-                                    session.setAttribute("screenID", tvid);
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
           }
         }
-      }
-    }
-  }
+    }while ( request.getParameter(String.valueOf(hmp.get(i))) != hmp.get(i) && request.getParameter(String.valueOf(hmp.get(i))) != null);
+}
 
-
-%>
-<!--<h1>Screen Size:<%=request.getParameter("4kid2")%></h1> -->
-<%
 if (session.getAttribute("screenID") != null ) { %>
 
 <h2><%=session.getAttribute("parameter")%></h2>
@@ -110,7 +63,6 @@ if (session.getAttribute("screenID") != null ) { %>
   <c:forEach items='${tv.get4KUHD(screenID)}' var="tv">
     <h4><c:out  value="${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/><!--<img src="images/cart.png">--></h4>
   </c:forEach>
-
 <% } %>
 <%--request.getSession(false).invalidate()
 --%>
