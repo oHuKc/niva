@@ -1,3 +1,61 @@
+/*Header Style*/
+#navigation, #navigation ul, #navigation li {
+    margin: 0;
+    padding: 0;
+}
+#navigation, #navigation ul {
+    background: rgb(46,95,122);
+}
+#navigation {
+    position: relative;
+    display: table;
+    width: 100%;
+}
+#navigation ul {
+    position: absolute;
+    z-index: 5;
+    display: none;
+}
+#navigation li:hover ul {
+    display: block;
+}
+#navigation li {
+    display: table-cell;
+    text-align: center;
+    font: bold 1.4em Verdana, Arial, Helvetica, sans-serif;
+}
+#navigation ul li {
+    display: block;
+    text-align: left;
+}
+#navigation .right {
+    direction: rtl;
+}
+#navigation .right ul {
+    right: 0;
+}
+#navigation .right li {
+    direction: ltr;
+}
+#navigation a {
+    display: block;
+    padding: 3px 0;
+    color: #fff;
+    text-decoration: none;
+}
+#navigation ul a {
+    padding: 3px 15px;
+}
+#navigation li:hover {
+    background: rgb(96,145,172);
+}
+
+/*Separator style*/
+ul#spr {
+    height: 10%;
+}
+
+/*Main menu style */
 ul#navmenu-v,
 ul#navmenu-v li,
 ul#navmenu-v ul {
@@ -27,8 +85,8 @@ ul#navmenu-v a {
     border-bottom-color: #527337;
     padding: 0 6px;
     display: block;
-    background: #FF9f00;
-    color: #555;
+    background: #2E5F7A;
+    color: #FFF;
     font:  bold 1.4em Verdana, Arial, Helvetica, sans-serif;
     text-decoration: none;
     height: auto !important;
@@ -37,32 +95,32 @@ ul#navmenu-v a {
 ul#navmenu-v a:hover,
 ul#navmenu-v li:hover a,
 ul#navmenu-v li.iehover a {
-    background: #FF9f00;
+    background: #d6b3a6;
     color: #FFF;
 }
 ul#navmenu-v li:hover li a,
 ul#navmenu-v li.iehover li a {
-    background: #FF9f00;
+    background: #2E5F7A;
     color: #FFF;
 }
 ul#navmenu-v li:hover li a:hover,
 ul#navmenu-v li:hover li:hover a,
 ul#navmenu-v li.iehover li a:hover,
 ul#navmenu-v li.iehover li.iehover a {
-    background: #648B43;
-    color: #555;
+    background: #d6b3a6;
+    color: #FFF;
 }
 ul#navmenu-v li:hover li:hover li a,
 ul#navmenu-v li.iehover li.iehover li a {
-    background: #FF9f00;
+    background: #2E5F7A;
     color: #FFF;
 }
 ul#navmenu-v li:hover li:hover li a:hover,
 ul#navmenu-v li:hover li:hover li:hover a,
 ul#navmenu-v li.iehover li.iehover li a:hover,
 ul#navmenu-v li.iehover li.iehover li.iehover a {
-    background: #FF9f00;
-    color: #555;
+    background: #d6b3a6;
+    color: #FFF;
 }
 ul#navmenu-v li:hover li:hover li:hover li a,
 ul#navmenu-v li.iehover li.iehover li.iehover li a {
@@ -81,6 +139,7 @@ ul#navmenu-v ul ul ul {
     position: absolute;
     top: 0;
     left: 350px;
+    width: auto;
 }
 ul#navmenu-v li:hover ul ul,
 ul#navmenu-v li:hover ul ul ul,

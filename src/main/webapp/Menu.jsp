@@ -3,6 +3,12 @@
 <%@ page import="internetshop.niva.il.domain.TV" %>
 <%@ page import="java.util.List" %>
 <%@ page import="internetshop.niva.il.database.TVDAO" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="styles/styles.css" type="text/css"/>
+<link rel="stylesheet" href="styles/bootstrap.min.css" >
+<jsp:useBean id="tv_hometheater" class="internetshop.niva.il.database.jdbc.TVDAOImpl" scope="request"/>
+<jsp:include page="Header.jsp"></jsp:include>
 <%--
   Created by IntelliJ IDEA.
   User: voyager
@@ -11,28 +17,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <br>
-<head>
-  <jsp:useBean id="tv_hometheater" class="internetshop.niva.il.database.jdbc.TVDAOImpl" scope="request"/>
-  <title>Menu</title>
-  <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-  <link rel="stylesheet" type="text/css" href="styles/style.css">
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
-  <link rel="stylesheet" href="styles/fly_outMenu_vert.css" type="text/css" />
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-</head>
-<script language="JavaScript">
-  var a = 10;
-  function nextPage() {
-    location.href = 'TV.jsp?x=' + a + ''
-  }
-</script>
 
-<script>
-  function uhdtv() {
-    // document.getElementById("4045id").style.color = 'red'
-    document.getElementById("4045id")
-  }
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Menu</title>
+</head>
+
 <%
   TVDAOImpl tvdaoimpl = new TVDAOImpl();
 
@@ -46,13 +37,11 @@
   if(parameter == null ) {
     parameter="TV & Home Theater : ";
     session.setAttribute("parameter", parameter);
-
   }
 %>
 <body>
-<!--<%=session.getId()%>  -->
+<div id="main-menu">
   <ul id="navmenu-v">
-
   <li><a href="#">TV & Home Theater</a>
      <ul>
         <li><a href="#">4K Ultra HD TVs</a>
@@ -517,9 +506,10 @@
     </ul>
   </li>
 </ul>
+</div>
+</div>
 
-
-
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

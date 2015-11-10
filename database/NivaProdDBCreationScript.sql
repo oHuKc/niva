@@ -198,35 +198,3 @@ INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Sa
 INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$19,999.98','2160p','Samsung - 88" Class (88" Diag.) - LED - Curved - 2160p - Smart - 3D - 4K Ultra HD TV - Silver','19');
 INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$19,999.99','2160p','Samsung - 88" Class (88" Diag.) - LED - Curved - 2160p - Smart - 3D - 4K Ultra HD TV - Silver','19');
 INSERT INTO niva_production.TV_HomeTheater VALUES (id,'LED TV','70" or More','Samsung','$9,997.99','2160p','Samsung - 85" Class (84-1/2" Diag.) - LED - 2160p - Smart - 3D - 4K Ultra HD TV - Black','19');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
