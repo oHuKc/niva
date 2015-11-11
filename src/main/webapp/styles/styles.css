@@ -1,9 +1,50 @@
 /*Header Style*/
-#navigation, #navigation ul, #navigation li {
+
+.cart-wrap {
+    width: 5.045%;
+    float: left;
+    padding: 15px 0px;
+    height: 64px;
+    position: relative;
+}
+
+.header-icon-cart {
+    width: 64px;
+    height: 64px;
+    font-size: 26px;
+    display: inline-block;
+    color: #FFF;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+}
+[class^="header-icon-"], [class*=" header-icon-"], [class^="footer-icon-"], [class*=" footer-icon-"] {
+    font-family: "headerIcons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    color: #080808;
+}
+#form.login {
+    border: 1px solid red;
+}
+
+#form.login input,#navbar-form.right{
+    height: auto;
+    width: 140px;
+    background: #F5F5F5;
+    border-radius: 10px;
+
+}
+
+
+#navigation, #navigation ul, #navigation li, ul#nav  {
     margin: 0;
     padding: 0;
 }
-#navigation, #navigation ul {
+#navigation, #navigation ul, #navbar-default {
     background: rgb(46,95,122);
 }
 #navigation {
@@ -54,7 +95,13 @@
 ul#spr {
     height: 10%;
 }
-
+#spr.cart-wrap {
+    width: 5.045%;
+    float: left;
+    padding: 15px 0px;
+    height: 64px;
+    position: relative;
+}
 /*Main menu style */
 ul#navmenu-v,
 ul#navmenu-v li,
@@ -154,4 +201,10 @@ ul#navmenu-v li.iehover ul,
 ul#navmenu-v ul li.iehover ul,
 ul#navmenu-v ul ul li.iehover ul {
     display: block;
+}
+
+footer{
+    width:100%;
+    min-height:25px;
+    background-color: #2E5F7A; /* This color gets inverted color or you can add navbar inverse class in html */
 }

@@ -1,9 +1,12 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="tv" scope="session" class="internetshop.niva.il.database.jdbc.TVDAOImpl"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="tv" scope="session" class="internetshop.niva.il.database.jdbc.TVDAOImpl"/>
+
+
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css"/>
 <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
-<link rel="stylesheet" href="styles/bootstrap.min.css" >
+
 <jsp:include page="Header.jsp"></jsp:include>
 
 <%--
@@ -28,11 +31,10 @@
       <!--Sidebar content-->
     </div>
     <div class="span10">
-
-      <script src="http://code.jquery.com/jquery-latest.js"></script>
+      <!--
       <h4>TV.jsp session Id:<%=session.getId()%></h4>
       <h4>Menu.jsp session Id:<%=session.getAttribute("menusessionid")%></h4>
-
+      -->
       <%
         HashMap<Integer, String> hmp = new HashMap<Integer, String>();
 
