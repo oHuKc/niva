@@ -1,5 +1,6 @@
 package internetshop.niva.il.domain;
 
+import java.sql.Blob;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class TV {
     private String tvresolution;
     private String tvdescription;
     private int tvscreentypeid;
+    private Blob tvimage;
 
     public long getTvid() {return tvid;}
 
@@ -46,5 +48,9 @@ public class TV {
     public int getTvscreentypeid() {return tvscreentypeid;}
 
     public void setTvscreentypeid(int tvscreentypeid) {this.tvscreentypeid = tvscreentypeid;}
+
+    public Blob getTvimage() {return tvimage;}
+
+    public void setTvimage(Blob tvimage){this.tvimage = tvimage;}
 
 }

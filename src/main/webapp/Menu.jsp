@@ -25,7 +25,6 @@
 <jsp:useBean id="tv_hometheater" class="internetshop.niva.il.database.jdbc.TVDAOImpl" scope="request"/>
 
 
-
 <%--
   Created by IntelliJ IDEA.
   User: voyager
@@ -33,11 +32,14 @@
   Time: 14:57
   To change this template use File | Settings | File Templates.
 --%>
+<br>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Menu</title>
 </head>
+
 
 <%
   TVDAOImpl tvdaoimpl = new TVDAOImpl();
@@ -55,6 +57,40 @@
   }
 %>
 <body>
+<!--
+  <div class="search-bar" role="search">
+    <form action="#" name="frmSearch" method="GET">
+      <label for="gh-search-input"></label>
+      <input autocomplete="off" class="autocomplete-enabled" value="" name="st" maxlength="90" placeholder="" id="gh-search-input" type="text">
+      <div id="autocompleteContainer"></div>
+
+      <button type="submit" class="search-button" title="Search" value="Search">
+        <span class="header-icon-search" aria-hidden="true">
+        </span>
+      </button>
+-->
+      <input value="UTF-8" name="_dyncharset" type="hidden">
+      <input value="pcat17071" name="id" type="hidden">
+      <input value="page" name="type" type="hidden">
+      <input value="Global" name="sc" type="hidden">
+      <input value="1" name="cp" type="hidden">
+      <input value="" name="nrp" type="hidden">
+      <input value="" name="sp" type="hidden">
+      <input value="" name="qp" type="hidden">
+      <input value="n" name="list" type="hidden">
+      <input value="y" name="iht" type="hidden">
+      <input value="All Categories" name="usc" type="hidden">
+      <input value="960" name="ks" type="hidden">
+      <input id="keys" value="keys" name="keys" type="hidden">
+      </form>
+    </div>
+  </div>
+</div>
+<div class="separotor">
+  <ul>
+
+  </ul>
+</div>
 <div id="main-menu">
   <ul id="navmenu-v">
   <li><a href="#">TV & Home Theater</a>
@@ -524,6 +560,7 @@
 </div>
 </div>
 
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

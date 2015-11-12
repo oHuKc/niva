@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Header</title>
+  <title>Header</title>
 </head>
 
 <body>
@@ -53,11 +53,11 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-
     </ul>
+
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
+        <input type="text" class="form-control" placeholder="Search" aria-describedby="search-btn">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
@@ -68,6 +68,7 @@
             <span class="hidden-text"></span>
           </div>
           <span class="header-icon-cart"><img src="images/cart.png"></span></a>
+          <span class="badge">1</span></a>
       </div>
     </ul>
   </div><!-- /.navbar-collapse -->

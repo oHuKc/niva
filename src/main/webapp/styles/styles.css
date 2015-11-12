@@ -1,5 +1,6 @@
 /*Header Style*/
 
+
 .cart-wrap {
     width: 5.045%;
     float: left;
@@ -18,7 +19,10 @@
     top: 7px;
     right: 10px;
 }
-[class^="header-icon-"], [class*=" header-icon-"], [class^="footer-icon-"], [class*=" footer-icon-"] {
+[class^="header-icon-"],
+[class*=" header-icon-"],
+[class^="footer-icon-"],
+[class*=" footer-icon-"] {
     font-family: "headerIcons";
     font-style: normal;
     font-weight: normal;
@@ -202,7 +206,11 @@ ul#navmenu-v ul li.iehover ul,
 ul#navmenu-v ul ul li.iehover ul {
     display: block;
 }
-
+/*Styles for Cart!*/
+.media-object {
+    width: 72px;
+    height: 72px;
+}
 footer{
     width:100%;
     min-height:25px;

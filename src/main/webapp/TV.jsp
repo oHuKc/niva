@@ -18,7 +18,7 @@
 --%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" content="image/jpeg">
 <head>
   <title>TV & Home Theater</title>
 </head>
@@ -45,15 +45,15 @@
 
         hmp.put(99, "4kid99");
 
-        String tvid = request.getParameter("screenID");
+        String tid = request.getParameter("screenID");
 
-        if(tvid == null) {
+        if(tid == null) {
           int i = 1;
           do {
             for ( i = 1; i <= 99 ; i++ ) {
-              tvid = request.getParameter(String.valueOf(hmp.get(i)));
-              if(tvid != null) {
-                session.setAttribute("screenID", tvid);
+              tid = request.getParameter(String.valueOf(hmp.get(i)));
+              if(tid != null) {
+                session.setAttribute("screenID", tid);
                 //System.out.print("Selected screen size id :" + tvid +"\n");
                 //System.out.print("Hash Map:" + hmp.get(i)+"\n");
                 // System.out.print("Session getAttribute :"+session.getAttribute("screenID")+"\n");
@@ -67,7 +67,19 @@
 
       <!--Retrieve only selected TV products by screen size :-->
       <c:forEach items='${tv.get4KUHD(screenID)}' var="tv">
-        <h4><c:out  value="${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/><!--<img src="images/cart.png">--></h4>
+        <h4><c:out  value="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/><!--<img src="images/cart.png">--></h4>
+
+        <form class="form-inline">
+
+          <div class="checkbox">
+           <!-- <label><input type="checkbox"></label> -->
+          </div>
+          <button type="button" class="btn btn-success">
+            <span class="glyphicon glyphicon-shopping-cart" type="submit"></span> Add to Cart
+          </button>
+          <hr style="border-top: 1px dotted #000000 !important;" />
+        </form>
+
       </c:forEach>
 
       <% }
@@ -76,13 +88,22 @@
 
       <!--Retrieve all TV  products on a page :-->
       <c:forEach items = '${tv.getAll()}' var = "tv" >
-        <h4 ><c:out value ="${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
+        <h4 ><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
+        <!-- Add to Cart-->
+        <form class="form-inline">
+          <div class="checkbox">
+            <!--<label><input type="checkbox"></label>-->
+          </div>
+          <button type="button" class="btn btn-success">
+            <span class="glyphicon glyphicon-shopping-cart" type="submit"></span> Add to Cart
+          </button>
+          <hr style="border-top: 1px dotted #000000 !important;" />
+        </form>
+
       </c:forEach >
     </div>
   </div>
 </div>
-
-
 
 
 <% } %>

@@ -3,10 +3,7 @@ package internetshop.niva.il.database.jdbc;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.TV;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class TVDAOImpl extends DAOImplement {
 
         try{
             connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tv_hometheater VALUES (id, ?, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tv_hometheater VALUES (id, ?, ?, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, tv.getTvtype());
             preparedStatement.setString(2, tv.getTvscreensize());
             preparedStatement.setString(3 ,tv.getTvebrand());
@@ -31,6 +28,7 @@ public class TVDAOImpl extends DAOImplement {
             preparedStatement.setString(5, tv.getTvresolution());
             preparedStatement.setString(5, tv.getTvdescription());
             preparedStatement.setInt(6, tv.getTvscreentypeid());
+            preparedStatement.setBlob(7, tv.getTvimage());
 
 
             preparedStatement.executeUpdate();
@@ -67,6 +65,7 @@ public class TVDAOImpl extends DAOImplement {
                 tv.setTvresolution(resultSet.getString("RESOLUTION"));
                 tv.setTvdescription(resultSet.getString("DESCRIPTION"));
                 tv.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
+                tv.setTvimage(resultSet.getBlob("IMAGE"));
             }
             return tv;
         } catch (Throwable e) {
@@ -90,13 +89,14 @@ public class TVDAOImpl extends DAOImplement {
                 TV tvs = new TV();
               tvs.setTvid(resultSet.getLong("id"));
               tvs.setTvtype(resultSet.getString("TV_TYPE"));
-                tvs.setTvscreensize(resultSet.getString("TV_SCREEN_SIZE"));
+              tvs.setTvscreensize(resultSet.getString("TV_SCREEN_SIZE"));
               tvs.setTvebrand(resultSet.getString("BRAND"));
               tvs.setTvprice(resultSet.getString("PRICE"));
               tvs.setTvresolution(resultSet.getString("RESOLUTION"));
               tvs.setTvdescription(resultSet.getString("DESCRIPTION"));
-                tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
-                tv.add(tvs);
+              tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
+              tvs.setTvimage(resultSet.getBlob("IMAGE"));
+              tv.add(tvs);
             }
 
         } catch (SQLException e) {
@@ -124,6 +124,7 @@ public class TVDAOImpl extends DAOImplement {
                 tvs.setTvresolution(resultSet.getString("RESOLUTION"));
                 tvs.setTvdescription(resultSet.getString("DESCRIPTION"));
                 tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
+                tvs.setTvimage(resultSet.getBlob("IMAGE"));
                 tv.add(tvs);
             }
         } catch (SQLException e) {
@@ -163,6 +164,7 @@ public class TVDAOImpl extends DAOImplement {
             closeConnection(connection);
         }
     }
+
 
 
 }
