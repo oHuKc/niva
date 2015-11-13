@@ -68,20 +68,9 @@
         <span class="header-icon-search" aria-hidden="true">
         </span>
       </button>
--->
-      <input value="UTF-8" name="_dyncharset" type="hidden">
-      <input value="pcat17071" name="id" type="hidden">
-      <input value="page" name="type" type="hidden">
-      <input value="Global" name="sc" type="hidden">
-      <input value="1" name="cp" type="hidden">
-      <input value="" name="nrp" type="hidden">
       <input value="" name="sp" type="hidden">
-      <input value="" name="qp" type="hidden">
-      <input value="n" name="list" type="hidden">
-      <input value="y" name="iht" type="hidden">
-      <input value="All Categories" name="usc" type="hidden">
-      <input value="960" name="ks" type="hidden">
-      <input id="keys" value="keys" name="keys" type="hidden">
+-->
+
       </form>
     </div>
   </div>
