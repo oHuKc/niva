@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class TVDAOImpl extends DAOImplement {
 
-    public void create(TV tv) throws DBException{
+    public void create(TV tv) throws DBException, SQLException {
         if(tv == null ) {
             return;
         }
@@ -26,9 +26,9 @@ public class TVDAOImpl extends DAOImplement {
             preparedStatement.setString(3 ,tv.getTvebrand());
             preparedStatement.setString(4, tv.getTvprice());
             preparedStatement.setString(5, tv.getTvresolution());
-            preparedStatement.setString(5, tv.getTvdescription());
-            preparedStatement.setInt(6, tv.getTvscreentypeid());
-            preparedStatement.setBlob(7, tv.getTvimage());
+            preparedStatement.setString(6, tv.getTvdescription());
+            preparedStatement.setInt(7, tv.getTvscreentypeid());
+            preparedStatement.setBlob(8, tv.getTvimage());
 
 
             preparedStatement.executeUpdate();
@@ -41,11 +41,14 @@ public class TVDAOImpl extends DAOImplement {
             e.printStackTrace();
             throw  new DBException(e);
         }finally {
-            closeConnection(connection);
+            if ( connection != null ) {
+                //closeConnection(connection);
+                connection.close();
+            }
         }
     }
 
-    public TV getById(Long id) throws DBException {
+    public TV getById(Long id) throws DBException, SQLException {
 
             Connection connection = null;
 
@@ -73,10 +76,14 @@ public class TVDAOImpl extends DAOImplement {
             e.printStackTrace();
             throw  new DBException(e);
         } finally {
-            closeConnection(connection);
+            if ( connection != null ) {
+                //closeConnection(connection);
+                try {
+                    connection.close();
+                }catch (SQLException ignore) {}
+            }
         }
     }
-
     public List<TV> getAll() throws DBException {
         List<TV> tv = new ArrayList<TV>();
         Connection connection = null;
@@ -124,7 +131,7 @@ public class TVDAOImpl extends DAOImplement {
                 tvs.setTvresolution(resultSet.getString("RESOLUTION"));
                 tvs.setTvdescription(resultSet.getString("DESCRIPTION"));
                 tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
-                tvs.setTvimage(resultSet.getBlob("IMAGE"));
+               // tvs.setTvimage(resultSet.getBlob("IMAGE"));
                 tv.add(tvs);
             }
         } catch (SQLException e) {
@@ -135,7 +142,7 @@ public class TVDAOImpl extends DAOImplement {
     }
 
 
-    public TV getByScreenSize(String id) throws DBException {
+    public TV getByScreenSize(String id) throws DBException, SQLException {
 
         Connection connection = null;
 
@@ -161,9 +168,45 @@ public class TVDAOImpl extends DAOImplement {
             e.printStackTrace();
             throw  new DBException(e);
         } finally {
-            closeConnection(connection);
+            if ( connection != null ) {
+                //closeConnection(connection);
+                try {
+                    connection.close();
+                }catch (SQLException ignore) {}
+            }
         }
     }
 
+
+        public byte[] getImage(int id ) throws DBException, SQLException {
+            Connection connection = null;
+            try {
+                connection = getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT IMAGE FROM tv_hometheater WHERE id = ?");
+                preparedStatement.setInt(1, id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                TV tv =null;
+                byte[] imgData = new byte[0];
+                if (resultSet.next()) {
+                    tv = new TV();
+                    Blob img;
+                    imgData = null;
+                    img = resultSet.getBlob(1);
+                    imgData = img.getBytes(1, (int) img.length());
+                }
+                return imgData;
+            } catch (SQLException e) {
+                System.out.println("Exception occured while execute TVDAOImpl.getImage()");
+                e.printStackTrace();
+                throw  new DBException(e);
+            }finally {
+                if ( connection != null ) {
+                    //closeConnection(connection);
+                    try {
+                        connection.close();
+                    }catch (SQLException ignore) {}
+                }
+            }
+        }
 
 }
