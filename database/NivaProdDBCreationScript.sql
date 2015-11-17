@@ -141,6 +141,20 @@ CREATE TABLE niva_production.wearable_technology
   PRICE CHAR(40) NOT NULL,
   DESCRIPTION CHAR(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
+
+
+DROP TABLE IF EXISTS  niva_production.cart;
+CREATE TABLE niva_production.cart
+(
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  PRODUCT_ID INT(10) NOT NULL,
+  PRODUCT_NAME CHAR(40) NOT NULL,
+  PRODUCT_BRAND CHAR(40) NOT NULL,
+  PRODUCT_DESCRIPTION CHAR(100) NOT NULL,
+  STATUS CHAR(40) NOT NULL,
+  PRICE CHAR(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
+
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # INSERTING DATA IN TO niva_production.TV_HomeTheater
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -105,9 +105,6 @@
         <h4 ><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
         <!-- Add to Cart-->
         <form class="form-inline">
-          <div class="checkbox">
-            <!--<label><input type="checkbox"></label>-->
-          </div>
           <button type="button" class="btn btn-success">
             <span class="glyphicon glyphicon-shopping-cart" type="submit"></span> Add to Cart
           </button>

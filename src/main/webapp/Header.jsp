@@ -68,7 +68,7 @@
             <span class="hidden-text"></span>
           </div>
           <span class="header-icon-cart"><img src="images/cart.png"></span></a>
-          <span class="badge">1</span></a>
+          <span class="badge" type="hidden">1</span></a>
       </div>
     </ul>
   </div><!-- /.navbar-collapse -->

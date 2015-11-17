@@ -25,6 +25,7 @@ public class MVCFilter implements Filter {
         controllers.put("/select", new SelectController());
         controllers.put("/menu", new MenuController());
         controllers.put("/tv", new TVController());
+        controllers.put("/cart", new CartController());
     }
 
     public void doFilter(ServletRequest request,
