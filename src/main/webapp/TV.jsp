@@ -52,9 +52,6 @@
               tid = request.getParameter(String.valueOf(hmp.get(i)));
               if(tid != null) {
                 session.setAttribute("screenID", tid);
-                //System.out.print("Selected screen size id :" + tvid +"\n");
-                //System.out.print("Hash Map:" + hmp.get(i)+"\n");
-                // System.out.print("Session getAttribute :"+session.getAttribute("screenID")+"\n");
               }
             }
           } while (request.getParameter(String.valueOf(hmp.get(i))) != hmp.get(i) && request.getParameter(String.valueOf(hmp.get(i))) != null);
@@ -84,7 +81,7 @@
       <c:forEach items='${tv.get4KUHD(screenID)}' var="tv">
         <h4><c:out  value="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/><!--<img src="images/cart.png">--></h4>
         <!--Draw image :-->
-        <img src ="TV.jsp?imgID=${tv.tvid}" width="115" border="0" >
+       <a href="TV.jsp?imgID=${tv.tvid}" target="_blank"> <img src ="TV.jsp?imgID=${tv.tvid}" width="115" border="0" ></a>
         <form class="form-inline">
           <div class="checkbox">
            <!-- <label><input type="checkbox"></label> -->
@@ -98,17 +95,17 @@
 
    <% }
 
-
       if ( request.getParameter("4kid99") != null && session.getAttribute("parameter") != null) { %>
       <!--Retrieve all TV  products on a page :-->
       <c:forEach items = '${tv.getAll()}' var = "tv" >
         <h4 ><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
         <!-- Add to Cart-->
-        <form class="form-inline">
+        <form name="cart-button" class="form-inline" method="post">
           <button type="button" class="btn btn-success">
-            <span class="glyphicon glyphicon-shopping-cart" type="submit"></span> Add to Cart
+            <span class="glyphicon glyphicon-shopping-cart" type="submit" value="${tv.tvid}"></span> Add to Cart
           </button>
           <hr style="border-top: 1px dotted #000000 !important;" />
+
         </form>
 
       </c:forEach >
@@ -116,8 +113,8 @@
   </div>
 </div>
 
-
 <% } %>
 <%--request.getSession(false).invalidate()--%>
+
 </body>
 </html>
