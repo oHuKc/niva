@@ -2,6 +2,7 @@ package internetshop.niva.il.database.jdbc;
 
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Goods;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by ilugovecs on 2015.10.21..
  */
+@Component
 public class GoodsDAOImpl extends DAOImplement {
 
     public void create(Goods goods) throws DBException {

@@ -2,6 +2,7 @@ package internetshop.niva.il.database.jdbc;
 
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.TV;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * Created by ilugovecs on 2015.11.05..
  */
+@Component
 public class TVDAOImpl extends DAOImplement {
 
     public void create(TV tv) throws DBException, SQLException {

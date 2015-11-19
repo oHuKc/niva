@@ -2,7 +2,6 @@ package internetshop.niva.il.domain;
 
 import java.sql.Blob;
 import java.util.List;
-import javax.persistence.*;
 
 /**
  * Created by ilugovecs on 2015.11.05..

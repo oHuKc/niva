@@ -63,21 +63,21 @@
       <h2><%=session.getAttribute("parameter")%></h2>
 
       <%
-        int ImageID;
-        Connection connection = null;
-        if (request.getParameter("imgID") != null ) {
-          try {
-            ImageID = Integer.parseInt(request.getParameter("imgID"));
-            byte[] imgData = tv.getImage(ImageID);
-            response.setContentType("image/jpeg");
-            OutputStream outputStream = response.getOutputStream();
-            outputStream.write(imgData);
-            response.getOutputStream().flush();
-            response.getOutputStream().close();
-            return;
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
+          int ImageID;
+          Connection connection = null;
+          if (request.getParameter("imgID") != null ) {
+            try {
+              ImageID = Integer.parseInt(request.getParameter("imgID"));
+              byte[] imgData = tv.getImage(ImageID);
+              response.setContentType("image/jpeg");
+              OutputStream outputStream = response.getOutputStream();
+              outputStream.write(imgData);
+              response.getOutputStream().flush();
+              response.getOutputStream().close();
+              return;
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
         }
       %>
       <!--Retrieve only selected TV products by screen size :-->

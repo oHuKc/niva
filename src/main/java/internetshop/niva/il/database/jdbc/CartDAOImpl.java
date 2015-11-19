@@ -3,6 +3,7 @@ package internetshop.niva.il.database.jdbc;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Cart;
 import lv.javaguru.java2.database.jdbc.DAOImpl;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 /**
  * Created by ilugovecs on 2015.11.17..
  */
+@Component
 public class CartDAOImpl  extends DAOImpl{
 
     public void create (Cart cart) throws DBException, SQLException {

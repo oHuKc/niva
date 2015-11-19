@@ -1,6 +1,7 @@
 package internetshop.niva.il.database.jdbc;
 
 import internetshop.niva.il.database.DBException;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,6 +12,7 @@ import java.util.Properties;
 /**
  * Created by ilugovecs on 2015.10.19..
  */
+@Component
 public class DAOImplement {
    // private static final String DB_CONFIG_FILE = "nivadatabase.properties"; //TEST DB
     private static final String DB_CONFIG_FILE = "nivaproductiondb.properties"; //PRODUCTION DB
