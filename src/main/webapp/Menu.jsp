@@ -3,6 +3,8 @@
 <%@ page import="internetshop.niva.il.domain.TV" %>
 <%@ page import="java.util.List" %>
 <%@ page import="internetshop.niva.il.database.TVDAO" %>
+<%@ page import="internetshop.niva.il.database.jdbc.CartDAOImpl" %>
+<%@ page import="internetshop.niva.il.domain.Cart" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="Header.jsp"></jsp:include>
@@ -55,6 +57,7 @@
     parameter="TV & Home Theater : ";
     session.setAttribute("parameter", parameter);
   }
+
 %>
 <body>
 <!--

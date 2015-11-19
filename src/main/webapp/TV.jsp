@@ -3,6 +3,9 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="internetshop.niva.il.database.DBException" %>
 <%@ page import="java.sql.Connection" %>
+<%@ page import="internetshop.niva.il.database.jdbc.CartDAOImpl" %>
+<%@ page import="internetshop.niva.il.domain.Cart" %>
+<%@ page import="internetshop.niva.il.domain.TV" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -69,8 +72,8 @@
             response.setContentType("image/jpeg");
             OutputStream outputStream = response.getOutputStream();
             outputStream.write(imgData);
-            outputStream.flush();
-            outputStream.close();
+            response.getOutputStream().flush();
+            response.getOutputStream().close();
             return;
           } catch (Exception e) {
             e.printStackTrace();
@@ -79,42 +82,42 @@
       %>
       <!--Retrieve only selected TV products by screen size :-->
       <c:forEach items='${tv.get4KUHD(screenID)}' var="tv">
-        <h4><c:out  value="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/><!--<img src="images/cart.png">--></h4>
+        <h4><c:out  value="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}" /><!--<img src="images/cart.png">--></h4>
         <!--Draw image :-->
        <a href="TV.jsp?imgID=${tv.tvid}" target="_blank"> <img src ="TV.jsp?imgID=${tv.tvid}" width="115" border="0" ></a>
         <form class="form-inline">
           <div class="checkbox">
            <!-- <label><input type="checkbox"></label> -->
           </div>
-          <button type="button" class="btn btn-success">
-            <span class="glyphicon glyphicon-shopping-cart" type="submit"></span> Add to Cart
-          </button>
+
+          <form  method="post" id="Cart">
+            <button class="btn btn-success" href="javascript:;" onclick="document.getElementById('Cart').submit();">
+              <span class="glyphicon glyphicon-shopping-cart" type="button"></span> Add to Cart
+              <input type="hidden" name="btnCart" value="${tv.tvid}"/>
+            </button>
+          </form>
+          </form>
           <hr style="border-top: 1px dotted #000000 !important;" />
-        </form>
       </c:forEach>
-
-   <% }
-
+     <h4> Add to Cart productId:<%=request.getParameter("btnCart")%></h4>
+      <% }
       if ( request.getParameter("4kid99") != null && session.getAttribute("parameter") != null) { %>
       <!--Retrieve all TV  products on a page :-->
       <c:forEach items = '${tv.getAll()}' var = "tv" >
-        <h4 ><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
+        <h4><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
         <!-- Add to Cart-->
         <form name="cart-button" class="form-inline" method="post">
           <button type="button" class="btn btn-success">
             <span class="glyphicon glyphicon-shopping-cart" type="submit" value="${tv.tvid}"></span> Add to Cart
           </button>
-          <hr style="border-top: 1px dotted #000000 !important;" />
-
+          <hr style="border-top: 1px dotted #000000 !important;"/>
         </form>
-
       </c:forEach >
     </div>
   </div>
 </div>
-
 <% } %>
-<%--request.getSession(false).invalidate()--%>
 
+<!--%request.getSession(true).invalidate()%-->
 </body>
 </html>

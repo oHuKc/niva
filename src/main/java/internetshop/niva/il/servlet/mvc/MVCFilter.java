@@ -8,7 +8,9 @@ import com.sun.javafx.collections.MappingChange;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,13 +40,11 @@ public class MVCFilter implements Filter {
         String contextURI = req.getServletPath();
         MVCController controller = controllers.get(contextURI);
 
+
+
         if (controller != null) {
-
             MVCModel model = controller.execute(req);
-
             req.setAttribute("model", model.getData());
-
-
             ServletContext servletContext = req.getServletContext();
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(model.getViewName());
             requestDispatcher.forward(req, resp);
@@ -52,6 +52,8 @@ public class MVCFilter implements Filter {
         }
         else filterchain.doFilter(request, response);
     }
+
+
     public void destroy() {
 
     }
