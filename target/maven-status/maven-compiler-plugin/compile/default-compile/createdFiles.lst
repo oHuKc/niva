@@ -2,6 +2,8 @@ internetshop\niva\il\domain\GoodsType.class
 lv\javaguru\java2\database\jdbc\UserDAOImpl.class
 internetshop\niva\il\database\GoodsTypeDAO.class
 internetshop\niva\il\servlet\mvc\HelloWorldController.class
+internetshop\niva\il\servlet\mvc\ImageShowController.class
+internetshop\niva\il\servlet\spring\SpringConfig.class
 internetshop\niva\il\servlet\mvc\CartController.class
 internetshop\niva\il\database\CustomerDAO.class
 internetshop\niva\il\database\jdbc\GoodsDAOImpl.class
@@ -37,6 +39,5 @@ internetshop\niva\il\database\GoodsDAO.class
 internetshop\niva\il\servlet\ProductServlet.class
 lv\javaguru\java2\database\jdbc\DAOImpl.class
 lv\javaguru\java2\database\UserDAO.class
-internetshop\niva\il\servlet\SpringConfig.class
 internetshop\niva\il\servlet\mvc\SelectController.class
 internetshop\niva\il\servlet\SelectServlet.class

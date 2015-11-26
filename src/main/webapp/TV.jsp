@@ -26,6 +26,7 @@
   <title>TV & Home Theater</title>
 </head>
 <body>
+
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span2">
@@ -62,46 +63,34 @@
         if (session.getAttribute("screenID") != null ) { %>
       <h2><%=session.getAttribute("parameter")%></h2>
 
-      <%
-          int ImageID;
-          Connection connection = null;
-          if (request.getParameter("imgID") != null ) {
-            try {
-              ImageID = Integer.parseInt(request.getParameter("imgID"));
-              byte[] imgData = tv.getImage(ImageID);
-              response.setContentType("image/jpeg");
-              OutputStream outputStream = response.getOutputStream();
-              outputStream.write(imgData);
-              response.getOutputStream().flush();
-              response.getOutputStream().close();
-              return;
-            } catch (Exception e) {
-              e.printStackTrace();
-            }
-        }
-      %>
+
       <!--Retrieve only selected TV products by screen size :-->
       <c:forEach items='${tv.get4KUHD(screenID)}' var="tv">
         <h4><c:out  value="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}" /><!--<img src="images/cart.png">--></h4>
+
         <!--Draw image :-->
-       <a href="TV.jsp?imgID=${tv.tvid}" target="_blank"> <img src ="TV.jsp?imgID=${tv.tvid}" width="115" border="0" ></a>
+        <c:set var="tvidId" value="${tv.tvid}" scope="request"/>
+        <%request.setAttribute("model", request.getAttribute("tvidId"));%>
+        <a href="tv?imgID=${tvidId}" target="_blank"><img src ="tv?imgID=<%=request.getAttribute("model")%>" width="115" border="0" ></a>
+
         <form class="form-inline">
           <div class="checkbox">
-           <!-- <label><input type="checkbox"></label> -->
+            <!-- <label><input type="checkbox"></label> -->
           </div>
 
-          <form  method="post" id="Cart">
+          <form id="Cart">
             <button class="btn btn-success" href="javascript:;" onclick="document.getElementById('Cart').submit();">
               <span class="glyphicon glyphicon-shopping-cart" type="button"></span> Add to Cart
               <input type="hidden" name="btnCart" value="${tv.tvid}"/>
             </button>
           </form>
-          </form>
-          <hr style="border-top: 1px dotted #000000 !important;" />
+        </form>
+        <hr style="border-top: 1px dotted #000000 !important;" />
       </c:forEach>
-     <h4> Add to Cart productId:<%=request.getParameter("btnCart")%></h4>
+
+      <h4> Add to Cart productId:<%=request.getParameter("btnCart")%></h4>
       <% }
-      if ( request.getParameter("4kid99") != null && session.getAttribute("parameter") != null) { %>
+        if ( request.getParameter("4kid99") != null && session.getAttribute("parameter") != null) { %>
       <!--Retrieve all TV  products on a page :-->
       <c:forEach items = '${tv.getAll()}' var = "tv" >
         <h4><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>

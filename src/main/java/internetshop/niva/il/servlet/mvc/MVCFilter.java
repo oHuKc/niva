@@ -3,8 +3,10 @@ package internetshop.niva.il.servlet.mvc;
 /**
  * Created by voyager on 2015.11.03..
  */
-import com.sun.javafx.collections.MappingChange;
-import internetshop.niva.il.servlet.SpringConfig;
+
+import internetshop.niva.il.database.DBException;
+import internetshop.niva.il.servlet.mvc.*;
+import internetshop.niva.il.servlet.spring.SpringConfig;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,10 +14,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.awt.*;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -55,7 +55,7 @@ public class MVCFilter implements Filter {
         controllers.put("/menu", getBean(MenuController.class));
         controllers.put("/tv", getBean(TVController.class));
         controllers.put("/cart", getBean(CartController.class));
-
+        controllers.put("/image", getBean(ImageShowController.class));
     }
 
     private MVCController getBean(Class clazz){
@@ -75,12 +75,26 @@ public class MVCFilter implements Filter {
 
 
         if (controller != null) {
-            MVCModel model = controller.execute(req);
+            MVCModel model = null;
+            try {
+                model = controller.execute(req, resp);
+            } catch (DBException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             req.setAttribute("model", model.getData());
+            req.setAttribute("modelDB", model.getData());
+
             ServletContext servletContext = req.getServletContext();
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(model.getViewName());
-            requestDispatcher.forward(req, resp);
+            if (!resp.isCommitted()) { //To remove SEVERE: Servlet.service() for servlet [default] Exception
 
+                requestDispatcher.forward(req, resp);
+            }
         }
         else filterchain.doFilter(request, response);
     }
