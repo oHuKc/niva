@@ -56,6 +56,7 @@ public class MVCFilter implements Filter {
         controllers.put("/tv", getBean(TVController.class));
         controllers.put("/cart", getBean(CartController.class));
         controllers.put("/image", getBean(ImageShowController.class));
+        controllers.put("/add", getBean(CartController.class));
     }
 
     private MVCController getBean(Class clazz){
@@ -87,7 +88,6 @@ public class MVCFilter implements Filter {
             }
 
             req.setAttribute("model", model.getData());
-            req.setAttribute("modelDB", model.getData());
 
             ServletContext servletContext = req.getServletContext();
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(model.getViewName());

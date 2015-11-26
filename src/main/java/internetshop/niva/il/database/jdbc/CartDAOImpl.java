@@ -2,7 +2,7 @@ package internetshop.niva.il.database.jdbc;
 
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Cart;
-import lv.javaguru.java2.database.jdbc.DAOImpl;
+import internetshop.niva.il.database.jdbc.DAOImplement;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -14,9 +14,9 @@ import java.sql.SQLException;
  * Created by ilugovecs on 2015.11.17..
  */
 @Component
-public class CartDAOImpl  extends DAOImpl{
+public class CartDAOImpl  extends DAOImplement {
 
-    public void create (Cart cart) throws DBException, SQLException {
+    public void create(Cart cart) throws DBException, SQLException {
         if (cart == null ) {
             return;
         }
@@ -48,5 +48,36 @@ public class CartDAOImpl  extends DAOImpl{
         }
     }
 
+    public Cart getById(Long id) throws DBException, SQLException {
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from cart where id = ? ");
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Cart cart = null;
+            if (resultSet.next()) {
+                cart = new Cart();
+                cart.setProductid(resultSet.getLong("PRODUCT_ID"));
+                cart.setProductname(resultSet.getString("PRODUCT_NAME"));
+                cart.setProductbrand(resultSet.getString("PRODUCT_BRAND"));
+                cart.setProductdescription(resultSet.getString("PRODUCT_DESCRIPTION"));
+                cart.setProductstatus(resultSet.getString("STATUS"));
+                cart.setProductprice(resultSet.getString("PRICE"));
+            }
+            return cart;
+        } catch (Throwable e) {
+            System.out.println("Exception occured while execute CartDAOIml.getById()");
+            e.printStackTrace();
+            throw  new DBException(e);
+        } finally {
+            if ( connection != null ) {
+                //closeConnection(connection);
+                try {
+                    connection.close();
+                }catch (SQLException ignore) {}
+            }
+        }
+    }
 
 }

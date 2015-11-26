@@ -8,4 +8,6 @@ import internetshop.niva.il.domain.Cart;
 public interface CartDAO {
 
     void create(Cart cart) throws DBException;
+
+    Cart getById(Long id) throws DBException;
 }

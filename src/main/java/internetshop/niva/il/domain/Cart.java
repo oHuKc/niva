@@ -1,8 +1,11 @@
 package internetshop.niva.il.domain;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by ilugovecs on 2015.11.17..
  */
+@Component
 public class Cart {
     private long productid;
     private String productname;
