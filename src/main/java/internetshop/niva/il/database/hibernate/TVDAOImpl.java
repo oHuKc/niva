@@ -1,7 +1,12 @@
-package internetshop.niva.il.database.jdbc;
+package internetshop.niva.il.database.hibernate;
 
 import internetshop.niva.il.database.DBException;
+import internetshop.niva.il.database.jdbc.DAOImplement;
 import internetshop.niva.il.domain.TV;
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -11,7 +16,7 @@ import java.util.List;
 /**
  * Created by ilugovecs on 2015.11.05..
  */
-@Component("TVDAOImpl_JDBC")
+@Component("TVDAOImpl_Hibernate")
 public class TVDAOImpl extends DAOImplement {
 
     public void create(TV tv) throws DBException, SQLException {
@@ -49,43 +54,32 @@ public class TVDAOImpl extends DAOImplement {
             }
         }
     }
-
-    public TV getById(Long id) throws DBException, SQLException {
-
-            Connection connection = null;
-
-        try {
-            connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from tv_hometheater where id = ? ");
-            preparedStatement.setLong(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            TV tv = null;
-            if (resultSet.next()) {
-                tv = new TV();
-                tv.setTvid(resultSet.getLong("id"));
-                tv.setTvtype(resultSet.getString("TV_TYPE"));
-                tv.setTvscreensize(resultSet.getString("TV_SCREEN_SIZE"));
-                tv.setTvebrand(resultSet.getString("BRAND"));
-                tv.setTvprice(resultSet.getString("PRICE"));
-                tv.setTvresolution(resultSet.getString("RESOLUTION"));
-                tv.setTvdescription(resultSet.getString("DESCRIPTION"));
-                tv.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
-                tv.setTvimage(resultSet.getBlob("IMAGE"));
-            }
-            return tv;
-        } catch (Throwable e) {
-            System.out.println("Exception occured while execute TVDAOIml.getById()");
-            e.printStackTrace();
-            throw  new DBException(e);
-        } finally {
-            if ( connection != null ) {
-                //closeConnection(connection);
-                try {
-                    connection.close();
-                }catch (SQLException ignore) {}
-            }
-        }
+/*
+    public Accessory getById(String id) throws DBException {
+        Accessory accessory;
+        Long accessoryId = Long.valueOf(id);
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Accessory.class);
+        criteria.add(Restrictions.eq("accessoryId", accessoryId));
+        return accessory = (Accessory) criteria.uniqueResult();
     }
+        public List<Accessory> getAll(String availableFor) throws DBException {
+        List<Accessory> accessories = new ArrayList<Accessory>();
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Accessory.class);
+        criteria.add(Restrictions.eq("availableFor", availableFor));
+        return accessories = (List<Accessory>) criteria.list();
+    }
+    */
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    public TV getById(String id) throws DBException {
+        TV tv;
+        Long  tvid=Long.valueOf(id);
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TV.class);
+        criteria.add(Restrictions.eq("tvid", tvid));
+        return tv = (TV) criteria.uniqueResult();
+    }
+
     public List<TV> getAll() throws DBException {
         List<TV> tv = new ArrayList<TV>();
         Connection connection = null;
@@ -96,16 +90,16 @@ public class TVDAOImpl extends DAOImplement {
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
                 TV tvs = new TV();
-              tvs.setTvid(resultSet.getLong("id"));
-              tvs.setTvtype(resultSet.getString("TV_TYPE"));
-              tvs.setTvscreensize(resultSet.getString("TV_SCREEN_SIZE"));
-              tvs.setTvebrand(resultSet.getString("BRAND"));
-              tvs.setTvprice(resultSet.getString("PRICE"));
-              tvs.setTvresolution(resultSet.getString("RESOLUTION"));
-              tvs.setTvdescription(resultSet.getString("DESCRIPTION"));
-              tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
-              tvs.setTvimage(resultSet.getBlob("IMAGE"));
-              tv.add(tvs);
+                tvs.setTvid(resultSet.getLong("id"));
+                tvs.setTvtype(resultSet.getString("TV_TYPE"));
+                tvs.setTvscreensize(resultSet.getString("TV_SCREEN_SIZE"));
+                tvs.setTvebrand(resultSet.getString("BRAND"));
+                tvs.setTvprice(resultSet.getString("PRICE"));
+                tvs.setTvresolution(resultSet.getString("RESOLUTION"));
+                tvs.setTvdescription(resultSet.getString("DESCRIPTION"));
+                tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
+                tvs.setTvimage(resultSet.getBlob("IMAGE"));
+                tv.add(tvs);
             }
 
         } catch (SQLException e) {
@@ -133,7 +127,7 @@ public class TVDAOImpl extends DAOImplement {
                 tvs.setTvresolution(resultSet.getString("RESOLUTION"));
                 tvs.setTvdescription(resultSet.getString("DESCRIPTION"));
                 tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
-               // tvs.setTvimage(resultSet.getBlob("IMAGE"));
+                // tvs.setTvimage(resultSet.getBlob("IMAGE"));
                 tv.add(tvs);
             }
         } catch (SQLException e) {
@@ -156,13 +150,13 @@ public class TVDAOImpl extends DAOImplement {
             TV tv = null;
             if (resultSet.next()) {
                 tv = new TV();
-               //tv.setTvid(resultSet.getLong("id"));
-              // tv.setTvtype(resultSet.getString("TV_TYPE"));
+                //tv.setTvid(resultSet.getLong("id"));
+                // tv.setTvtype(resultSet.getString("TV_TYPE"));
                 tv.setTvscreensize(resultSet.getString("TV_SCREEN_SIZE"));
-               //tv.setTvebrand(resultSet.getString("BRAND"));
-              // tv.setTvprice(resultSet.getString("PRICE"));
-               // tv.setTvresolution(resultSet.getString("RESOLUTION"));
-              //  tv.setTvdescription(resultSet.getString("DESCRIPTION"));
+                //tv.setTvebrand(resultSet.getString("BRAND"));
+                // tv.setTvprice(resultSet.getString("PRICE"));
+                // tv.setTvresolution(resultSet.getString("RESOLUTION"));
+                //  tv.setTvdescription(resultSet.getString("DESCRIPTION"));
             }
             return tv;
         } catch (Throwable e) {
@@ -180,35 +174,35 @@ public class TVDAOImpl extends DAOImplement {
     }
 
 
-        public byte[] getImage(int id ) throws DBException, SQLException {
-            Connection connection = null;
-            try {
-                connection = getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT IMAGE FROM tv_hometheater WHERE id = ?");
-                preparedStatement.setInt(1, id);
-                ResultSet resultSet = preparedStatement.executeQuery();
-                TV tv =null;
-                byte[] imgData = new byte[0];
-                if (resultSet.next()) {
-                    tv = new TV();
-                    Blob img;
-                    imgData = null;
-                    img = resultSet.getBlob(1);
-                    imgData = img.getBytes(1, (int) img.length());
-                }
-                return imgData;
-            } catch (SQLException e) {
-                System.out.println("Exception occured while execute TVDAOImpl.getImage()");
-                e.printStackTrace();
-                throw  new DBException(e);
-            }finally {
-                if ( connection != null ) {
-                    //closeConnection(connection);
-                    try {
-                        connection.close();
-                    }catch (SQLException ignore) {}
-                }
+    public byte[] getImage(int id ) throws DBException, SQLException {
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT IMAGE FROM tv_hometheater WHERE id = ?");
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            TV tv =null;
+            byte[] imgData = new byte[0];
+            if (resultSet.next()) {
+                tv = new TV();
+                Blob img;
+                imgData = null;
+                img = resultSet.getBlob(1);
+                imgData = img.getBytes(1, (int) img.length());
+            }
+            return imgData;
+        } catch (SQLException e) {
+            System.out.println("Exception occured while execute TVDAOImpl.getImage()");
+            e.printStackTrace();
+            throw  new DBException(e);
+        }finally {
+            if ( connection != null ) {
+                //closeConnection(connection);
+                try {
+                    connection.close();
+                }catch (SQLException ignore) {}
             }
         }
+    }
 
 }

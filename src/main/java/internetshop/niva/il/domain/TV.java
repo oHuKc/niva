@@ -1,20 +1,34 @@
 package internetshop.niva.il.domain;
 
+
+
+import javax.persistence.Entity;
+import javax.persistence.Transient;
 import java.sql.Blob;
 import java.util.List;
 
 /**
  * Created by ilugovecs on 2015.11.05..
  */
+@Entity
 public class TV {
+    @Transient
     private long tvid;
+    @Transient
     private String tvtype;
+    @Transient
     private String tvscreensize;
+    @Transient
     private String tvebrand;
+    @Transient
     private String tvprice;
+    @Transient
     private String tvresolution;
+    @Transient
     private String tvdescription;
+    @Transient
     private int tvscreentypeid;
+    @Transient
     private Blob tvimage;
 
     public long getTvid() {return tvid;}
