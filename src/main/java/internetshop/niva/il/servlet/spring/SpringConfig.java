@@ -27,7 +27,9 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class SpringConfig {
 
-    private static final String DATABASE_PROPERTIES_FILE = "nivaproductiondb.properties";
+    //private static final String DATABASE_PROPERTIES_FILE = "nivaproductiondb.properties";
+    private static final String DATABASE_PROPERTIES_FILE = "nivadatabase.properties";
+
     @Bean
     public static PropertySourcesPlaceholderConfigurer prodPropertiesPlaceholderConfigurer() {
         PropertySourcesPlaceholderConfigurer p = new PropertySourcesPlaceholderConfigurer();
@@ -72,8 +74,8 @@ public class SpringConfig {
 
     @Bean
     public SessionFactory sessionFactory(DataSource dataSource,
-                                         @Value("${hibernate.packagesToScan}") String packagesToScan,
-                                         @Qualifier("hibernateProperties") Properties properties) throws Exception {
+               @Value("${hibernate.packagesToScan}") String packagesToScan,
+                @Qualifier("hibernateProperties") Properties properties) throws Exception {
 
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);

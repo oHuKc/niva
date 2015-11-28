@@ -1,6 +1,7 @@
 package internetshop.niva.il.database.jdbc;
 
 import internetshop.niva.il.database.DBException;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * Created by ilugovecs on 2015.10.19..
  */
+@Component
 public class DbCleaner extends  DAOImplement{
 
     private List<String> getTableNames(){

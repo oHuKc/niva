@@ -16,6 +16,7 @@ C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internet
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\lv\javaguru\java2\servlet\SessionUsageServlet.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\ProductController.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\lv\javaguru\java2\servlet\RedirectToJSPServlet.java
+C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\hibernate\CustomerDAOImpl.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\domain\Goods.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\domain\GoodsType.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\HelloWorldController.java
@@ -31,12 +32,14 @@ C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\lv\javag
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\AdminDBAccess.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\SelectController.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\DBException.java
+C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\hibernate\TVDAOImpl.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\jdbc\CustomerDAOImpl.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\lv\javaguru\java2\servlet\HelloWorldServlet.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\CartDAO.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\jdbc\DAOImplement.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\lv\javaguru\java2\domain\User.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\AddToCartController.java
+C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\TVControllerImpl.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\domain\TV.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\CartController.java
 C:\Users\voyager\Desktop\JAVA_TRAINING_2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\ShoppingCartController.java

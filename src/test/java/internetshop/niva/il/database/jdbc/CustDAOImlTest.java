@@ -9,23 +9,20 @@ import org.junit.Test;
 import java.sql.SQLException;
 import java.util.List;
 
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by Igor on 2015.10.19..
  */
-public class CustDAOImlTest extends TestCase {
+public class CustDAOImlTest  {
 
     private DbCleaner databaseCleaner = new DbCleaner();
     private CustomerDAOImpl customerDAO = new CustomerDAOImpl();
 
     @Before
     public void init() throws DBException {
-        try {
-            databaseCleaner.cleanDatabase();
-        } catch (DBException e) {
-            e.printStackTrace();
-        }
+         databaseCleaner.cleanDatabase();
     }
 
     @Test
@@ -59,17 +56,12 @@ public class CustDAOImlTest extends TestCase {
         List<Customer> users = customerDAO.getAll();
         int rec = customerDAO.recordscount();
 
-        //assertEquals(2, users.size());
 
-        //for (int i = 1 ; i < 0;  i++ ) {
-        //    assertEquals(i, users.size());
-        //}
-
-        assertEquals(rec, users.size());
+        assertEquals( 5, users.size());
     }
 
     private  Customer createUser (String firstname, String lastname, String phonenr, String email) {
-       Customer user = new Customer();
+        Customer user = new Customer();
         user.setFirstName(firstname);
         user.setLastName(lastname);
         user.setPhoneNr(phonenr);

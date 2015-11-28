@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by ilugovecs on 2015.11.05..
  */
-@Entity
+
 public class TV {
     @Transient
     private long tvid;

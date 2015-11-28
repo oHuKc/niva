@@ -1,8 +1,10 @@
 package internetshop.niva.il.database.jdbc;
 
+import internetshop.niva.il.database.CustomerDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Customer;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,8 +16,9 @@ import java.util.List;
 /**
  * Created by Igor on 2015.10.19..
  */
-@Component
-public class CustomerDAOImpl extends DAOImplement {
+@Component("CustomerDAOImpl_JDBC")
+
+public class CustomerDAOImpl extends DAOImplement implements CustomerDAO {
 
     public void create(Customer user) throws DBException{
         if (user == null) {
@@ -35,7 +38,7 @@ public class CustomerDAOImpl extends DAOImplement {
             preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if (rs.next()){
-                user.setUserId(rs.getLong(1));
+                user.setUserId(rs.getInt(1));
             }
         } catch (Throwable e) {
             System.out.println("Exception while execute UserDAOImpl.create()");
@@ -60,7 +63,7 @@ public class CustomerDAOImpl extends DAOImplement {
             Customer user = null;
             if (resultSet.next()) {
                 user = new Customer();
-                user.setUserId(resultSet.getLong("CustomerID"));
+                user.setUserId(resultSet.getInt("CustomerID"));
                 user.setFirstName(resultSet.getString("FirstName"));
                 user.setLastName(resultSet.getString("LastName"));
                 user.setPhoneNr(resultSet.getString("PhoneNr"));
@@ -86,7 +89,7 @@ public class CustomerDAOImpl extends DAOImplement {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Customer user = new Customer();
-                user.setUserId(resultSet.getLong("CustomerID"));
+                user.setUserId((int) resultSet.getLong("CustomerID"));
                 user.setFirstName(resultSet.getString("FirstName"));
                 user.setLastName(resultSet.getString("LastName"));
                 user.setPhoneNr(resultSet.getString("PhoneNr"));
@@ -101,6 +104,10 @@ public class CustomerDAOImpl extends DAOImplement {
             closeConnection(connection);
         }
         return users;
+    }
+
+    public int recordscount() throws DBException {
+        return 0;
     }
 
     public void delete(Long id) throws DBException {
@@ -144,26 +151,4 @@ public class CustomerDAOImpl extends DAOImplement {
         }
     }
 
-    int recordscount() throws DBException, SQLException {
-        Connection connection = null;
-        try {
-            connection = getConnection();
-            PreparedStatement st = connection.prepareStatement("select count(1) from customers");
-            try {
-                ResultSet rs = st.executeQuery();
-                try {
-                    rs.next();
-                    return rs.getInt(1);
-                } finally {
-                    rs.close();
-                }
-            } finally {
-                st.close();
-            }
-        } catch (Throwable e) {
-            System.out.println("Exception occured while execute GoodsTypeDAOImple.recordscount()");
-            e.printStackTrace();
-            throw  new DBException(e);
-        }
-    }
 }

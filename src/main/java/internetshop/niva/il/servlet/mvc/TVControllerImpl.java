@@ -21,7 +21,7 @@ import java.sql.SQLException;
  * Created by ilugovecs on 2015.11.05..
  */
 @Component
-public class TVControllerImpl implements MVCController  {
+public class TVControllerImpl implements TVController  {
 
     @Autowired @Qualifier("TVDAOImpl_JDBC")
     private TVDAOImpl tv;

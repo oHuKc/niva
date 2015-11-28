@@ -12,7 +12,7 @@ import java.util.List;
  * Created by ilugovecs on 2015.11.05..
  */
 @Component("TVDAOImpl_JDBC")
-public class TVDAOImpl extends DAOImplement {
+public class TVDAOImpl extends DAOImplement  {
 
     public void create(TV tv) throws DBException, SQLException {
         if(tv == null ) {

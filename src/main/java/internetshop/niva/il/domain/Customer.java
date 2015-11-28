@@ -1,14 +1,30 @@
 package internetshop.niva.il.domain;
 
+import javax.annotation.Generated;
+import javax.persistence.*;
+
 /**
  * Created by Igor on 2015.10.19..
  */
+@Entity
+@Table(name="customers")
 public class Customer {
 
-    private long userId;
+    @Id
+    @Column(name="CustomerID", columnDefinition = "INT(10)")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int userId;
+
+    @Column(name = "FirstName", columnDefinition = "CHAR(40)")
     private String firstName;
+
+    @Column(name = "LastName", columnDefinition = "CHAR(40)")
     private String lastName;
+
+    @Column(name = "PhoneNr", columnDefinition = "CHAR(20)")
     private String phonenr;
+
+    @Column(name = "Email", columnDefinition = "CHAR(40)")
     private String email;
 
 
@@ -16,7 +32,7 @@ public class Customer {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
