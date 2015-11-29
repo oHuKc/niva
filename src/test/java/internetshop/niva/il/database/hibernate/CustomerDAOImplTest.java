@@ -1,14 +1,11 @@
 package internetshop.niva.il.database.hibernate;
 
+import internetshop.niva.il.database.CustomerDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.database.jdbc.DbCleaner;
-
-
 import internetshop.niva.il.domain.Customer;
 import internetshop.niva.il.servlet.spring.SpringConfig;
-
 import org.junit.Before;
-import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +13,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
 /**
  * Created by voyager on 2015.11.27..
  */
@@ -31,14 +30,35 @@ public class CustomerDAOImplTest  {
 
     @Autowired
     private DbCleaner dbCleaner ;
-    @Autowired
-    private CustomerDAOImpl customerDAO ;
+
+    @Autowired @Qualifier("CustomerDAOImpl_Hibernate")
+    CustomerDAO customerDAO;
 
     @Before
     public void init() throws DBException {
         dbCleaner.cleanDatabase();
     }
+
+
     @Test
+    @Transactional
+    public void oneRowInsert() throws DBException, SQLException{
+
+        Customer user = createUser("Hibernate 0001", "ORM 001", "+371000001", "orm@hibernate.orm");
+        customerDAO.create(user);
+
+        Customer userFromDB = customerDAO.getById(user.getUserId());
+
+        assertNotNull(userFromDB);
+        assertEquals(user.getUserId(), userFromDB.getUserId());
+        assertEquals(user.getFirstName(), userFromDB.getFirstName());
+        assertEquals(user.getLastName(), userFromDB.getLastName());
+        assertEquals(user.getPhoneNr(), userFromDB.getPhoneNr());
+        assertEquals(user.getEmail(), userFromDB.getEmail());
+    }
+
+    @Test
+    @Transactional
     public void testMultipleUserCreation() throws DBException, SQLException {
         Customer user1 = createUser("Hibernate1", "ORM1", "+37101234567", "email@mail.mail");
         Customer user2 = createUser("Hibernate2", "ORM2", "+37176543210", "e@mail.email");
@@ -56,6 +76,8 @@ public class CustomerDAOImplTest  {
 
         assertEquals(5, users.size());
     }
+
+
     private  Customer createUser (String firstname, String lastname, String phonenr, String email) {
         Customer user = new Customer();
         user.setFirstName(firstname);

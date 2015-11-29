@@ -4,12 +4,10 @@ import internetshop.niva.il.database.CustomerDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Customer;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +15,6 @@ import java.util.List;
  * Created by Igor on 2015.10.19..
  */
 @Component("CustomerDAOImpl_JDBC")
-
 public class CustomerDAOImpl extends DAOImplement implements CustomerDAO {
 
     public void create(Customer user) throws DBException{
@@ -51,7 +48,7 @@ public class CustomerDAOImpl extends DAOImplement implements CustomerDAO {
     }
 
 
-    public Customer getById(Long id) throws DBException {
+    public Customer getById(long id) throws DBException {
         Connection connection = null;
 
         try {
@@ -106,9 +103,7 @@ public class CustomerDAOImpl extends DAOImplement implements CustomerDAO {
         return users;
     }
 
-    public int recordscount() throws DBException {
-        return 0;
-    }
+
 
     public void delete(Long id) throws DBException {
         Connection connection = null;

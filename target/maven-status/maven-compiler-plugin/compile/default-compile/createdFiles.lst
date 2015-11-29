@@ -1,1 +1,6 @@
+internetshop\niva\il\servlet\mvc\ImageShowController.class
+internetshop\niva\il\database\hibernate\TVDAOImpl.class
+internetshop\niva\il\servlet\mvc\TVControllerImpl.class
+internetshop\niva\il\servlet\spring\SpringConfig.class
 internetshop\niva\il\database\hibernate\CustomerDAOImpl.class
+internetshop\niva\il\servlet\mvc\AddToCartController.class

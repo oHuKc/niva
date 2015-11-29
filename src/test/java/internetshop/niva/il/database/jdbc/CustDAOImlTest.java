@@ -2,7 +2,6 @@ package internetshop.niva.il.database.jdbc;
 
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Customer;
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -54,7 +53,7 @@ public class CustDAOImlTest  {
         customerDAO.create(user4);
         customerDAO.create(user5);
         List<Customer> users = customerDAO.getAll();
-        int rec = customerDAO.recordscount();
+        //int rec = customerDAO.recordscount();
 
 
         assertEquals( 5, users.size());

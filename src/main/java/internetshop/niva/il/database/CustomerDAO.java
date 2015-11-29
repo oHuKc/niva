@@ -10,14 +10,12 @@ import java.util.List;
 public interface CustomerDAO {
     void create(Customer user) throws DBException;
 
-    Customer getById(Long id) throws DBException;
+    Customer getById(long id) throws DBException;
 
     void delete(Long id) throws DBException;
 
     void update(Customer user) throws DBException;
 
     List<Customer> getAll() throws DBException;
-
-    int recordscount() throws DBException;
 
 }

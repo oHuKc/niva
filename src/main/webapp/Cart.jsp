@@ -122,5 +122,6 @@
     </div>
   </div>
 </div>
+<%=session.getAttribute("productId")%>
 </body>
 </html>
