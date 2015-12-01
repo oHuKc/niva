@@ -1,5 +1,4 @@
 package internetshop.niva.il.database;
-
 import internetshop.niva.il.domain.Customer;
 
 import java.util.List;

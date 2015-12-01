@@ -1,5 +1,4 @@
 package internetshop.niva.il.database.jdbc;
-
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Customer;
 import org.junit.Before;

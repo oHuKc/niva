@@ -1,5 +1,4 @@
 package internetshop.niva.il.database.hibernate;
-
 import internetshop.niva.il.database.CustomerDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.database.jdbc.DAOImplement;

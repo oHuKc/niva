@@ -1,5 +1,4 @@
 package internetshop.niva.il.domain;
-
 import javax.persistence.*;
 
 /**
