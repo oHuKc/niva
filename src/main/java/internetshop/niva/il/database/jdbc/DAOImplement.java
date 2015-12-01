@@ -15,8 +15,8 @@ import java.util.Properties;
 @Component
 public class DAOImplement {
 
-   private static final String DB_CONFIG_FILE = "nivadatabase.properties"; //TEST DB
-  // private static final String DB_CONFIG_FILE = "nivaproductiondb.properties"; //PRODUCTION DB
+   //private static final String DB_CONFIG_FILE = "nivadatabase.properties"; //TEST DB
+  private static final String DB_CONFIG_FILE = "nivaproductiondb.properties"; //PRODUCTION DB
 
     private String dbUrl = null;
     private String userName = null;

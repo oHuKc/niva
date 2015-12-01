@@ -16,7 +16,8 @@ public class DbCleaner extends  DAOImplement{
 
     private List<String> getTableNames(){
         List<String> tableNames = new ArrayList<String>();
-        tableNames.add("customers");
+       // tableNames.add("customers");
+        tableNames.add("cart");
         return tableNames;
     }
 

@@ -23,8 +23,9 @@ import java.sql.SQLException;
 @Component
 public class TVController implements MVCController  {
 
-    @Autowired @Qualifier("TVDAOImpl_JDBC")
+    @Autowired
     private TVDAOImpl tv;
+
     private Integer ImageID = 0;
 
     private Integer getImage(HttpServletRequest req,

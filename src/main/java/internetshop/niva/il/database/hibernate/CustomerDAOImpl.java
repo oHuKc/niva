@@ -18,7 +18,6 @@ import java.util.List;
  * Created by voyager on 2015.11.27..
  */
 @Component("CustomerDAOImpl_Hibernate")
-@Transactional
 public class CustomerDAOImpl extends DAOImplement implements CustomerDAO {
 
 
@@ -33,9 +32,9 @@ public class CustomerDAOImpl extends DAOImplement implements CustomerDAO {
 
     public Customer getById(long id) throws DBException {
         Customer user;
-        long userid = id;
+       // long userid = id;
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
-        criteria.add(Restrictions.eq("userId", userid));
+        criteria.add(Restrictions.eq("userId", id));
         return user = (Customer) criteria.uniqueResult();
     }
 
@@ -60,7 +59,7 @@ public class CustomerDAOImpl extends DAOImplement implements CustomerDAO {
     public List<Customer> getAll() throws DBException {
     List<Customer> user = new ArrayList<Customer>();
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
-        criteria.add(Restrictions.eq("userId", 1L));
+        criteria.add(Restrictions.eq("userId", ""));
         return  user = (List<Customer>) criteria.list();
     }
 
