@@ -14,7 +14,7 @@ import java.sql.SQLException;
 /**
  * Created by ilugovecs on 2015.11.17..
  */
-@Component
+@Component("CartDAOImpl_JDBC")
 @Transactional
 public class CartDAOImpl  extends DAOImplement {
 

@@ -4,6 +4,11 @@ import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Customer;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -14,10 +19,11 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by Igor on 2015.10.19..
  */
+@Component
 public class CustDAOImlTest  {
 
     private DbCleaner databaseCleaner = new DbCleaner();
-    private CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+    private CustomerDAOImpl customerDAO= new CustomerDAOImpl() ;
 
     @Before
     public void init() throws DBException {
@@ -40,6 +46,7 @@ public class CustDAOImlTest  {
     }
 
     @Test
+    @Transactional
     public void testMultipleUserCreation() throws DBException, SQLException {
 
         Customer user1 = createUser("TestFirstName1", "TestLastName1", "+37101234567", "email@mail.mail");

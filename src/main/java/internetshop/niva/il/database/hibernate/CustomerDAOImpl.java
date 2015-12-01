@@ -4,12 +4,15 @@ import internetshop.niva.il.database.CustomerDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.database.jdbc.DAOImplement;
 import internetshop.niva.il.domain.Customer;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,31 +29,40 @@ public class CustomerDAOImpl extends DAOImplement implements CustomerDAO {
 
 
     public void create(Customer user) throws DBException {
-        Session session = sessionFactory.getCurrentSession();
-        session.persist(user);
+        sessionFactory.getCurrentSession().save(user);
     }
 
     public Customer getById(long id) throws DBException {
-        Session session = sessionFactory.getCurrentSession();
-        return (Customer) session.get(Customer.class, id);
+        Customer user;
+        long userid = id;
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
+        criteria.add(Restrictions.eq("userId", userid));
+        return user = (Customer) criteria.uniqueResult();
     }
 
     public void delete(Long id) throws DBException {
-        Session session = sessionFactory.getCurrentSession();
-        Customer user = (Customer) session.get(Customer.class, id);
-        session.delete(user);
+        Customer user;
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
+        criteria.add(Restrictions.eq("userId", id));
+        user = (Customer) criteria.uniqueResult();
+        sessionFactory.getCurrentSession().delete(user);
     }
 
 
     public void update(Customer user) throws DBException {
-        Session session = sessionFactory.getCurrentSession();
-        session.update(user);
+        //Customer user;
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
+        criteria.add(Restrictions.eq("userId", user));
+        user = (Customer) criteria.uniqueResult();
+        sessionFactory.getCurrentSession().update(user);
     }
 
 
     public List<Customer> getAll() throws DBException {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createCriteria(Customer.class).list();
+    List<Customer> user = new ArrayList<Customer>();
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
+        criteria.add(Restrictions.eq("userId", 1L));
+        return  user = (List<Customer>) criteria.list();
     }
 
 

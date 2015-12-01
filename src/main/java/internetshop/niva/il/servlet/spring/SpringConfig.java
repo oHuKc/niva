@@ -27,8 +27,8 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class SpringConfig {
 
-    private static final String DATABASE_PROPERTIES_FILE = "nivaproductiondb.properties";
-    //private static final String DATABASE_PROPERTIES_FILE = "nivadatabase.properties";
+    //private static final String DATABASE_PROPERTIES_FILE = "nivaproductiondb.properties";
+    private static final String DATABASE_PROPERTIES_FILE = "nivadatabase.properties";
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer prodPropertiesPlaceholderConfigurer() {

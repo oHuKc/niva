@@ -6,7 +6,17 @@
 </head>
 <body>
 
-    <h1><%=request.getAttribute("model")%></h1>
+<!--Image -->
+<%request.setAttribute("model",1);%>
+<h1>TV Image ID :<%=request.getAttribute("model")%> </h1>
+<img src ="image?imgID=<%=request.getAttribute("model")%>" width="115" border="0">
 
+<!--Cart-->
+<h1>Product ID:<%=request.getAttribute("prodID")%></h1>
+<h1>Product Name:<%=request.getAttribute("prodName")%></h1>
+<h1>Product Brand:<%=request.getAttribute("prodBrand")%></h1>
+<h1>Product Description:<%=request.getAttribute("prodDescripton")%></h1>
+<h1>Product Status:<%=request.getAttribute("status")%></h1>
+<h1>Product Price:<%=request.getAttribute("prodPrice")%></h1>
 </body>
 </html>
