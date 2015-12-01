@@ -5,7 +5,7 @@ import javax.persistence.*;
 /**
  * Created by Igor on 2015.10.19..
  */
-@Entity
+/*@Entity*/
 @Table(name = "customers")
 public class Customer {
 

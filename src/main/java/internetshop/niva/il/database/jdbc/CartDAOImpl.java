@@ -4,6 +4,7 @@ import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Cart;
 import internetshop.niva.il.database.jdbc.DAOImplement;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
  * Created by ilugovecs on 2015.11.17..
  */
 @Component
+@Transactional
 public class CartDAOImpl  extends DAOImplement {
 
     public void create(Cart cart) throws DBException, SQLException {

@@ -26,7 +26,7 @@
   ResultSet rs = null;
   Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-  connection = DriverManager.getConnection(connectionURL, "root", "root789");
+  connection = DriverManager.getConnection(connectionURL, "root", "root");
   statement = connection.createStatement();
   String  querystring = "select * from goods";
   rs = statement.executeQuery(querystring);
