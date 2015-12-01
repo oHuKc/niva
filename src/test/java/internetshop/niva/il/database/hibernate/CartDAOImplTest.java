@@ -1,10 +1,9 @@
 package internetshop.niva.il.database.hibernate;
 
 import internetshop.niva.il.database.CartDAO;
-import internetshop.niva.il.database.jdbc.*;
+import internetshop.niva.il.database.jdbc.DbCleaner;
 import internetshop.niva.il.domain.Cart;
 import internetshop.niva.il.servlet.spring.SpringConfig;
-import org.hibernate.annotations.NaturalId;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,24 +12,27 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by ilugovecs on 2015.12.01..
  */
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = SpringConfig.class)
 public class CartDAOImplTest {
 
-   /* @Autowired
+    @Autowired
     private DbCleaner databaseCleaner;
 
-    @Autowired @Qualifier("CartDAOImpl_Hibernate")
-    private CartDAOImpl cartDAOImpl;
-    */
-    private DbCleaner databaseCleaner = new DbCleaner();
-    private CartDAOImpl cartDAOImpl = new CartDAOImpl();
+    @Autowired
+    @Qualifier("CartDAOImpl_Hibernate")
+    private CartDAO cartDAOImpl;
+
+
 
     @Before
     public void setUp() throws Exception {
@@ -38,9 +40,10 @@ public class CartDAOImplTest {
     }
 
     @Test
+    @Transactional
     public void testCreate() throws Exception {
         Cart cart1 = createCart(1L, "Cart test 1", "Test Hibernate", "TEST Nr1", "AVAILABLE TEST", "$1000.01");
-        Cart cart2 = createCart(2L, "Cart test 2", "Test Hibernate ORM", "TEST Nr2", "AVAILABLE TEST", "$2000.01");
+        Cart cart2 = createCart(2L, "Cart test 2", "Test Hibernate", "TEST Nr2", "AVAILABLE TEST", "$2000.01");
 
         cartDAOImpl.create(cart1);
         cartDAOImpl.create(cart2);

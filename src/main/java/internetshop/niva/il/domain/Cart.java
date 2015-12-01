@@ -1,7 +1,5 @@
 package internetshop.niva.il.domain;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,22 +13,22 @@ import javax.persistence.Table;
 public class Cart {
 
     @Id
-    @Column( name = "PRODUCT_ID")
+    @Column( name = "PRODUCT_ID", columnDefinition = "INT(10)")
     private long productid;
 
-    @Column( name = "PRODUCT_NAME" )
+    @Column( name = "PRODUCT_NAME", columnDefinition = "CHAR(40)")
     private String productname;
 
-    @Column( name = "PRODUCT_BRAND" )
+    @Column( name = "PRODUCT_BRAND", columnDefinition = "CHAR(40)")
     private String productbrand;
 
-    @Column( name = "PRODUCT_DESCRIPTON" )
+    @Column( name = "PRODUCT_DESCRIPTION", columnDefinition = "CHAR(100)")
     private String productdescription;
 
-    @Column( name = "STATUS" )
+    @Column( name = "STATUS", columnDefinition = "CHAR(40)")
     private String productstatus;
 
-    @Column( name = "STTUS" )
+    @Column( name = "PRICE", columnDefinition = "CHAR(40)")
     private String productprice;
 
     public long getProductid() {return productid;}

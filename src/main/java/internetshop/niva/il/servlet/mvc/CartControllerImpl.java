@@ -1,27 +1,28 @@
 package internetshop.niva.il.servlet.mvc;
 
+import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
-import internetshop.niva.il.database.jdbc.CartDAOImpl;
-import internetshop.niva.il.domain.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import java.sql.SQLException;
 
 /**
  * Created by ilugovecs on 2015.11.17..
  */
+
 @Component
 public class CartControllerImpl implements CartController {
 
     @Autowired
-    CartDAOImpl cartdaoimpl;
+    @Qualifier(value = "CartDAOImpl_Hibernate")
+    private CartDAO cartdaoimpl;
 
-    @Autowired
-    Cart cart;
 
     private Long productid;
     private String productname;
@@ -48,7 +49,7 @@ public class CartControllerImpl implements CartController {
 
         return  null;
     }
-
+    @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, ServletException, Exception
     {return  new MVCModel(getcart(request, response), "/helloWorld.jsp");}

@@ -17,15 +17,15 @@ import java.util.List;
 /**
  * Created by ilugovecs on 2015.12.01..
  */
-@Component("CartDAOImpl_Hibernate")
+@Component(value="CartDAOImpl_Hibernate")
 @Transactional
 public class CartDAOImpl extends DAOImplement implements CartDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
-
+    @Transactional
     public void create(Cart cart) throws DBException {
-        sessionFactory.getCurrentSession().save(cart);
+        sessionFactory.getCurrentSession().persist(cart);
     }
 
     public Cart getById(Long id) throws DBException {

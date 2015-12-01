@@ -5,7 +5,6 @@ package internetshop.niva.il.servlet.mvc;
  */
 
 import internetshop.niva.il.database.DBException;
-import internetshop.niva.il.servlet.mvc.*;
 import internetshop.niva.il.servlet.spring.SpringConfig;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -91,7 +90,7 @@ public class MVCFilter implements Filter {
 
             ServletContext servletContext = req.getServletContext();
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(model.getViewName());
-            if (!resp.isCommitted()) { //To remove SEVERE: Servlet.service() for servlet [default] Exception
+           if (!resp.isCommitted()) { //To remove SEVERE: Servlet.service() for servlet [default] Exception
 
                 requestDispatcher.forward(req, resp);
             }

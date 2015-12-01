@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -41,7 +40,6 @@ public class CustomerDAOImplTest  {
 
 
     @Test
-    @Transactional
     public void testCreate() throws DBException, SQLException{
 
         Customer user = createUser("Hibernate 0001", "ORM 001", "+371000001", "orm@hibernate.orm");
@@ -58,7 +56,6 @@ public class CustomerDAOImplTest  {
     }
 
     @Test
-    @Transactional
     public void testMultipleUserCreation() throws DBException, SQLException {
         Customer user1 = createUser("Hibernate1", "ORM1", "+37101234567", "email@mail.mail");
         Customer user2 = createUser("Hibernate2", "ORM2", "+37176543210", "e@mail.email");

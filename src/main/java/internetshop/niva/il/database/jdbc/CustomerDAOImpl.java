@@ -37,7 +37,7 @@ public class CustomerDAOImpl extends DAOImplement implements CustomerDAO {
                 user.setUserId(rs.getInt(1));
             }
         } catch (Throwable e) {
-            System.out.println("Exception while execute UserDAOImpl.create()");
+            System.out.println("Exception while execute CustomerDAOImpl.create()");
             e.printStackTrace();
             throw new DBException(e);
         } finally {
