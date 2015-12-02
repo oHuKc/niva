@@ -2,33 +2,45 @@ package internetshop.niva.il.domain;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+
+import javax.persistence.*;
 import java.sql.Blob;
 import java.util.List;
 
 /**
  * Created by ilugovecs on 2015.11.05..
  */
-
+@Entity
+@Table( name = "tv_hometheater")
 public class TV {
-    @Transient
+    @Id
+    @Column( name = "id", columnDefinition = "INT(11)")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long tvid;
-    @Transient
+
+    @Column( name = "TV_TYPE", columnDefinition = "CHAR(40)")
     private String tvtype;
-    @Transient
+
+    @Column( name = "TV_SCREEN_SIZE", columnDefinition = "CHAR(40)")
     private String tvscreensize;
-    @Transient
+
+    @Column( name = "BRAND", columnDefinition = "CHAR(40)")
     private String tvebrand;
-    @Transient
+
+    @Column( name = "PRICE", columnDefinition = "CHAR(40)")
     private String tvprice;
-    @Transient
+
+    @Column( name = "RESOLUTION", columnDefinition = "CHAR(40)")
     private String tvresolution;
-    @Transient
+
+    @Column( name = "DESCRIPTION", columnDefinition = "CHAR(100)")
     private String tvdescription;
-    @Transient
+
+    @Column( name = "SCREEN_TYPE_ID", columnDefinition = "INT(10)")
     private int tvscreentypeid;
-    @Transient
+
+    @Column( name = "IMAGE", columnDefinition = "longblob")
+    @Lob
     private Blob tvimage;
 
     public long getTvid() {return tvid;}

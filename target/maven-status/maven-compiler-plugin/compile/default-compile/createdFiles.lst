@@ -22,6 +22,7 @@ internetshop\niva\il\servlet\SelectServlet.class
 internetshop\niva\il\domain\GoodsType.class
 lv\javaguru\java2\database\jdbc\UserDAOImpl.class
 internetshop\niva\il\database\GoodsTypeDAO.class
+internetshop\niva\il\servlet\mvc\TVControllerImpl.class
 internetshop\niva\il\servlet\spring\SpringConfig.class
 internetshop\niva\il\servlet\mvc\CartController.class
 internetshop\niva\il\database\CustomerDAO.class

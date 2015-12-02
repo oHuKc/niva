@@ -1,9 +1,6 @@
 package internetshop.niva.il.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by ilugovecs on 2015.11.17..
@@ -14,6 +11,7 @@ public class Cart {
 
     @Id
     @Column( name = "PRODUCT_ID", columnDefinition = "INT(10)")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long productid;
 
     @Column( name = "PRODUCT_NAME", columnDefinition = "CHAR(40)")
