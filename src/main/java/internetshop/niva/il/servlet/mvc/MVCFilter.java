@@ -85,9 +85,7 @@ public class MVCFilter implements Filter {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             req.setAttribute("model", model.getData());
-
             ServletContext servletContext = req.getServletContext();
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(model.getViewName());
            if (!resp.isCommitted()) { //To remove SEVERE: Servlet.service() for servlet [default] Exception

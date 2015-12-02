@@ -112,6 +112,48 @@ public class CartDAOImpl  extends DAOImplement {
         }
     }
 
+    public void delete(long id) throws DBException {
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("delete from cart where id = ?");
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (Throwable e) {
+            System.out.println("Exception");
+            e.printStackTrace();
+            throw new DBException(e);
+        } finally {
+            closeConnection(connection);
+        }
+    }
 
+
+
+    public void update(Cart cart) throws DBException {
+        if (cart == null) {
+            return;
+        }
+
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("update customers set PRODDUCT_ID = ?, PRODUCT_NAME = ? , PRODUCT_BRAND = ?, PRODUCT_DESCRIPTION = ? , STATUS = ?, PRICE = ?" + "where CustomerID = ?");
+            preparedStatement.setLong(1, cart.getProductid());
+            preparedStatement.setString(2, cart.getProductname());
+            preparedStatement.setString(3, cart.getProductbrand());
+            preparedStatement.setString(4, cart.getProductdescription());
+            preparedStatement.setString(5, cart.getProductstatus());
+            preparedStatement.setString(6, cart.getProductstatus());
+            preparedStatement.executeUpdate();
+        } catch (Throwable e) {
+            System.out.println("Exception while execute CartDAOImpl.update()");
+            e.printStackTrace();
+            throw new DBException(e);
+        } finally {
+            closeConnection(connection);
+        }
+    }
 
 }

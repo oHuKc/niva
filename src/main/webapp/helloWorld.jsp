@@ -7,7 +7,7 @@
 <body>
 
 <!--Image -->
-<%request.setAttribute("model",1);%>
+<%request.setAttribute("model",7);%>
 <h1>TV Image ID :<%=request.getAttribute("model")%> </h1>
 <img src ="image?imgID=<%=request.getAttribute("model")%>" width="115" border="0">
 

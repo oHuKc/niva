@@ -33,12 +33,12 @@ public class CartControllerImpl implements CartController {
 
     public String getcart(HttpServletRequest req, HttpServletResponse resp) throws DBException, SQLException {
 
-        Long getproductid = cartdaoimpl.getById(1L).getProductid();
-        String getproductname = cartdaoimpl.getById(1L).getProductname();
-        String getproductbrand = cartdaoimpl.getById(1L).getProductbrand();
-        String getproductdescription = cartdaoimpl.getById(1L).getProductdescription();
-        String getproductstatus = cartdaoimpl.getById(1L).getProductstatus();
-        String getproductprice = cartdaoimpl.getById(1L).getProductprice();
+        Long getproductid = cartdaoimpl.getById(7L).getProductid();
+        String getproductname = cartdaoimpl.getById(7L).getProductname();
+        String getproductbrand = cartdaoimpl.getById(7L).getProductbrand();
+        String getproductdescription = cartdaoimpl.getById(7L).getProductdescription();
+        String getproductstatus = cartdaoimpl.getById(7L).getProductstatus();
+        String getproductprice = cartdaoimpl.getById(7L).getProductprice();
 
         req.setAttribute("prodID", getproductid);
         req.setAttribute("prodName", getproductname);
