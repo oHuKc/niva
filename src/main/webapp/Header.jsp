@@ -36,6 +36,7 @@
   <li><a href="#">Gift ideas</a></li>
   <li><a href="#">Registry</a></li>
   <li><a href="#">Order Status</a></li>
+  <li><a href="login">Log in</a></li>
 </ul>
 <nav class="navbar navbar-default">
 <div class="container-fluid">

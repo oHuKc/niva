@@ -1,0 +1,9 @@
+.modal-body-my {
+    position: relative;
+    top: 150px;
+}
+
+
+body {
+    background: url('../images/sea-7.jpg') no-repeat center center fixed;
+}

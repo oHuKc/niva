@@ -1,0 +1,16 @@
+.textArea {
+    width: 400px;
+    height: 500px;
+}
+
+body {
+    margin-left: 20px;
+}
+
+.addButton {
+    margin-top: 2px;
+}
+
+.resetButton {
+    margin-left: 185px;
+}

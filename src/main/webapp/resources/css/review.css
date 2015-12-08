@@ -1,0 +1,14 @@
+body {
+    padding: 0px;
+    margin-top: 60px;
+    margin-left: 10px;
+    margin-right: 50%;
+}
+
+
+.review-main {
+    margin-top: 10px;
+    padding: 20px;
+    border: 2px #080808;
+    border-style: solid;
+}
