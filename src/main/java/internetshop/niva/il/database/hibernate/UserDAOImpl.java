@@ -25,7 +25,7 @@ public class UserDAOImpl extends DAOImplement implements UserDAO {
 
 
     public void create(User user) throws DBException {
-        sessionFactory.getCurrentSession().save(user);
+        sessionFactory.getCurrentSession().persist(user);
     }
 
 

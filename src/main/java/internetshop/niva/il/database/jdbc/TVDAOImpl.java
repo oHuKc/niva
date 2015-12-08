@@ -187,7 +187,7 @@ public class TVDAOImpl extends DAOImplement  {
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT IMAGE FROM tv_hometheater WHERE id = ?");
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                TV tv =null;
+                TV tv = null;
                 byte[] imgData = new byte[0];
                 if (resultSet.next()) {
                     tv = new TV();

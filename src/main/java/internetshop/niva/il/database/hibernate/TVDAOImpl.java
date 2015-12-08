@@ -12,6 +12,9 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,11 +79,69 @@ public class TVDAOImpl extends DAOImplement implements TVDAO {
     }
 
     public byte[] getImage(int id) throws DBException {
-        TV tv;
-        byte[] imgData = new byte[0];
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TV.class);
-        criteria.add(Restrictions.eq("IMAGE", id));
-        return imgData;
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT IMAGE FROM tv_hometheater WHERE id = ?");
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            TV tv = null;
+            byte[] imgData = new byte[0];
+            if (resultSet.next()) {
+                tv = new TV();
+                Blob img;
+                imgData = null;
+                img = resultSet.getBlob(1);
+                imgData = img.getBytes(1, (int) img.length());
+            }
+            return imgData;
+        } catch (SQLException e) {
+            System.out.println("Exception occured while execute TVDAOImpl.getImage()");
+            e.printStackTrace();
+            throw  new DBException(e);
+        }finally {
+            if ( connection != null ) {
+                //closeConnection(connection);
+                try {
+                    connection.close();
+                }catch (SQLException ignore) {}
+            }
+        }
+    }
+
+
+    public byte[] toByteArray(Blob fromImageBlob) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            return toByteArrayImpl(fromImageBlob, baos);
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public byte[] toByteArrayImpl(Blob fromImageBlob,
+                                  ByteArrayOutputStream baos) throws SQLException, IOException {
+        byte buf[] = new byte[4000];
+        int dataSize;
+        InputStream is = fromImageBlob.getBinaryStream();
+
+        try {
+            while((dataSize = is.read(buf)) != -1) {
+                baos.write(buf, 0, dataSize);
+            }
+        } finally {
+            if(is != null) {
+                is.close();
+            }
+        }
+        return baos.toByteArray();
+    }
+
+    private byte[] imageBytes;
+
+    public BufferedImage getImage() throws IOException {
+        InputStream in = new ByteArrayInputStream(imageBytes);
+        return ImageIO.read(in);
     }
 
 }

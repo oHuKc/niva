@@ -2,6 +2,7 @@ package internetshop.niva.il.servlet.mvc;
 
 import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
+import internetshop.niva.il.database.TVDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
+import java.sql.Blob;
 import java.sql.SQLException;
 
 /**
@@ -24,14 +26,12 @@ public class CartControllerImpl implements CartController {
     private CartDAO cartdaoimpl;
 
 
-    private Long productid;
-    private String productname;
-    private String productbrand;
-    private String productdescription;
-    private String productstatus;
-    private String productprice;
+    @Autowired
+    @Qualifier(value = "TVDAOImpl_Hibernate")
+    private TVDAO tvdaoimpl;
 
-    public String getcart(HttpServletRequest req, HttpServletResponse resp) throws DBException, SQLException {
+    public String getcart(HttpServletRequest req, HttpServletResponse resp)
+            throws DBException, SQLException {
 
         Long getproductid = cartdaoimpl.getById(7L).getProductid();
         String getproductname = cartdaoimpl.getById(7L).getProductname();
@@ -49,8 +49,20 @@ public class CartControllerImpl implements CartController {
 
         return  null;
     }
+
+    private Blob tvimage;
+
+    public String getTVimage(HttpServletRequest req, HttpServletResponse resp) throws DBException {
+
+        Blob tvimg = tvdaoimpl.getById(1L).getTvimage();
+        req.setAttribute("TVimg", tvimage);
+        return null;
+    }
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, ServletException, Exception
-    {return  new MVCModel(getcart(request, response), "/helloWorld.jsp");}
+    {
+        return  new MVCModel(getcart(request, response), "/helloWorld.jsp");
+        //return  new MVCModel(getTVimage(request, response), "/helloWorld.jsp");
+    }
 }

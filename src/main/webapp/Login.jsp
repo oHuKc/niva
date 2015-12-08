@@ -1,22 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ilugovecs
-  Date: 2015.11.10.
-  Time: 15:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!-- Latest compiled and minified CSS-->
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/shop-item.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/search.css" rel="stylesheet">
-
-
 <html lang="en">
 
 <head>
+    <title>Registration Page</title>
     <jsp:include page="Header.jsp"></jsp:include>
 </head>
 
@@ -36,16 +22,17 @@
             <div class="form-group">
                 <label for="InputEmail1">Email address</label>
                 <input type="email" class="form-control" id="InputEmail1" placeholder="Enter email" name="InputEmail1">
+                <%session.setAttribute("InputEmail1", "test@gmail.com");%>
             </div>
 
             <div class="form-group">
                 <label for="inputName">Name</label>
                 <input type="name" class="form-control" id="inputName" placeholder="Enter name" name="inputName">
             </div>
-
             <div class="form-group">
                 <label for="inputSurname">Surname</label>
                 <input type="surname" class="form-control" id="inputSurname" placeholder="Enter surname" name="inputSurname">
+
             </div>
 
             <div class="form-group">

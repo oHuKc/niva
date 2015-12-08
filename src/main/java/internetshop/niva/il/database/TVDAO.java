@@ -2,6 +2,10 @@ package internetshop.niva.il.database;
 
 import internetshop.niva.il.domain.TV;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -24,4 +28,8 @@ public interface TVDAO {
     TV getByScreenSize(String id) throws DBException;
 
     byte[] getImage(int id) throws  DBException;
+
+    byte[] toByteArrayImpl(Blob fromImageBlob, ByteArrayOutputStream baos) throws  DBException, SQLException, IOException;
+
+    byte[] toByteArray(Blob fromImageBlob);
 }

@@ -1,18 +1,13 @@
 <%@ page import="java.util.HashMap" %>
-<%@ page import="java.io.OutputStream" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="internetshop.niva.il.database.DBException" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="internetshop.niva.il.database.jdbc.CartDAOImpl" %>
-<%@ page import="internetshop.niva.il.domain.Cart" %>
-<%@ page import="internetshop.niva.il.domain.TV" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <jsp:useBean id="tv" scope="session" class="internetshop.niva.il.database.jdbc.TVDAOImpl"/>
-<jsp:include page="Header.jsp"></jsp:include>
-<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css"/>
-<link rel="stylesheet" href="styles/styles.css" type="text/css"/>
+
+
+
+
+
 <%--
   Created by IntelliJ IDEA.
   User: ilugovecs
@@ -24,6 +19,7 @@
 <html lang="en" content="image/jpeg">
 <head>
   <title>TV & Home Theater</title>
+  <jsp:include page="Header.jsp"></jsp:include>
 </head>
 <body>
 
