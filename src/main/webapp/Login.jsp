@@ -13,7 +13,7 @@
 
     <div id="content_div" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
-        <form action="login" method="post" enctype="multipart/form-data">
+        <form action="login" method="post">
 
             <div class="form-group">
                 <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
@@ -22,7 +22,6 @@
             <div class="form-group">
                 <label for="InputEmail1">Email address</label>
                 <input type="email" class="form-control" id="InputEmail1" placeholder="Enter email" name="InputEmail1">
-                <%session.setAttribute("InputEmail1", "test@gmail.com");%>
             </div>
 
             <div class="form-group">

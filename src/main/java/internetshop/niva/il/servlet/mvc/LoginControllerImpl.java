@@ -67,11 +67,11 @@ public class LoginControllerImpl implements LoginController {
     public String dogetUser(HttpServletRequest request, HttpServletResponse response)
             throws DBException {
 
-            String login = (String) request.getAttribute("login");
-            String email = (String) request.getAttribute("email");
-            String firstName = (String) request.getAttribute("inputName");
-            String lastName = (String) request.getAttribute("inputSurname");
-            String pass = (String) request.getAttribute("InputPassword1");
+            String login = (String) request.getParameter("login");
+            String email = (String) request.getParameter("InputEmail1");
+            String firstName = (String) request.getParameter("inputName");
+            String lastName = (String) request.getParameter("inputSurname");
+            String pass = (String) request.getParameter("InputPassword1");
 
             System.out.println("My login is "+login);
             System.out.println("My email is "+email);

@@ -27,9 +27,6 @@ public interface TVDAO {
 
     TV getByScreenSize(String id) throws DBException;
 
-    byte[] getImage(int id) throws  DBException;
+    byte[] getImage(int id) throws DBException, SQLException, IOException;
 
-    byte[] toByteArrayImpl(Blob fromImageBlob, ByteArrayOutputStream baos) throws  DBException, SQLException, IOException;
-
-    byte[] toByteArray(Blob fromImageBlob);
 }

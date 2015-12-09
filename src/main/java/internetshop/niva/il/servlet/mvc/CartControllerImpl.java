@@ -29,6 +29,7 @@ public class CartControllerImpl implements CartController {
     @Autowired
     @Qualifier(value = "TVDAOImpl_Hibernate")
     private TVDAO tvdaoimpl;
+    private int id = 0;
 
     public String getcart(HttpServletRequest req, HttpServletResponse resp)
             throws DBException, SQLException {
@@ -47,22 +48,22 @@ public class CartControllerImpl implements CartController {
         req.setAttribute("status", getproductstatus);
         req.setAttribute("prodPrice", getproductprice);
 
+        String uhd1 = String.valueOf(tvdaoimpl.get4KUHD(1).get(0).getTvscreensize());
+        String uhd2 = String.valueOf(tvdaoimpl.get4KUHD(2).get(0).getTvscreensize());
+        String uhd3 = String.valueOf(tvdaoimpl.get4KUHD(3).get(0).getTvscreensize());
+
+        req.setAttribute("4kid1", uhd1);
+        req.setAttribute("4kid2", uhd2);
+        req.setAttribute("4kid3", uhd3);
+
         return  null;
+
     }
 
-    private Blob tvimage;
-
-    public String getTVimage(HttpServletRequest req, HttpServletResponse resp) throws DBException {
-
-        Blob tvimg = tvdaoimpl.getById(1L).getTvimage();
-        req.setAttribute("TVimg", tvimage);
-        return null;
-    }
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, ServletException, Exception
     {
         return  new MVCModel(getcart(request, response), "/helloWorld.jsp");
-        //return  new MVCModel(getTVimage(request, response), "/helloWorld.jsp");
     }
 }

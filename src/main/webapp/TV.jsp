@@ -3,11 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <jsp:useBean id="tv" scope="session" class="internetshop.niva.il.database.jdbc.TVDAOImpl"/>
-
-
-
-
-
 <%--
   Created by IntelliJ IDEA.
   User: ilugovecs
@@ -18,7 +13,7 @@
 <!DOCTYPE html>
 <html lang="en" content="image/jpeg">
 <head>
-  <title>TV & Home Theater</title>
+  <title>TV&Home Theater</title>
   <jsp:include page="Header.jsp"></jsp:include>
 </head>
 <body>

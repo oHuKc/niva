@@ -39,9 +39,10 @@ public class TV {
     @Column( name = "SCREEN_TYPE_ID", columnDefinition = "INT(10)")
     private int tvscreentypeid;
 
+
+    //@Basic(fetch = FetchType.LAZY)
+    @Column( name = "IMAGE")
     @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column( name = "IMAGE", columnDefinition = "longblob")
     private Blob tvimage;
 
     public long getTvid() {return tvid;}

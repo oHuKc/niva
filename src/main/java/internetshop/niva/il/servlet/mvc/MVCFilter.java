@@ -36,18 +36,9 @@ public class MVCFilter implements Filter {
             logger.log(Level.INFO, "Spring context failed to start", e);
         }
 
-/*
-        controllers = new HashMap<String, MVCController>();
-        controllers.put("/mvc", new HelloWorldController());
-        controllers.put("/products", new ProductController());
-        controllers.put("/shopcart", new ShoppingCartController());
-        controllers.put("/select", new SelectController());
-        controllers.put("/menu", new MenuController());
-        controllers.put("/tv", new TVController());
-        controllers.put("/cart", new CartController());
-*/
         controllers = new HashMap<String, MVCController>();
         controllers.put("/mvc", getBean(HelloWorldController.class));
+        controllers.put("/menu", getBean(MenuController.class));
         controllers.put("/products", getBean(ProductController.class));
         controllers.put("/shopcart", getBean(CartController.class));
         controllers.put("/select", getBean(SelectController.class));

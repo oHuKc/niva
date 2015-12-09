@@ -15,6 +15,7 @@ internetshop\niva\il\database\hibernate\TVDAOImpl.class
 lv\javaguru\java2\servlet\RedirectToJSPServlet.class
 internetshop\niva\il\servlet\mvc\MenuController.class
 internetshop\niva\il\database\jdbc\CartDAOImpl.class
+internetshop\niva\il\servlet\mvc\MenuControllerImpl.class
 internetshop\niva\il\servlet\mvc\ProductController.class
 lv\javaguru\java2\database\DBException.class
 internetshop\niva\il\servlet\mvc\MVCController.class
