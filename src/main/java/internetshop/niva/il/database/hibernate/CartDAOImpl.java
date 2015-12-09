@@ -4,6 +4,7 @@ import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.database.jdbc.DAOImplement;
 import internetshop.niva.il.domain.Cart;
+import internetshop.niva.il.domain.TV;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -45,7 +46,6 @@ public class CartDAOImpl extends DAOImplement implements CartDAO {
     public List<Cart> gateAll() throws DBException {
         List<Cart> cart = new ArrayList<Cart>();
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Cart.class);
-        criteria.add(Restrictions.eq("productbrand", "Cart"));
-        return cart = (List<Cart>) criteria.list();
+        return  cart = (List<Cart>) criteria.list();
     }
 }

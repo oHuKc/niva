@@ -59,12 +59,12 @@
     </form>
     <ul class="nav navbar-nav navbar-right">
         <div class="cart-wrap">
-        <a href="http://localhost:8080/java2/Cart.jsp" aria-label="Cart" title="Cart" data-lid="hdr_carticon">
+        <a href="cart" aria-label="Cart" title="Cart" data-lid="hdr_carticon">
           <div class="count-container" aria-hidden="true">
             <span class="hidden-text"></span>
           </div>
           <span class="header-icon-cart"><img src="images/cart.png"></span></a>
-          <span class="badge" type="hidden">1</span></a>
+          <span class="badge" type="hidden"><%=request.getAttribute("cartCount")%></span></a>
       </div>
     </ul>
   </div><!-- /.navbar-collapse -->

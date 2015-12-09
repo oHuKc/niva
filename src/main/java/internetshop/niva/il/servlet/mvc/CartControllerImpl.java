@@ -52,9 +52,10 @@ public class CartControllerImpl implements CartController {
         String uhd2 = String.valueOf(tvdaoimpl.get4KUHD(2).get(0).getTvscreensize());
         String uhd3 = String.valueOf(tvdaoimpl.get4KUHD(3).get(0).getTvscreensize());
 
-        req.setAttribute("4kid1", uhd1);
-        req.setAttribute("4kid2", uhd2);
-        req.setAttribute("4kid3", uhd3);
+
+        String count = String.valueOf(cartdaoimpl.gateAll().size());
+
+        req.setAttribute("cartCount", count);
 
         return  null;
 
@@ -64,6 +65,7 @@ public class CartControllerImpl implements CartController {
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, ServletException, Exception
     {
-        return  new MVCModel(getcart(request, response), "/helloWorld.jsp");
+        //return  new MVCModel(getcart(request, response), "/helloWorld.jsp");
+        return  new MVCModel(getcart(request, response), "/Cart.jsp");
     }
 }
