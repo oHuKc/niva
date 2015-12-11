@@ -1,3 +1,4 @@
+internetshop\niva\il\servlet\mvc\ImageShowControllerImpl.class
 internetshop\niva\il\servlet\mvc\HelloWorldController.class
 internetshop\niva\il\servlet\mvc\ImageShowController.class
 internetshop\niva\il\servlet\mvc\LoginController.class
@@ -13,6 +14,7 @@ internetshop\niva\il\domain\Customer.class
 lv\javaguru\java2\servlet\SessionUsageServlet.class
 internetshop\niva\il\database\hibernate\TVDAOImpl.class
 lv\javaguru\java2\servlet\RedirectToJSPServlet.class
+internetshop\niva\il\servlet\mvc\AddToCartControllerImpl.class
 internetshop\niva\il\servlet\mvc\MenuController.class
 internetshop\niva\il\database\jdbc\CartDAOImpl.class
 internetshop\niva\il\servlet\mvc\MenuControllerImpl.class

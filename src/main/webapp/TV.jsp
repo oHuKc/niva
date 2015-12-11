@@ -68,35 +68,46 @@
           <div class="checkbox">
             <!-- <label><input type="checkbox"></label> -->
           </div>
-
-          <form id="Cart">
-            <button class="btn btn-success" href="javascript:;" onclick="document.getElementById('Cart').submit();">
-              <span class="glyphicon glyphicon-shopping-cart" type="button"></span> Add to Cart
-              <input type="hidden" name="btnCart" value="${tv.tvid}"/>
+          <hr style="border: none">
+          <form id="Cart1">
+            <button class="btn btn-success" href="javascript:;" onclick="document.getElementById('Cart1').submit();">
+              <span class="glyphicon glyphicon-shopping-cart" type="submit"></span> Add to Cart
+              <input type="hidden" name="btnCart" value="${tv.tvid} ${tv.tvtype} ${tv.tvebrand} ${tv.tvdescription} ${tv.tvprice}" />
             </button>
           </form>
         </form>
         <hr style="border-top: 1px dotted #000000 !important;" />
       </c:forEach>
 
-      <h4> Add to Cart productId:<%=request.getParameter("btnCart")%></h4>
-      <% }
+      <% } %>
+      <%
         if ( request.getParameter("4kid99") != null && session.getAttribute("parameter") != null) { %>
+
       <!--Retrieve all TV  products on a page :-->
       <c:forEach items = '${tv.getAll()}' var = "tv" >
         <h4><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
+
+        <!--Draw image :-->
+        <c:set var="tvidId" value="${tv.tvid}" scope="request" />
+        <%request.setAttribute("model", request.getAttribute("tvidId"));%>
+        <a href="tv?imgID=${tvidId}" target="_blank"><img src ="tv?imgID=<%=request.getAttribute("model")%>" width="115" border="0" ></a>
         <!-- Add to Cart-->
-        <form name="cart-button" class="form-inline" method="post">
-          <button type="button" class="btn btn-success">
-            <span class="glyphicon glyphicon-shopping-cart" type="submit" value="${tv.tvid}"></span> Add to Cart
+        <hr style="border: none">
+        <form  id="Cart2">
+          <button class="btn btn-success" href="javascript:;" onclick="document.getElementById('Cart2').submit();">
+            <span class="glyphicon glyphicon-shopping-cart" name="btnCart"  type="submit"></span>Add to Cart
+            <input type="hidden" name="btnCart" value="${tv.tvid} ${tv.tvtype} ${tv.tvebrand} ${tv.tvdescription} ${tv.tvprice}"/>
           </button>
-          <hr style="border-top: 1px dotted #000000 !important;"/>
         </form>
+          <hr style="border-top: 1px dotted #000000 !important;"/>
       </c:forEach >
+
     </div>
   </div>
 </div>
 <% } %>
+
+<h4>Last Product added in to Cart :<%=request.getParameter("btnCart")%></h4>
 
 <!--%request.getSession(true).invalidate()%-->
 </body>

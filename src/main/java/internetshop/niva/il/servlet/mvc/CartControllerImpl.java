@@ -53,9 +53,8 @@ public class CartControllerImpl implements CartController {
         String uhd3 = String.valueOf(tvdaoimpl.get4KUHD(3).get(0).getTvscreensize());
 
 
-        String count = String.valueOf(cartdaoimpl.gateAll().size());
-
-        req.setAttribute("cartCount", count);
+        String cartlist = String.valueOf(cartdaoimpl.CartSelectHQL().get(0).getProductbrand());
+        req.setAttribute("cartlist", cartlist);
 
         return  null;
 

@@ -25,7 +25,7 @@
 
 <body>
 <ul id="navigation">
-  <li><a href="#">Weekly Ad</a></li>
+  <li><a href="menu">Main Page</a></li>
   <li><a href="#">Credit Card</a></li>
   <li><a href="#">Gift Cards</a></li>
   <li><a href="#">Gift ideas</a></li>

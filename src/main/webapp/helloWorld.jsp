@@ -23,5 +23,8 @@
 <h2>4K Ultra High ID:<%=request.getAttribute("4kid1")%></h2>
 <h2>4K Ultra High ID:<%=request.getAttribute("4kid2")%></h2>
 
+
+<!--Cart List-->
+<h1>Cart list:<%=request.getAttribute("cartlist")%></h1>
 </body>
 </html>

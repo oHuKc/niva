@@ -1,6 +1,7 @@
 package internetshop.niva.il.database;
 
 import internetshop.niva.il.domain.Cart;
+import org.hibernate.HibernateException;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,5 +17,7 @@ public interface CartDAO {
 
     void delete(Long id) throws  DBException;
 
-    List<Cart> gateAll() throws  DBException;
+    List<Cart> getAll() throws  DBException;
+
+    List<Cart> CartSelectHQL() throws HibernateException;
 }

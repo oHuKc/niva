@@ -45,7 +45,7 @@ public class MVCFilter implements Filter {
         controllers.put("/menu", getBean(MenuController.class));
         controllers.put("/tv", getBean(TVController.class));
         controllers.put("/cart", getBean(CartController.class));
-        controllers.put("/image", getBean(ImageShowController.class));
+        controllers.put("/tv", getBean(ImageShowController.class));
         controllers.put("/add", getBean(CartController.class));
         controllers.put("/login", getBean(LoginController.class));
     }

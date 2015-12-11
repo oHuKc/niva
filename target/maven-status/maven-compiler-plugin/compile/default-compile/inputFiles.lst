@@ -27,6 +27,7 @@ C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\in
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\TVControllerImpl.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\domain\TV.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\ShoppingCartServlet.java
+C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\AddToCartControllerImpl.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\TVDAO.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\spring\SpringConfig.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\TVController.java
@@ -41,6 +42,7 @@ C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\in
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\hibernate\CartDAOImpl.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\lv\javaguru\java2\database\DBException.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\LoginController.java
+C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\ImageShowControllerImpl.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\HelloWorldController.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\AdminDBAccess.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\SelectController.java
