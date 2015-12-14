@@ -1,3 +1,4 @@
+<%@ page import="org.hibernate.Session" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
@@ -17,7 +18,6 @@
 
 <%
   String sessionid = session.getId();
-
   String sid = request.getParameter("menusessionid");
   if (sid == null){
     sid=sessionid;

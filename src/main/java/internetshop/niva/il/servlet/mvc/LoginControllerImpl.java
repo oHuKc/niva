@@ -26,43 +26,6 @@ public class LoginControllerImpl implements LoginController {
     @Qualifier(value = "UserDAO_HIBERNATE")
     private UserDAO userDAO;
 
-    /*
-        @Transactional
-        public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
-                throws DBException, SQLException, ServletException, IOException {
-
-
-            String login = request.getParameter("login");
-            String email = request.getParameter("email");
-            String firstName = request.getParameter("inputName");
-            String lastName = request.getParameter("inputSurname");
-            String pass = request.getParameter("InputPassword1");
-
-            System.out.println("My login is "+login);
-            System.out.println("My email is "+email);
-
-            User user = new User();
-            user.setPassword(pass);
-            user.setEmail(email);
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-
-            System.out.println(user.getPassword());
-
-
-            try {
-                userDAO.create(user);
-            } catch (DBException e) {
-                e.printStackTrace();
-            }
-
-            //request.getSession().setAttribute("user", user);
-
-            return new MVCModel("user created", "/Login.jsp");
-        }
-
-        */
-
 
     public String dogetUser(HttpServletRequest request, HttpServletResponse response)
             throws DBException {
@@ -84,8 +47,9 @@ public class LoginControllerImpl implements LoginController {
 
             System.out.println(user.getPassword());
 
+        if (request.getParameter("login") != null) {
             userDAO.create(user);
-
+        }
             return  user.toString();
         }
 

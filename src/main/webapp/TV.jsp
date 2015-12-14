@@ -57,7 +57,7 @@
 
       <!--Retrieve only selected TV products by screen size :-->
       <c:forEach items='${tv.get4KUHD(screenID)}' var="tv">
-        <h4><c:out  value="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}" /><!--<img src="images/cart.png">--></h4>
+        <h4><c:out  value="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  $${tv.tvprice}" /><!--<img src="images/cart.png">--></h4>
 
         <!--Draw image :-->
         <c:set var="tvidId" value="${tv.tvid}" scope="request"/>
@@ -85,7 +85,7 @@
 
       <!--Retrieve all TV  products on a page :-->
       <c:forEach items = '${tv.getAll()}' var = "tv" >
-        <h4><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  ${tv.tvprice}"/></h4>
+        <h4><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  $${tv.tvprice}"/></h4>
 
         <!--Draw image :-->
         <c:set var="tvidId" value="${tv.tvid}" scope="request" />

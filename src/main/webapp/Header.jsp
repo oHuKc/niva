@@ -1,3 +1,4 @@
+<%@ page import="org.hibernate.Session" %>
 <%--
   Created by IntelliJ IDEA.
   User: ilugovecs
@@ -64,7 +65,14 @@
             <span class="hidden-text"></span>
           </div>
           <span class="header-icon-cart"><img src="images/cart.png"></span></a>
-          <span class="badge" type="hidden"><%=request.getAttribute("cartCount")%></span></a>
+          <span class="badge" type="hidden">
+<%
+           if ( request.getAttribute("cartSize") == null) {
+          %>0<%
+          }else { %>
+            <%=request.getAttribute("cartSize")%>
+            <% } %>
+          </span></a>
       </div>
     </ul>
   </div><!-- /.navbar-collapse -->

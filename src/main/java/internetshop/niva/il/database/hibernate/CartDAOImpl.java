@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.hsqldb.util.*;
 import org.hibernate.internal.QueryImpl;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -57,13 +58,12 @@ public class CartDAOImpl extends DAOImplement implements CartDAO {
     public List<Cart> CartSelectHQL() {
         Session session = sessionFactory.openSession();
 
-        List<Cart> cart   = new ArrayList<Cart>();
+        List<Cart> cart = new ArrayList<Cart>();
 
         String hql = "FROM internetshop.niva.il.domain.Cart";
         Query query = (Query) session.createQuery(hql);
         List results = query.list();
-
-        return cart = (List<Cart>) query.list();
+        return results;
     }
 
 
