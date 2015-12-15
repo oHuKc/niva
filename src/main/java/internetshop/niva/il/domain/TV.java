@@ -11,8 +11,9 @@ import java.util.List;
  * Created by ilugovecs on 2015.11.05..
  */
 @Entity
-@Table( name = "tv_hometheater")
+@Table( name = "tv_hometheater", catalog = "niva_production")
 public class TV {
+
     @Id
     @Column( name = "id", columnDefinition = "INT(11)")
     @GeneratedValue(strategy = GenerationType.AUTO)

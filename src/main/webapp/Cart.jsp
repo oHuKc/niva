@@ -28,6 +28,10 @@
         </tr>
         </thead>
         <tbody>
+<%
+  if (request.getAttribute("cartCount") == null ) { %>
+    <h1>Cart is empty.</h1>
+ <% } else {%>
 
         <c:forEach items='${cart.getAll()}' var = "cart">
         <tr>
@@ -55,6 +59,7 @@
             </button></td>
         </tr>
         </c:forEach>
+<%} %>
         <tr>
           <td>   </td>
           <td>   </td>

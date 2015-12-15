@@ -1,17 +1,27 @@
 package internetshop.niva.il.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by ilugovecs on 2015.11.17..
  */
 @Entity
-@Table( name  =  "cart" )
-public class Cart {
+@Table( name  =  "cart", catalog = "niva_production",
+        uniqueConstraints = {
+        @UniqueConstraint(columnNames = "PRODUCT_NAME"),
+        @UniqueConstraint(columnNames = "PRODUCT_BRAND")
+})
+public class Cart implements Serializable {
+
 
     @Id
-    @Column( name = "PRODUCT_ID", columnDefinition = "INT(10)")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", columnDefinition = "INT")
+    private Long id;
+
+    @Column( name = "PRODUCT_ID", columnDefinition = "INT(10)")
     private long productid;
 
     @Column( name = "PRODUCT_NAME", columnDefinition = "CHAR(40)")
@@ -28,6 +38,16 @@ public class Cart {
 
     @Column( name = "PRICE", columnDefinition = "CHAR(40)")
     private String productprice;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
 
     public long getProductid() {return productid;}
 

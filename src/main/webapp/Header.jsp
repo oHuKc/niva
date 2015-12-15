@@ -67,10 +67,10 @@
           <span class="header-icon-cart"><img src="images/cart.png"></span></a>
           <span class="badge" type="hidden">
 <%
-           if ( request.getAttribute("cartSize") == null) {
+           if ( session.getAttribute("cartCount") == null) {
           %>0<%
           }else { %>
-            <%=request.getAttribute("cartSize")%>
+            <%=session.getAttribute("cartCount")%>
             <% } %>
           </span></a>
       </div>

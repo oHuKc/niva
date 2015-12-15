@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -23,7 +25,7 @@ import java.util.Map;
  */
 
 @Component
-public class CartControllerImpl implements CartController {
+public class CartControllerImpl extends HttpServlet implements CartController {
 
     @Autowired @Qualifier(value = "CartDAOImpl_Hibernate")
     private CartDAO cartdao;
@@ -36,17 +38,30 @@ public class CartControllerImpl implements CartController {
     }
 
 
+    public String cartCondition(HttpServletResponse resp, HttpServletRequest req)
+            throws DBException {
 
+        HttpSession session = req.getSession();
+        Integer counter = (Integer)session.getAttribute("cartCount");
+
+        if (counter == null) {
+           // counter = 0L;
+            counter = cartdao.getAll().size();
+        }
+        //counter++;
+        session.setAttribute("cartCount", counter);
+        req.setAttribute("cartCount", counter);
+        return null;
+    }
 
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
-            throws DBException, SQLException, ServletException, Exception
+            throws  Exception
+
     {
-            return new MVCModel(getCartSize(response, request), "/Cart.jsp");
-
+     //   return new MVCModel(getCartSize(response, request), "/Cart.jsp");
+        return new MVCModel(cartCondition(response, request), "/Cart.jsp");
     }
-
-
 
 
 }

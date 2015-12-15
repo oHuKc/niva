@@ -62,5 +62,5 @@ public class AddToCartControllerImpl implements  AddToCartController {
     }
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, ServletException, Exception
-    {return  new MVCModel("", "//helloWorld.jsp");}
+    {return  new MVCModel("", "/helloWorld.jsp");}
 }
