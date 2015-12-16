@@ -49,7 +49,7 @@ public class MVCFilter implements Filter {
         controllers.put("/shopcart", getBean(CartController.class));
         controllers.put("/select", getBean(SelectController.class));
 
-        controllers.put("/add", getBean(AddToCartController.class));
+        controllers.put("/tv", getBean(AddToCartController.class));
 
     }
 

@@ -30,9 +30,9 @@ public class CartDAOImpl extends DAOImplement implements CartDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Transactional
+
     public void create(Cart cart) throws DBException {
-        sessionFactory.getCurrentSession().persist(cart);
+        sessionFactory.getCurrentSession().save(cart);
     }
 
     public Cart getById(Long id) throws DBException {

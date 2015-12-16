@@ -72,7 +72,12 @@
           <form id="Cart1">
             <button class="btn btn-success" href="javascript:;" onclick="document.getElementById('Cart1').submit();">
               <span class="glyphicon glyphicon-shopping-cart" type="submit"></span> Add to Cart
-              <input type="hidden" name="btnCart" value="${tv.tvid} ${tv.tvtype} ${tv.tvebrand} ${tv.tvdescription} ${tv.tvprice}" />
+              <input type="hidden" name="btnCart" value="${tv.tvid} ${tv.tvtype} ${tv.tvebrand} ${tv.tvdescription} ${tv.tvprice}"/>
+              <input type="hidden" name="btnCartTVid" value="${tv.tvid}"/>
+              <input type="hidden" name="btnCartTVtype" value="${tv.tvtype}"/>
+              <input type="hidden" name="btnCartTVbrand" value="${tv.tvebrand}"/>
+              <input type="hidden" name="btnCartTVdescr" value="${tv.tvdescription}"/>
+              <input type="hidden" name="btnCartTVprice" value="${tv.tvprice}"/>
             </button>
           </form>
         </form>
@@ -96,7 +101,7 @@
         <form  id="Cart2">
           <button class="btn btn-success" href="javascript:;" onclick="document.getElementById('Cart2').submit();">
             <span class="glyphicon glyphicon-shopping-cart" name="btnCart"  type="submit"></span>Add to Cart
-            <input type="hidden" name="btnCart" value="${tv.tvid} ${tv.tvtype} ${tv.tvebrand} ${tv.tvdescription} ${tv.tvprice}"/>
+            <input type="hidden" name="btnCart" value="${tv.tvid} ${tv.tvtype} ${tv.tvebrand} ${tv.tvdescription} $${tv.tvprice}"/>
           </button>
         </form>
           <hr style="border-top: 1px dotted #000000 !important;"/>
@@ -108,7 +113,7 @@
 <% } %>
 
 <h4>Last Product added in to Cart :<%=request.getParameter("btnCart")%></h4>
-
+<h1>CART ID:<%=request.getParameter("btnCartTVid")%></h1>
 <!--%request.getSession(true).invalidate()%-->
 </body>
 </html>

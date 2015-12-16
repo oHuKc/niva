@@ -21,23 +21,23 @@ import java.sql.SQLException;
 public class AddToCartControllerImpl implements  AddToCartController {
     @Autowired
     @Qualifier(value = "CartDAOImpl_Hibernate")
-    private CartDAO cartdaoimpl;
+    private CartDAO cartdao;
 
 
     @Autowired
     @Qualifier(value = "TVDAOImpl_Hibernate")
     private TVDAO tvdaoimpl;
-    private int id = 0;
+
 
     public String getcart(HttpServletRequest req, HttpServletResponse resp)
             throws DBException, SQLException {
 
-        Long getproductid = cartdaoimpl.getById(7L).getProductid();
-        String getproductname = cartdaoimpl.getById(7L).getProductname();
-        String getproductbrand = cartdaoimpl.getById(7L).getProductbrand();
-        String getproductdescription = cartdaoimpl.getById(7L).getProductdescription();
-        String getproductstatus = cartdaoimpl.getById(7L).getProductstatus();
-        String getproductprice = cartdaoimpl.getById(7L).getProductprice();
+        Long getproductid = cartdao.getById(7L).getProductid();
+        String getproductname = cartdao.getById(7L).getProductname();
+        String getproductbrand = cartdao.getById(7L).getProductbrand();
+        String getproductdescription = cartdao.getById(7L).getProductdescription();
+        String getproductstatus = cartdao.getById(7L).getProductstatus();
+        String getproductprice = cartdao.getById(7L).getProductprice();
 
         req.setAttribute("prodID", getproductid);
         req.setAttribute("prodName", getproductname);
@@ -50,7 +50,7 @@ public class AddToCartControllerImpl implements  AddToCartController {
         String uhd2 = String.valueOf(tvdaoimpl.get4KUHD(2).get(0).getTvscreensize());
         String uhd3 = String.valueOf(tvdaoimpl.get4KUHD(3).get(0).getTvscreensize());
 
-        String cartlist = String.valueOf(cartdaoimpl.CartSelectHQL().get(0).getProductbrand());
+        String cartlist = String.valueOf(cartdao.CartSelectHQL().get(0).getProductbrand());
         //String cartlist = String.valueOf(cartdaoimpl.getAll().get(i).getProductname());
 
 
@@ -60,7 +60,33 @@ public class AddToCartControllerImpl implements  AddToCartController {
         return null;
 
     }
+
+    public String addToCart(HttpServletRequest req, HttpServletResponse resp) throws DBException, SQLException {
+
+        String cartprodid = req.getParameter("btnCartTVid");
+        String cartprodtype = req.getParameter("btnCartTVtype");
+        String cartprodbrand = req.getParameter("btnCartTVbrand");
+        String cartprodescr = req.getParameter("btnCartTVdescr");
+        String cartprodprice = req.getParameter("btnCartTVprice");
+
+        Cart cart = new Cart();
+        //cart.setProductid(Long.valueOf(cartprodid));
+        cart.setProductname(cartprodtype);
+        cart.setProductbrand(cartprodbrand);
+        cart.setProductdescription(cartprodescr);
+        cart.setProductprice(cartprodprice);
+
+        if (req.getParameter("btnCartTVid") != null) {
+            System.out.println("TV Cart product id :" + cartprodid);
+
+            cartdao.create(cart);
+        }
+        return cart.toString();
+    }
+
+
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
-            throws DBException, SQLException, ServletException, Exception
-    {return  new MVCModel("", "/helloWorld.jsp");}
+            throws Exception
+    //{return  new MVCModel("", "/helloWorld.jsp");}
+    {return  new MVCModel(addToCart(request, response), "/TV.jsp");}
 }
