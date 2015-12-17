@@ -17,11 +17,12 @@
 
 
 <%
+
   String sessionid = session.getId();
-  String sid = request.getParameter("menusessionid");
+  String sid = request.getParameter("sessionId");
   if (sid == null){
     sid=sessionid;
-    session.setAttribute("menusessionid", sid);
+    session.setAttribute("sessionId", sid);
   }
 
   String parameter = request.getParameter("parameter");

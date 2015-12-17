@@ -38,7 +38,7 @@
           <td class="col-sm-8 col-md-6">
             <div class="media">
               <a class="thumbnail pull-left" href="#">
-                <img class="media-object" src="images/cart_product.png"><p>
+               <img class="media-object" src="images/cart_product.png"><p>
               </a>
               <div class="media-body">
                 <h4 class="media-heading"><a href="#"><c:out value="${cart.productname}"/></a></h4>

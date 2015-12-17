@@ -113,7 +113,6 @@
 <% } %>
 
 <h4>Last Product added in to Cart :<%=request.getParameter("btnCart")%></h4>
-<h1>CART ID:<%=request.getParameter("btnCartTVid")%></h1>
 <!--%request.getSession(true).invalidate()%-->
 </body>
 </html>

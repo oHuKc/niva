@@ -39,8 +39,8 @@ public class MVCFilter implements Filter {
         controllers = new HashMap<String, MVCController>();
 
         controllers.put("/menu", getBean(MenuController.class));
-        controllers.put("/tv", getBean(ImageShowController.class));
-       // controllers.put("/tv", getBean(TVController.class));
+        //controllers.put("/tv", getBean(ImageShowController.class));
+        controllers.put("/tv", getBean(AddToCartController.class));
         controllers.put("/cart", getBean(CartController.class));
         controllers.put("/login", getBean(LoginController.class));
 
@@ -49,7 +49,7 @@ public class MVCFilter implements Filter {
         controllers.put("/shopcart", getBean(CartController.class));
         controllers.put("/select", getBean(SelectController.class));
 
-        controllers.put("/tv", getBean(AddToCartController.class));
+
 
     }
 

@@ -6,6 +6,9 @@ import internetshop.niva.il.database.TVDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,10 +30,11 @@ import java.util.Map;
 @Component
 public class CartControllerImpl extends HttpServlet implements CartController {
 
+
     @Autowired @Qualifier(value = "CartDAOImpl_Hibernate")
     private CartDAO cartdao;
 
-
+    @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String getCartSize(HttpServletResponse res, HttpServletRequest req)
             throws DBException {
         req.setAttribute("cartSize", cartdao.getAll().size());

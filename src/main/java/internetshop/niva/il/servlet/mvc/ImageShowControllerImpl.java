@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import javax.servlet.RequestDispatcher;
@@ -61,12 +63,9 @@ public class ImageShowControllerImpl extends HttpServlet implements ImageShowCon
     }
 
 
-
-
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, ServletException, IOException {
-       return new MVCModel(getImage(request, response), "/TV.jsp");
-       // return new MVCModel(imageTest(request, response), "/helloWorld.jsp");
+           return new MVCModel("", "/TV.jsp");
     }
 
 

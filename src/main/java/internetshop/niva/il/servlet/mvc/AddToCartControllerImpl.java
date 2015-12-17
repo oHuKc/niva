@@ -3,16 +3,22 @@ package internetshop.niva.il.servlet.mvc;
 import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.database.TVDAO;
-import internetshop.niva.il.database.jdbc.CartDAOImpl;
 import internetshop.niva.il.domain.Cart;
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
+
+
 
 /**
  * Created by ilugovecs on 2015.11.26..
@@ -28,40 +34,11 @@ public class AddToCartControllerImpl implements  AddToCartController {
     @Qualifier(value = "TVDAOImpl_Hibernate")
     private TVDAO tvdaoimpl;
 
+    private Integer ImageID = null;
 
-    public String getcart(HttpServletRequest req, HttpServletResponse resp)
+
+    public String addToCart(HttpServletRequest req, HttpServletResponse resp)
             throws DBException, SQLException {
-
-        Long getproductid = cartdao.getById(7L).getProductid();
-        String getproductname = cartdao.getById(7L).getProductname();
-        String getproductbrand = cartdao.getById(7L).getProductbrand();
-        String getproductdescription = cartdao.getById(7L).getProductdescription();
-        String getproductstatus = cartdao.getById(7L).getProductstatus();
-        String getproductprice = cartdao.getById(7L).getProductprice();
-
-        req.setAttribute("prodID", getproductid);
-        req.setAttribute("prodName", getproductname);
-        req.setAttribute("prodBrand", getproductbrand);
-        req.setAttribute("prodDescripton", getproductdescription);
-        req.setAttribute("status", getproductstatus);
-        req.setAttribute("prodPrice", getproductprice);
-
-        String uhd1 = String.valueOf(tvdaoimpl.get4KUHD(1).get(0).getTvscreensize());
-        String uhd2 = String.valueOf(tvdaoimpl.get4KUHD(2).get(0).getTvscreensize());
-        String uhd3 = String.valueOf(tvdaoimpl.get4KUHD(3).get(0).getTvscreensize());
-
-        String cartlist = String.valueOf(cartdao.CartSelectHQL().get(0).getProductbrand());
-        //String cartlist = String.valueOf(cartdaoimpl.getAll().get(i).getProductname());
-
-
-        req.setAttribute("cartlist", cartlist);
-
-
-        return null;
-
-    }
-
-    public String addToCart(HttpServletRequest req, HttpServletResponse resp) throws DBException, SQLException {
 
         String cartprodid = req.getParameter("btnCartTVid");
         String cartprodtype = req.getParameter("btnCartTVtype");
@@ -85,8 +62,41 @@ public class AddToCartControllerImpl implements  AddToCartController {
     }
 
 
+    private Integer getImage(HttpServletRequest req,
+                             HttpServletResponse resp) throws
+            HibernateException, IOException, DBException, SQLException {
+        Connection connection = null;
+        if (req.getParameter("imgID") != null) {
+            try {
+                ImageID = Integer.parseInt(req.getParameter("imgID"));
+                byte[] imgData = tvdaoimpl.getImage(ImageID);
+                resp.setContentType("image/jpeg");
+                OutputStream outputStream = resp.getOutputStream();
+                outputStream.write(imgData);
+                resp.getOutputStream().flush();
+                resp.getOutputStream().close();
+            } catch (HibernateException e) {
+                e.printStackTrace();
+            }
+        }
+        return ImageID;
+
+    }
+    @Transactional
+    private Object twocontrollers(HttpServletRequest request, HttpServletResponse response)
+            throws DBException, SQLException, IOException {
+
+        HashMap<Integer, String> twocontrollers = new HashMap<Integer, String>();
+
+        twocontrollers.put(getImage(request,response), addToCart(request,response));
+
+        return null;
+    }
+
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws Exception
-    //{return  new MVCModel("", "/helloWorld.jsp");}
-    {return  new MVCModel(addToCart(request, response), "/TV.jsp");}
+    //{return  new MVCModel(addToCart(request, response), "/TV.jsp");}
+    {return  new MVCModel(twocontrollers(request, response), "/TV.jsp");}
+
+
 }

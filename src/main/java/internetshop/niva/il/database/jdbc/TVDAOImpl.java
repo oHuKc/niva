@@ -137,10 +137,18 @@ public class TVDAOImpl extends DAOImplement  {
                 tvs.setTvscreentypeid(resultSet.getInt("SCREEN_TYPE_ID"));
                // tvs.setTvimage(resultSet.getBlob("IMAGE"));
                 tv.add(tvs);
+
             }
         } catch (SQLException e) {
             System.out.println("Exception occured while getting goods list TVDAOImpl.get4KUHD4045()");
             e.printStackTrace();
+        }finally {
+            if ( connection != null ) {
+                //closeConnection(connection);
+                try {
+                    connection.close();
+                }catch (SQLException ignore) {}
+            }
         }
         return tv;
     }

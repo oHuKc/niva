@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,33 +33,19 @@ public class TVControllerImpl implements TVController  {
     @Qualifier( value = "TVDAOImpl_Hibernate")
     private TVDAO tv;
 
-    private Integer ImageID = 0;
 
-    private Integer getImage(HttpServletRequest req,
-                             HttpServletResponse resp) throws
-            ServletException, IOException, DBException, SQLException {
-        Connection connection = null;
-        if (req.getParameter("imgID") != null) {
-            try {
-                ImageID = Integer.parseInt(req.getParameter("imgID"));
-                byte[] imgData = tv.getImage(ImageID);
-                resp.setContentType("image/jpeg");
-                OutputStream outputStream = resp.getOutputStream();
-                outputStream.write(imgData);
-                resp.getOutputStream().flush();
-                resp.getOutputStream().close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return ImageID;
+    public String getTVparam(HttpServletRequest req, HttpServletResponse resp) {
+
+        System.out.print("Cart Button parameters :" +req.getParameter("btnCart"));
+        return req.getParameter("btnCart") ;
     }
 
 
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, ServletException, IOException {
-        return new MVCModel("", "/TV.jsp");
+
+        return new MVCModel(getTVparam(request, response), "/TV.jsp");
     }
 
 }
