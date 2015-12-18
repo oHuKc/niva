@@ -3,6 +3,7 @@ package internetshop.niva.il.servlet.mvc;
 import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.database.TVDAO;
+import internetshop.niva.il.domain.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -30,17 +32,15 @@ import java.util.Map;
 @Component
 public class CartControllerImpl extends HttpServlet implements CartController {
 
-
     @Autowired @Qualifier(value = "CartDAOImpl_Hibernate")
     private CartDAO cartdao;
 
-    @RequestMapping(value = "/cart", method = RequestMethod.GET)
+
     public String getCartSize(HttpServletResponse res, HttpServletRequest req)
             throws DBException {
         req.setAttribute("cartSize", cartdao.getAll().size());
         return null;
     }
-
 
     public String cartCondition(HttpServletResponse resp, HttpServletRequest req)
             throws DBException {
@@ -49,7 +49,7 @@ public class CartControllerImpl extends HttpServlet implements CartController {
         Integer counter = (Integer)session.getAttribute("cartCount");
 
         if (counter == null) {
-           // counter = 0L;
+           //counter = 0L;
             counter = cartdao.getAll().size();
         }
         //counter++;
@@ -58,13 +58,38 @@ public class CartControllerImpl extends HttpServlet implements CartController {
         return null;
     }
 
+    public String removeCartID(HttpServletResponse resp, HttpServletRequest req)
+            throws DBException {
+       // HttpSession session = req.getSession();
+       String cartremoveid = req.getParameter("btnCartIDremove");
+      //  String cartremoveid = seession.getParameter("btnCartIDremove");
+
+
+        if (req.getParameter("btnCartIDremove") != null) {
+            System.out.print("Candidate ID to remove:" + cartremoveid);
+            cartdao.delete(cartremoveid);
+        }
+        return  cartremoveid;
+    }
+
+    @Transactional
+    private Object twocontrollers(HttpServletRequest request, HttpServletResponse response)
+            throws DBException, SQLException, IOException {
+
+        HashMap<String, String> twocontrollers = new HashMap<String, String>();
+
+        twocontrollers.put(cartCondition(response, request), removeCartID(response, request));
+
+        return null;
+    }
+
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws  Exception
-
     {
-     //   return new MVCModel(getCartSize(response, request), "/Cart.jsp");
-        return new MVCModel(cartCondition(response, request), "/Cart.jsp");
+        //return new MVCModel(getCartSize(response, request), "/Cart.jsp");
+        //return new MVCModel(removeCartID(response, request), "/Cart.jsp");
+        return new MVCModel(twocontrollers(request, response), "/Cart.jsp");
     }
 
 

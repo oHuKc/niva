@@ -15,7 +15,7 @@ public interface CartDAO {
 
     Cart getById(Long id) throws DBException, SQLException;
 
-    void delete(Long id) throws  DBException;
+    void delete(String id) throws  DBException;
 
     List<Cart> getAll() throws  DBException;
 

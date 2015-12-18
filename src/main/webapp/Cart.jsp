@@ -54,9 +54,13 @@
           <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="$${cart.productprice}"/></strong></td>
           <td class="col-sm-1 col-md-1 text-center"><strong>???</strong></td>
           <td class="col-sm-1 col-md-1">
-            <button type="button" class="btn btn-danger">
-              <span class="glyphicon glyphicon-remove"></span> Remove
-            </button></td>
+              <form id="CartRemove">
+            <button type="button" class="btn btn-danger"  href="javascript:;" onclick="document.getElementById('CartRemove').submit();">
+              <span class="glyphicon glyphicon-remove" type="submit"></span>Remove
+                <input type="hidden" name="btnCartIDremove" value="${cart.productid}"/>
+            </button>
+              </form>
+          </td>
         </tr>
         </c:forEach>
 <%} %>
@@ -100,4 +104,5 @@
   </div>
 </div>
 </body>
+<!--%request.getSession(false).invalidate();%-->
 </html>

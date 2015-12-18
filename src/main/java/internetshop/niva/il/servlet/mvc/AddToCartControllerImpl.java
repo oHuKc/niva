@@ -18,23 +18,23 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-
-
 /**
  * Created by ilugovecs on 2015.11.26..
  */
 @Component
 public class AddToCartControllerImpl implements  AddToCartController {
+
     @Autowired
     @Qualifier(value = "CartDAOImpl_Hibernate")
     private CartDAO cartdao;
-
 
     @Autowired
     @Qualifier(value = "TVDAOImpl_Hibernate")
     private TVDAO tvdaoimpl;
 
+
     private Integer ImageID = null;
+
 
 
     public String addToCart(HttpServletRequest req, HttpServletResponse resp)
@@ -46,8 +46,10 @@ public class AddToCartControllerImpl implements  AddToCartController {
         String cartprodescr = req.getParameter("btnCartTVdescr");
         String cartprodprice = req.getParameter("btnCartTVprice");
 
+
+
         Cart cart = new Cart();
-        //cart.setProductid(Long.valueOf(cartprodid));
+        cart.setProductid(cartprodid);
         cart.setProductname(cartprodtype);
         cart.setProductbrand(cartprodbrand);
         cart.setProductdescription(cartprodescr);
@@ -95,7 +97,6 @@ public class AddToCartControllerImpl implements  AddToCartController {
 
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws Exception
-    //{return  new MVCModel(addToCart(request, response), "/TV.jsp");}
     {return  new MVCModel(twocontrollers(request, response), "/TV.jsp");}
 
 

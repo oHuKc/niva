@@ -5,11 +5,9 @@ import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.database.jdbc.DAOImplement;
 import internetshop.niva.il.domain.Cart;
 import internetshop.niva.il.domain.TV;
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.exception.ConstraintViolationException;
 import org.hsqldb.QuerySpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,23 +28,41 @@ public class CartDAOImpl extends DAOImplement implements CartDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-
     public void create(Cart cart) throws DBException {
         sessionFactory.getCurrentSession().save(cart);
     }
 
-    public Cart getById(Long id) throws DBException {
+    public Cart getById(Long productidid) throws DBException {
         Cart cart;
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Cart.class);
-        criteria.add(Restrictions.eq("productid", id));
+        criteria.add(Restrictions.eq("productid", productidid));
         return cart = (Cart) criteria.uniqueResult();
     }
 
-    public void delete(Long id) throws DBException {
+    public void delete(String productid) throws DBException {
+/*
         Cart cart = null;
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Cart.class);
-        criteria.add(Restrictions.eq("productid", id));
+        criteria.add(Restrictions.eq("productid", productid));
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         sessionFactory.getCurrentSession().delete(cart);
+*/
+
+        Session session = sessionFactory.getCurrentSession();
+        Cart cart = (Cart) session.get(Cart.class, productid);
+        if (cart != null) {
+            session.delete(cart);
+        }
+
+/*
+        Session session = sessionFactory.openSession();
+        Transaction transaction =session.beginTransaction();
+                String deletehql = "DELETE internetshop.niva.il.domain.Cart" + "WHERE  productid=:prodid";
+        Query query = (Query)session.createQuery(deletehql);
+        query.setParameter("prodid", 1);
+        int result = query.executeUpdate();
+        transaction.commit();
+*/
     }
 
     public List<Cart> getAll() throws DBException {

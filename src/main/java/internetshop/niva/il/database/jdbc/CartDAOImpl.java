@@ -27,7 +27,7 @@ public class CartDAOImpl  extends DAOImplement {
         try {
             connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT  INTO cart VALUES (id, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setLong(1, cart.getProductid());
+            preparedStatement.setString(1, cart.getProductid());
             preparedStatement.setString(2, cart.getProductname());
             preparedStatement.setString(3, cart.getProductbrand());
             preparedStatement.setString(4, cart.getProductdescription());
@@ -38,7 +38,7 @@ public class CartDAOImpl  extends DAOImplement {
             preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if(rs.next()) {
-                cart.setProductid(rs.getLong(1));
+                cart.setProductid(rs.getString(1));
             }
         } catch (Throwable e) {
             System.out.println("Exception occured while execute CartDAOImpl.create()");
@@ -62,7 +62,7 @@ public class CartDAOImpl  extends DAOImplement {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Cart cart = new Cart();
-                cart.setProductid(resultSet.getLong("PRODUCT_ID"));
+                cart.setProductid(resultSet.getString("PRODUCT_ID"));
                 cart.setProductname(resultSet.getString("PRODUCT_NAME"));
                 cart.setProductbrand(resultSet.getString("PRODUCT_BRAND"));
                 cart.setProductdescription(resultSet.getString("PRODUCT_DESCRIPTION"));
@@ -90,7 +90,7 @@ public class CartDAOImpl  extends DAOImplement {
             Cart cart = null;
             if (resultSet.next()) {
                 cart = new Cart();
-                cart.setProductid(resultSet.getLong("PRODUCT_ID"));
+                cart.setProductid(resultSet.getString("PRODUCT_ID"));
                 cart.setProductname(resultSet.getString("PRODUCT_NAME"));
                 cart.setProductbrand(resultSet.getString("PRODUCT_BRAND"));
                 cart.setProductdescription(resultSet.getString("PRODUCT_DESCRIPTION"));
@@ -140,7 +140,7 @@ public class CartDAOImpl  extends DAOImplement {
         try {
             connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("update customers set PRODDUCT_ID = ?, PRODUCT_NAME = ? , PRODUCT_BRAND = ?, PRODUCT_DESCRIPTION = ? , STATUS = ?, PRICE = ?" + "where CustomerID = ?");
-            preparedStatement.setLong(1, cart.getProductid());
+            preparedStatement.setString(1, cart.getProductid());
             preparedStatement.setString(2, cart.getProductname());
             preparedStatement.setString(3, cart.getProductbrand());
             preparedStatement.setString(4, cart.getProductdescription());

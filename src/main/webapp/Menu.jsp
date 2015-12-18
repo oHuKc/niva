@@ -14,10 +14,7 @@
   <title>Menu</title>
   <jsp:include page="Header.jsp"></jsp:include>
 </head>
-
-
 <%
-
   String sessionid = session.getId();
   String sid = request.getParameter("sessionId");
   if (sid == null){

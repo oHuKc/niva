@@ -16,13 +16,14 @@ import java.util.Set;
 public class Cart implements Serializable {
 
 
-    @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", columnDefinition = "INT")
     private Long id;
 
+    @Id
     @Column( name = "PRODUCT_ID", columnDefinition = "INT(10)")
-    private long productid;
+    private String productid;
 
     @Column( name = "PRODUCT_NAME", columnDefinition = "CHAR(40)")
     private String productname;
@@ -49,9 +50,9 @@ public class Cart implements Serializable {
 
 
 
-    public long getProductid() {return productid;}
+    public String getProductid() {return productid;}
 
-    public void  setProductid(Long productid) {this.productid = productid;}
+    public void  setProductid(String productid) {this.productid = productid;}
 
     public String getProductname() {return productname;}
 
