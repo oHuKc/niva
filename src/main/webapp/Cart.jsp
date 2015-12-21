@@ -1,6 +1,8 @@
  <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="cart" scope="session" class="internetshop.niva.il.database.jdbc.CartDAOImpl"/>
+ <jsp:useBean id="vat" scope="session" class="internetshop.niva.il.database.hibernate.ProductVatDAOImpl"/>
+ <jsp:useBean id="tv" scope="session" class="internetshop.niva.il.database.jdbc.TVDAOImpl"/>
 <%--
   Created by IntelliJ IDEA.
   User: ilugovecs

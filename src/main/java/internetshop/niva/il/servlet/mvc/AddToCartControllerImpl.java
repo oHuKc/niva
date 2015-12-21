@@ -2,8 +2,10 @@ package internetshop.niva.il.servlet.mvc;
 
 import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
+import internetshop.niva.il.database.ProductVATDAO;
 import internetshop.niva.il.database.TVDAO;
 import internetshop.niva.il.domain.Cart;
+import internetshop.niva.il.domain.ProductVAT;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,12 +34,18 @@ public class AddToCartControllerImpl implements  AddToCartController {
     @Qualifier(value = "TVDAOImpl_Hibernate")
     private TVDAO tvdaoimpl;
 
+    @Autowired
+    @Qualifier(value = "ProductVatDAOImpl_Hibernate")
+    private ProductVATDAO productVATDAO;
+
     private Integer ImageID = null;
 
     public String addToCart(HttpServletRequest req, HttpServletResponse resp)
             throws DBException, SQLException {
 
-        String cartprodid = req.getParameter("btnCartTVid");
+        ProductVAT cartprodid = productVATDAO.getById(req.getParameter("btnCartTVid"));
+
+       // String cartprodid = req.getParameter("btnCartTVid");
         String cartprodtype = req.getParameter("btnCartTVtype");
         String cartprodbrand = req.getParameter("btnCartTVbrand");
         String cartprodescr = req.getParameter("btnCartTVdescr");
@@ -53,6 +61,7 @@ public class AddToCartControllerImpl implements  AddToCartController {
         if (req.getParameter("btnCartTVid") != null) {
            // System.out.println("TV Cart product id :" + cartprodid);
             cartdao.create(cart);
+
         }
         return cart.toString();
     }

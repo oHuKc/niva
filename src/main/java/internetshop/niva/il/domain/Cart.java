@@ -2,17 +2,12 @@ package internetshop.niva.il.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 /**
  * Created by ilugovecs on 2015.11.17..
  */
 @Entity
-@Table( name  =  "cart", catalog = "niva_production",
-        uniqueConstraints = {
-        @UniqueConstraint(columnNames = "PRODUCT_NAME"),
-        @UniqueConstraint(columnNames = "PRODUCT_BRAND")
-})
+@Table( name  =  "cart")
 public class Cart implements Serializable {
 
 
@@ -21,9 +16,16 @@ public class Cart implements Serializable {
     @Column(name = "id", columnDefinition = "INT")
     private Long id;
 
+   // @Id
+   // @Column( name = "PRODUCT_ID", columnDefinition = "INT(10)")
+   // private String productid;
+
     @Id
-    @Column( name = "PRODUCT_ID", columnDefinition = "INT(10)")
-    private String productid;
+    @ManyToOne
+    @JoinColumn( name = "PRODUCT_ID",
+                insertable = true, updatable = true,
+                nullable = false)
+    private ProductVAT productid;
 
     @Column( name = "PRODUCT_NAME", columnDefinition = "CHAR(40)")
     private String productname;
@@ -49,10 +51,26 @@ public class Cart implements Serializable {
     }
 
 
+    //public String getProductid() {return productid;}
 
-    public String getProductid() {return productid;}
+   // public void  setProductid(String productid) {this.productid = productid;}
 
-    public void  setProductid(String productid) {this.productid = productid;}
+    public Cart() {
+
+    }
+    public Cart (ProductVAT productid, String productname, String  productbrand, String  productdescription,
+                 String productstatus, String productprice ) {
+        this.productname = productname;
+        this.productbrand = productbrand;
+        this.productdescription = productdescription;
+        this.productstatus = productstatus;
+        this.productprice = productprice;
+        this.productid = productid;
+    }
+
+    public ProductVAT getProductid() {return productid;}
+
+    public void setProductid(ProductVAT productid) {this.productid = productid;}
 
     public String getProductname() {return productname;}
 

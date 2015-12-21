@@ -2,28 +2,20 @@ package internetshop.niva.il.servlet.mvc;
 
 import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
-import internetshop.niva.il.database.TVDAO;
-import internetshop.niva.il.domain.Cart;
+import internetshop.niva.il.database.ProductVATDAO;
+import internetshop.niva.il.domain.ProductVAT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by ilugovecs on 2015.11.17..
@@ -35,6 +27,9 @@ public class CartControllerImpl extends HttpServlet implements CartController {
     @Autowired @Qualifier(value = "CartDAOImpl_Hibernate")
     private CartDAO cartdao;
 
+    @Autowired
+    @Qualifier(value = "ProductVatDAOImpl_Hibernate")
+    private ProductVATDAO productVATDAO;
 
     public String getCartSize(HttpServletResponse res, HttpServletRequest req)
             throws DBException {
@@ -43,7 +38,7 @@ public class CartControllerImpl extends HttpServlet implements CartController {
     }
 
     public String cartCondition(HttpServletResponse resp, HttpServletRequest req)
-            throws DBException {
+            throws DBException, SQLException {
 
         HttpSession session = req.getSession();
         //Integer counter = (Integer)session.getAttribute("cartCount");
@@ -60,17 +55,20 @@ public class CartControllerImpl extends HttpServlet implements CartController {
     }
 
     public String removeCartID(HttpServletResponse resp, HttpServletRequest req)
-            throws DBException {
-       // HttpSession session = req.getSession();
-       String cartremoveid = req.getParameter("btnCartIDremove");
-      //  String cartremoveid = seession.getParameter("btnCartIDremove");
+            throws DBException, SQLException {
 
+
+        //String cartremoveid = req.getParameter("btnCartIDremove");
+        //req.getParameter("btnCartIDremove")
+        ProductVAT cartremoveid = productVATDAO.getById("3");
+
+        //System.out.print("Candidate ID to remove:" + cartremoveid.getProductid() +"\n");
 
         if (req.getParameter("btnCartIDremove") != null) {
-            System.out.print("Candidate ID to remove:" + cartremoveid);
-            cartdao.delete(cartremoveid);
+           System.out.print("Candidate ID to remove:" + cartremoveid.getProductid() +"\n");
+            cartdao.delete(String.valueOf(cartremoveid.getProductid()));
         }
-        return  cartremoveid;
+        return  null;
     }
 
     @Transactional
