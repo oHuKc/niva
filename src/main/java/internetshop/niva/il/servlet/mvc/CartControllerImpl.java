@@ -46,11 +46,12 @@ public class CartControllerImpl extends HttpServlet implements CartController {
             throws DBException {
 
         HttpSession session = req.getSession();
-        Integer counter = (Integer)session.getAttribute("cartCount");
+        //Integer counter = (Integer)session.getAttribute("cartCount");
+       Integer counter = (Integer)session.getAttribute("btnCartTVid");
 
-        if (counter == null) {
-           //counter = 0L;
-            counter = cartdao.getAll().size();
+        if (session.getAttribute("btnCartTVid") == null) {
+           //counter = 0;
+           counter = cartdao.getAll().size();
         }
         //counter++;
         session.setAttribute("cartCount", counter);

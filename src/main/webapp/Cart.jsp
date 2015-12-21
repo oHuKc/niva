@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="cart" scope="session" class="internetshop.niva.il.database.jdbc.CartDAOImpl"/>
 <%--
@@ -58,6 +58,7 @@
             <button type="button" class="btn btn-danger"  href="javascript:;" onclick="document.getElementById('CartRemove').submit();">
               <span class="glyphicon glyphicon-remove" type="submit"></span>Remove
                 <input type="hidden" name="btnCartIDremove" value="${cart.productid}"/>
+                <input type="hidden" name="btnCartState" value="<%session.getAttribute("cartCount");%>"/>
             </button>
               </form>
           </td>
@@ -91,7 +92,7 @@
           <td>   </td>
           <td>
             <button type="button" class="btn btn-default">
-              <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+              <span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping
             </button></td>
           <td>
             <button type="button" class="btn btn-success">

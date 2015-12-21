@@ -78,6 +78,7 @@
               <input type="hidden" name="btnCartTVbrand" value="${tv.tvebrand}"/>
               <input type="hidden" name="btnCartTVdescr" value="${tv.tvdescription}"/>
               <input type="hidden" name="btnCartTVprice" value="${tv.tvprice}"/>
+              <input type="hidden" name="btnCartState" value="<%=session.getAttribute("cartCount")%>"/>
             </button>
           </form>
         </form>

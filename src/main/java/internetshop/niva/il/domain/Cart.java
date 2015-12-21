@@ -37,7 +37,7 @@ public class Cart implements Serializable {
     @Column( name = "STATUS", columnDefinition = "CHAR(40)")
     private String productstatus;
 
-    @Column( name = "PRICE", columnDefinition = "CHAR(40)")
+    @Column( name = "PRICE", columnDefinition = "DECIMAL(10,2)")
     private String productprice;
 
     public Long getId() {

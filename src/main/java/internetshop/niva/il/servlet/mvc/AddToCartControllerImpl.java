@@ -32,10 +32,7 @@ public class AddToCartControllerImpl implements  AddToCartController {
     @Qualifier(value = "TVDAOImpl_Hibernate")
     private TVDAO tvdaoimpl;
 
-
     private Integer ImageID = null;
-
-
 
     public String addToCart(HttpServletRequest req, HttpServletResponse resp)
             throws DBException, SQLException {
@@ -46,8 +43,6 @@ public class AddToCartControllerImpl implements  AddToCartController {
         String cartprodescr = req.getParameter("btnCartTVdescr");
         String cartprodprice = req.getParameter("btnCartTVprice");
 
-
-
         Cart cart = new Cart();
         cart.setProductid(cartprodid);
         cart.setProductname(cartprodtype);
@@ -56,8 +51,7 @@ public class AddToCartControllerImpl implements  AddToCartController {
         cart.setProductprice(cartprodprice);
 
         if (req.getParameter("btnCartTVid") != null) {
-            System.out.println("TV Cart product id :" + cartprodid);
-
+           // System.out.println("TV Cart product id :" + cartprodid);
             cartdao.create(cart);
         }
         return cart.toString();
@@ -84,6 +78,8 @@ public class AddToCartControllerImpl implements  AddToCartController {
         return ImageID;
 
     }
+
+
     @Transactional
     private Object twocontrollers(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, IOException {
