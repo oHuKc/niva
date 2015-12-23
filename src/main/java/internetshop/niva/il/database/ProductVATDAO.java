@@ -12,4 +12,7 @@ public interface ProductVATDAO {
     void create(ProductVAT productVAT) throws DBException, SQLException;
 
     ProductVAT getById(String id) throws DBException, SQLException;
+
+    void delete(String id) throws DBException;
+
 }

@@ -143,29 +143,41 @@ CREATE TABLE niva_production.wearable_technology
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
 
 #------------------------------------------------------------------------------
+DROP TABLE IF EXISTS  niva_production.product_vat;
+CREATE TABLE niva_production.product_vat
+(
+  ORDER_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  DATE TIMESTAMP DEFAULT NOW(),
+  VAT_NAME CHAR(40),
+  VAT DECIMAL(10,2),
+  PRICE DECIMAL(10,2),
+  PRICE_TOTAL DECIMAL(10,2)
+) COLLATE='latin1_swedish_ci'
+  ENGINE=InnoDB
+  ROW_FORMAT=DEFAULT
+  AUTO_INCREMENT=0;
+
+#------------------------------------------------------------------------------
 DROP TABLE IF EXISTS  niva_production.cart;
 CREATE TABLE niva_production.cart
 (
-  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  ORDER_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   PRODUCT_ID INT(10),
   PRODUCT_NAME CHAR(40),
   PRODUCT_BRAND CHAR(40),
   PRODUCT_DESCRIPTION CHAR(100),
   STATUS CHAR(40),
   PRICE DECIMAL(10,2),
-  TOTAL DECIMAL(10,2) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
+  TOTAL DECIMAL(10,2) DEFAULT 0,
+  INDEX ORDER_ID (ORDER_ID),
+  CONSTRAINT ORDER_ID FOREIGN KEY (ORDER_ID) REFERENCES niva_production.product_vat (ORDER_ID)
+)COLLATE='latin1_swedish_ci'
+  ENGINE=InnoDB
+  ROW_FORMAT=DEFAULT
+  AUTO_INCREMENT=0;
 
-#------------------------------------------------------------------------------
-DROP TABLE IF EXISTS  niva_production.vat;
-CREATE TABLE niva_production.vat
-(
-  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  VAT_NAME CHAR(40),
-  VAT DECIMAL(10,2)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
 
-INSERT INTO niva_production.vat VALUES (id,'21%','1.21');
+
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # INSERTING DATA IN TO niva_production.TV_HomeTheater

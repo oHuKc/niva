@@ -2,8 +2,10 @@ package internetshop.niva.il.database.hibernate;
 
 import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
+import internetshop.niva.il.database.ProductVATDAO;
 import internetshop.niva.il.database.jdbc.DAOImplement;
 import internetshop.niva.il.domain.Cart;
+import internetshop.niva.il.domain.ProductVAT;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -48,10 +50,14 @@ public class CartDAOImpl extends DAOImplement implements CartDAO {
     }
 
     public List<Cart> getAll() throws DBException {
+        /*
         List<Cart> cart = new ArrayList<Cart>();
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Cart.class);
         cart = (List<Cart>) criteria.list();
         return cart;
+        */
+
+        return (List<Cart>) sessionFactory.getCurrentSession().createCriteria(Cart.class).list();
     }
 
     public List<Cart> CartSelectHQL() {

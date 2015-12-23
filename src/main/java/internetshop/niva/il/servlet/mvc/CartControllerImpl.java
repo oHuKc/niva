@@ -3,6 +3,7 @@ package internetshop.niva.il.servlet.mvc;
 import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.database.ProductVATDAO;
+import internetshop.niva.il.domain.Cart;
 import internetshop.niva.il.domain.ProductVAT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -57,16 +59,23 @@ public class CartControllerImpl extends HttpServlet implements CartController {
     public String removeCartID(HttpServletResponse resp, HttpServletRequest req)
             throws DBException, SQLException {
 
-
-        //String cartremoveid = req.getParameter("btnCartIDremove");
+         String cartremoveid = req.getParameter("btnCartIDremove");
         //req.getParameter("btnCartIDremove")
-        ProductVAT cartremoveid = productVATDAO.getById("3");
+        //ProductVAT cartremoveid = productVATDAO.getById("85");
 
-        //System.out.print("Candidate ID to remove:" + cartremoveid.getProductid() +"\n");
+       // ProductVAT cartremoveid = productVATDAO.getById(req.getParameter("btnCartIDremove"));
+       // ProductVAT pvat = new ProductVAT();
 
         if (req.getParameter("btnCartIDremove") != null) {
-           System.out.print("Candidate ID to remove:" + cartremoveid.getProductid() +"\n");
-            cartdao.delete(String.valueOf(cartremoveid.getProductid()));
+
+          // System.out.print("Candidate ID to remove:" + cartremoveid +"\n");
+
+           // Cart cart = new Cart();
+           // cart.setProductid(cartremoveid);
+            cartdao.delete(cartremoveid);
+           // pvat.setCart(new ArrayList<Cart>());
+           // pvat.getCart().add(cart);
+           // productVATDAO.delete(String.valueOf(pvat));
         }
         return  null;
     }

@@ -14,10 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -43,13 +45,13 @@ public class AddToCartControllerImpl implements  AddToCartController {
     public String addToCart(HttpServletRequest req, HttpServletResponse resp)
             throws DBException, SQLException {
 
-        ProductVAT cartprodid = productVATDAO.getById(req.getParameter("btnCartTVid"));
-
-       // String cartprodid = req.getParameter("btnCartTVid");
+        String cartprodid = req.getParameter("btnCartTVid");
         String cartprodtype = req.getParameter("btnCartTVtype");
         String cartprodbrand = req.getParameter("btnCartTVbrand");
         String cartprodescr = req.getParameter("btnCartTVdescr");
         String cartprodprice = req.getParameter("btnCartTVprice");
+
+        ProductVAT pvat = new ProductVAT();
 
         Cart cart = new Cart();
         cart.setProductid(cartprodid);
@@ -59,8 +61,12 @@ public class AddToCartControllerImpl implements  AddToCartController {
         cart.setProductprice(cartprodprice);
 
         if (req.getParameter("btnCartTVid") != null) {
-           // System.out.println("TV Cart product id :" + cartprodid);
-            cartdao.create(cart);
+
+            pvat.setCart(new ArrayList<Cart>());
+            pvat.getCart().add(cart);
+            productVATDAO.create(pvat);
+
+            //cartdao.create(cart);
 
         }
         return cart.toString();

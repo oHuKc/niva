@@ -2,6 +2,7 @@ internetshop\niva\il\servlet\mvc\ImageShowControllerImpl.class
 internetshop\niva\il\servlet\mvc\HelloWorldController.class
 internetshop\niva\il\servlet\mvc\ImageShowController.class
 internetshop\niva\il\servlet\mvc\LoginController.class
+internetshop\niva\il\database\jdbc\ProductVatDAOImpl.class
 internetshop\niva\il\servlet\mvc\LoginControllerImpl.class
 internetshop\niva\il\servlet\mvc\MVCModel.class
 lv\javaguru\java2\servlet\HelloWorldServlet.class

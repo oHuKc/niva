@@ -2,6 +2,7 @@ package internetshop.niva.il.database.jdbc;
 
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.domain.Cart;
+import internetshop.niva.il.domain.ProductVAT;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -26,19 +27,23 @@ public class CartDAOImpl  extends DAOImplement {
 
         try {
             connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT  INTO cart VALUES (id, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, String.valueOf(cart.getProductid()));
+            ProductVAT productvat = new ProductVAT();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT  INTO cart VALUES (id, ?, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, cart.getProductid());
             preparedStatement.setString(2, cart.getProductname());
             preparedStatement.setString(3, cart.getProductbrand());
             preparedStatement.setString(4, cart.getProductdescription());
             preparedStatement.setString(5, cart.getProductstatus());
             preparedStatement.setString(6, cart.getProductprice());
+            preparedStatement.setString(7, cart.getTotal());
+
 
 
             preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if(rs.next()) {
-                //cart.setProductid(rs.getString(1));
+               //cart.setProductid(rs.getString(1));
+                productvat.setProductid(rs.getString(1));
             }
         } catch (Throwable e) {
             System.out.println("Exception occured while execute CartDAOImpl.create()");
@@ -62,7 +67,9 @@ public class CartDAOImpl  extends DAOImplement {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Cart cart = new Cart();
-                //cart.setProductid(resultSet.getString("PRODUCT_ID"));
+                ProductVAT productvat = new ProductVAT();
+                cart.setProductid(resultSet.getString("PRODUCT_ID"));
+                //productvat.setProductid(resultSet.getString("PRODUCT_ID"));
                 cart.setProductname(resultSet.getString("PRODUCT_NAME"));
                 cart.setProductbrand(resultSet.getString("PRODUCT_BRAND"));
                 cart.setProductdescription(resultSet.getString("PRODUCT_DESCRIPTION"));
@@ -90,7 +97,9 @@ public class CartDAOImpl  extends DAOImplement {
             Cart cart = null;
             if (resultSet.next()) {
                 cart = new Cart();
-               //cart.setProductid(resultSet.getString("PRODUCT_ID"));
+                ProductVAT productvat = new ProductVAT();
+                productvat.setProductid(resultSet.getString("PRODUCT_ID"));
+                cart.setProductprice(String.valueOf(productvat));
                 cart.setProductname(resultSet.getString("PRODUCT_NAME"));
                 cart.setProductbrand(resultSet.getString("PRODUCT_BRAND"));
                 cart.setProductdescription(resultSet.getString("PRODUCT_DESCRIPTION"));

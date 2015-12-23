@@ -10,22 +10,16 @@ import java.io.Serializable;
 @Table( name  =  "cart")
 public class Cart implements Serializable {
 
-
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", columnDefinition = "INT")
-    private Long id;
-
-   // @Id
-   // @Column( name = "PRODUCT_ID", columnDefinition = "INT(10)")
-   // private String productid;
+    @ManyToOne
+    @JoinColumn( name = "ORDER_ID",
+            insertable = false, updatable = false,
+            nullable = false)
+    private ProductVAT orderid;
 
     @Id
-    @ManyToOne
-    @JoinColumn( name = "PRODUCT_ID",
-                insertable = true, updatable = true,
-                nullable = false)
-    private ProductVAT productid;
+    @Column( name = "PRODUCT_ID", columnDefinition = "INT(10)")
+    private String productid;
+
 
     @Column( name = "PRODUCT_NAME", columnDefinition = "CHAR(40)")
     private String productname;
@@ -42,24 +36,29 @@ public class Cart implements Serializable {
     @Column( name = "PRICE", columnDefinition = "DECIMAL(10,2)")
     private String productprice;
 
-    public Long getId() {
-        return id;
+    @Column ( name = "TOTAL", columnDefinition = "DECIMAL(10,2)")
+    private String total;
+
+    public ProductVAT getId() {
+        return orderid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(ProductVAT orderid) {
+        this.orderid = orderid;
     }
 
 
-    //public String getProductid() {return productid;}
+    public String getProductid() {return productid;}
 
-   // public void  setProductid(String productid) {this.productid = productid;}
+    public void  setProductid(String productid) {this.productid = productid;}
 
     public Cart() {
 
     }
-    public Cart (ProductVAT productid, String productname, String  productbrand, String  productdescription,
+    public Cart (ProductVAT orderid, String productid, String productname,
+                 String  productbrand, String  productdescription,
                  String productstatus, String productprice ) {
+        this.orderid = orderid;
         this.productname = productname;
         this.productbrand = productbrand;
         this.productdescription = productdescription;
@@ -68,9 +67,6 @@ public class Cart implements Serializable {
         this.productid = productid;
     }
 
-    public ProductVAT getProductid() {return productid;}
-
-    public void setProductid(ProductVAT productid) {this.productid = productid;}
 
     public String getProductname() {return productname;}
 
@@ -91,4 +87,8 @@ public class Cart implements Serializable {
     public String getProductprice() {return productprice;}
 
     public void setProductprice(String productprice) {this.productprice = productprice;}
+
+    public String getTotal() {return total;}
+
+    public void setTotal(String total) {this.total = total;}
 }

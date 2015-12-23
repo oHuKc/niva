@@ -2,8 +2,10 @@ package internetshop.niva.il.database.hibernate;
 
 import internetshop.niva.il.database.CartDAO;
 import internetshop.niva.il.database.DBException;
+import internetshop.niva.il.database.ProductVATDAO;
 import internetshop.niva.il.database.jdbc.DbCleaner;
 import internetshop.niva.il.domain.Cart;
+import internetshop.niva.il.domain.ProductVAT;
 import internetshop.niva.il.servlet.spring.SpringConfig;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,6 +36,10 @@ public class CartDAOImplTest {
     @Qualifier(value = "CartDAOImpl_Hibernate")
     private CartDAO cartDAO;
 
+    @Autowired
+    @Qualifier(value = "ProductVatDAOImpl_Hibernate")
+    private ProductVATDAO productVATDAO;
+
 
     @Before
     public void setUp() throws Exception {
@@ -42,8 +48,12 @@ public class CartDAOImplTest {
 
     @Test
     public void testCreate() throws Exception {
-        Cart cart1 = createCart(1L, "Cart test 1", "Test Hibernate", "TEST Nr1", "AVAILABLE TEST", "$1000.01");
-        Cart cart2 = createCart(2L, "Cart test 2", "Test Hibernate", "TEST Nr2", "AVAILABLE TEST", "$2000.01");
+
+        ProductVAT productvat1 = productVATDAO.getById("1");
+        ProductVAT productvat2 = productVATDAO.getById("2");
+
+        Cart cart1 = createCart(productvat1, "Cart test 1", "Test Hibernate", "TEST Nr1", "AVAILABLE TEST", "$1000.01");
+        Cart cart2 = createCart(productvat2, "Cart test 2", "Test Hibernate", "TEST Nr2", "AVAILABLE TEST", "$2000.01");
 
         cartDAO.create(cart1);
         cartDAO.create(cart2);
@@ -53,7 +63,7 @@ public class CartDAOImplTest {
 
     }
 
-    private Cart createCart( long productid, String productname, String productbrand,
+    private Cart createCart( ProductVAT productid, String productname, String productbrand,
                             String productdescription, String status, String price )
             throws DBException, SQLException {
         Cart cart = new Cart();

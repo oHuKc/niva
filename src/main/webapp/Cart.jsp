@@ -1,8 +1,8 @@
- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <jsp:useBean id="cart" scope="session" class="internetshop.niva.il.database.jdbc.CartDAOImpl"/>
- <jsp:useBean id="vat" scope="session" class="internetshop.niva.il.database.hibernate.ProductVatDAOImpl"/>
- <jsp:useBean id="tv" scope="session" class="internetshop.niva.il.database.jdbc.TVDAOImpl"/>
+<jsp:useBean id="tv" scope="session" class="internetshop.niva.il.database.jdbc.TVDAOImpl"/>
 <%--
   Created by IntelliJ IDEA.
   User: ilugovecs
@@ -23,7 +23,7 @@
         <thead>
         <tr>
           <th>Product</th>
-          <!--<th>Quantity</th> -->
+          <th class="text-center"></th>
           <th class="text-center">Price</th>
           <th class="text-center">Total</th>
           <th> </th>
@@ -35,8 +35,17 @@
     <h1>Cart is empty.</h1>
  <% } else {%>
 
+    <c:set var="shipping" value="${0}"/>
+    <c:set var="subtotal" value="${0}"/>
+    <c:set var="total" value="${0}" />
+
         <c:forEach items='${cart.getAll()}' var = "cart">
-        <tr>
+            <c:set var="ptotal" value ="${cart.productprice * 1.21}"/>
+            <c:set var="shipping" value="${5.99}"/>
+            <c:set var="subtotal" value="${subtotal + cart.productprice * 1.21}"/>
+            <c:set var="total" value="${subtotal + shipping}"/>
+
+            <tr>
           <td class="col-sm-8 col-md-6">
             <div class="media">
               <a class="thumbnail pull-left" href="#">
@@ -48,13 +57,13 @@
                 <span>Status: </span><span class="text-success"><strong><c:out value="${cart.productstatus}"/></strong></span>
               </div>
             </div></td>
-          <!--
+
           <td class="col-sm-1 col-md-1" style="text-align: center">
-            <input type="email" class="form-control" id="exampleInputEmail1" value="1">
+            <!--<input type="email" class="form-control" id="exampleInputEmail1" value="1"> -->
           </td>
-          -->
+
           <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="$${cart.productprice}"/></strong></td>
-          <td class="col-sm-1 col-md-1 text-center"><strong>???</strong></td>
+          <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="$${cart.productprice * 1.21}"/></strong></td>
           <td class="col-sm-1 col-md-1">
               <form id="CartRemove">
             <button type="button" class="btn btn-danger"  href="javascript:;" onclick="document.getElementById('CartRemove').submit();">
@@ -72,21 +81,21 @@
           <td>   </td>
           <td>   </td>
           <td><h5>Subtotal</h5></td>
-          <td class="text-right"><h5><strong>???</strong></h5></td>
+          <td class="text-right"><h5><strong><c:out value="$${subtotal}"/></strong></h5></td>
         </tr>
         <tr>
           <td>   </td>
           <td>   </td>
           <td>   </td>
           <td><h5>Estimated shipping</h5></td>
-          <td class="text-right"><h5><strong>???</strong></h5></td>
+          <td class="text-right"><h5><strong><c:out value="$${shipping}"/></strong></h5></td>
         </tr>
         <tr>
           <td>   </td>
           <td>   </td>
           <td>   </td>
           <td><h3>Total</h3></td>
-          <td class="text-right"><h3><strong>???</strong></h3></td>
+          <td class="text-right"><h3><strong><c:out value="$${total}"/></strong></h3></td>
         </tr>
         <tr>
           <td>   </td>
