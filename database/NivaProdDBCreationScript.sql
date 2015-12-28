@@ -146,7 +146,8 @@ CREATE TABLE niva_production.wearable_technology
 DROP TABLE IF EXISTS  niva_production.product_vat;
 CREATE TABLE niva_production.product_vat
 (
-  ORDER_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  ORDER_ID INT PRIMARY KEY AUTO_INCREMENT,
+  PRODUCT_ID INT(10),
   DATE TIMESTAMP DEFAULT NOW(),
   VAT_NAME CHAR(40),
   VAT DECIMAL(10,2),
@@ -161,7 +162,7 @@ CREATE TABLE niva_production.product_vat
 DROP TABLE IF EXISTS  niva_production.cart;
 CREATE TABLE niva_production.cart
 (
-  ORDER_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  ORDER_ID INT PRIMARY KEY AUTO_INCREMENT,
   PRODUCT_ID INT(10),
   PRODUCT_NAME CHAR(40),
   PRODUCT_BRAND CHAR(40),
@@ -176,6 +177,17 @@ CREATE TABLE niva_production.cart
   ROW_FORMAT=DEFAULT
   AUTO_INCREMENT=0;
 
+DROP TRIGGER niva_production.update_product_vat;
+CREATE TRIGGER niva_production.update_product_vat
+AFTER INSERT ON niva_production.cart
+FOR EACH ROW
+  BEGIN
+    UPDATE niva_production.product_vat SET PRODUCT_ID = new.PRODUCT_ID WHERE product_vat.ORDER_ID = NEW.ORDER_ID;
+    UPDATE niva_production.product_vat SET VAT=1.21 WHERE product_vat.ORDER_ID = NEW.ORDER_ID;
+    UPDATE niva_production.product_vat SET VAT_NAME='21%' WHERE product_vat.ORDER_ID = NEW.ORDER_ID;
+    UPDATE niva_production.product_vat SET PRICE = new.PRICE WHERE product_vat.ORDER_ID = NEW.ORDER_ID;
+    UPDATE niva_production.product_vat SET PRICE_TOTAL = new.PRICE*product_vat.VAT WHERE product_vat.ORDER_ID = NEW.ORDER_ID;
+  END;
 
 
 

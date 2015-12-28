@@ -32,10 +32,13 @@ public class CartDAOImpl extends DAOImplement implements CartDAO {
         sessionFactory.getCurrentSession().save(cart);
     }
 
-    public Cart getById(Long productidid) throws DBException {
+    public Cart getById(Long productid) throws DBException {
         Cart cart;
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Cart.class);
-        criteria.add(Restrictions.eq("productid", productidid));
+        Integer id = null;
+        criteria.add(Restrictions.or(
+                Restrictions.eq("productid", productid),
+                Restrictions.eq("id", id)));
         return cart = (Cart) criteria.uniqueResult();
     }
 
