@@ -39,11 +39,13 @@
     <c:set var="subtotal" value="${0}"/>
     <c:set var="total" value="${0}" />
 
-        <c:forEach items='${cart.getAll()}' var = "cart">
+        <c:forEach items='${cart.getAll()}' var = "cart" varStatus="status">
             <c:set var="ptotal" value ="${cart.productprice * 1.21}"/>
             <c:set var="shipping" value="${5.99}"/>
             <c:set var="subtotal" value="${subtotal + cart.productprice * 1.21}"/>
             <c:set var="total" value="${subtotal + shipping}"/>
+            <c:set var="itemid" value="${cart.productid}"/>
+
 
             <tr>
           <td class="col-sm-8 col-md-6">
@@ -52,9 +54,13 @@
                <img class="media-object" src="images/cart_product.png"><p>
               </a>
               <div class="media-body">
-                <h4 class="media-heading"><a href="#"><c:out value="${cart.productname}"/></a></h4>
-                <h5 class="media-heading"> by <a href="#"><c:out value="${cart.productbrand}"/></a></h5>
-                <span>Status: </span><span class="text-success"><strong><c:out value="${cart.productstatus}"/></strong></span>
+                <h5 class="media-heading">Product ID: <a href="#">
+                    <c:forEach items="${itemid}" var="id" varStatus="status">
+                        <c:out value="${id}"/></a></h5>
+                    </c:forEach>
+                <h5 class="media-heading">Product name: <a href="#"><c:out value="${cart.productname}"/></a></h5>
+                <h5 class="media-heading">Brand: <a href="#"><c:out value="${cart.productbrand}"/></a></h5>
+                <h5 class="media-heading">Description: <a href="#"><c:out value="${cart.productdescription}"/></a></h5>
               </div>
             </div></td>
 
@@ -68,7 +74,7 @@
               <form id="CartRemove">
             <button type="button" class="btn btn-danger"  href="javascript:;" onclick="document.getElementById('CartRemove').submit();">
               <span class="glyphicon glyphicon-remove" type="submit"></span>Remove
-                <input type="hidden" name="btnCartIDremove" value="${cart.productid}"/>
+                <input type="hidden" name="btnCartIDremove" value="${itemid}"/>
                 <input type="hidden" name="btnCartState" value="<%session.getAttribute("cartCount");%>"/>
             </button>
               </form>

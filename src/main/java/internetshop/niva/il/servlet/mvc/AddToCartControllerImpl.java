@@ -45,6 +45,9 @@ public class AddToCartControllerImpl implements  AddToCartController {
     public String addToCart(HttpServletRequest req, HttpServletResponse resp)
             throws DBException, SQLException {
 
+
+
+
         String cartprodid = req.getParameter("btnCartTVid");
         String cartprodtype = req.getParameter("btnCartTVtype");
         String cartprodbrand = req.getParameter("btnCartTVbrand");
@@ -65,7 +68,8 @@ public class AddToCartControllerImpl implements  AddToCartController {
             pvat.setCart(new ArrayList<Cart>());
             pvat.getCart().add(cart);
             productVATDAO.create(pvat);
-
+            HttpSession session = req.getSession();
+            session.setAttribute("removeid", cartprodid);
             //cartdao.create(cart);
 
         }
