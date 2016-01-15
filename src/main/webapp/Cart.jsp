@@ -1,3 +1,4 @@
+<%@ page import="java.util.Vector" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
@@ -30,58 +31,49 @@
         </tr>
         </thead>
         <tbody>
-<%
-  if (request.getAttribute("cartCount") == null ) { %>
-    <h1>Cart is empty.</h1>
- <% } else {%>
 
     <c:set var="shipping" value="${0}"/>
     <c:set var="subtotal" value="${0}"/>
     <c:set var="total" value="${0}" />
-
         <c:forEach items='${cart.getAll()}' var = "cart" varStatus="status">
             <c:set var="ptotal" value ="${cart.productprice * 1.21}"/>
             <c:set var="shipping" value="${5.99}"/>
             <c:set var="subtotal" value="${subtotal + cart.productprice * 1.21}"/>
             <c:set var="total" value="${subtotal + shipping}"/>
             <c:set var="itemid" value="${cart.productid}"/>
-
-
             <tr>
           <td class="col-sm-8 col-md-6">
             <div class="media">
+                <a  class="pull-left" thref="#"><img src ="tv?imgID=<c:out value="${itemid}"/>" width="115" border="0" ></a>
+                <!--
               <a class="thumbnail pull-left" href="#">
                <img class="media-object" src="images/cart_product.png"><p>
-              </a>
+              </a> -->
+
               <div class="media-body">
-                <h5 class="media-heading">Product ID: <a href="#">
-                    <c:forEach items="${itemid}" var="id" varStatus="status">
-                        <c:out value="${id}"/></a></h5>
-                    </c:forEach>
+                <h5 class="media-heading">Product ID: <a href="#"><c:out value="${itemid}"/></a></h5>
                 <h5 class="media-heading">Product name: <a href="#"><c:out value="${cart.productname}"/></a></h5>
                 <h5 class="media-heading">Brand: <a href="#"><c:out value="${cart.productbrand}"/></a></h5>
                 <h5 class="media-heading">Description: <a href="#"><c:out value="${cart.productdescription}"/></a></h5>
               </div>
             </div></td>
-
           <td class="col-sm-1 col-md-1" style="text-align: center">
             <!--<input type="email" class="form-control" id="exampleInputEmail1" value="1"> -->
           </td>
-
           <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="$${cart.productprice}"/></strong></td>
           <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="$${cart.productprice * 1.21}"/></strong></td>
           <td class="col-sm-1 col-md-1">
               <form id="CartRemove">
-            <button type="button" class="btn btn-danger"  href="javascript:;" onclick="document.getElementById('CartRemove').submit();">
-              <span class="glyphicon glyphicon-remove" type="submit"></span>Remove
-                <input type="hidden" name="btnCartIDremove" value="${itemid}"/>
-                <input type="hidden" name="btnCartState" value="<%session.getAttribute("cartCount");%>"/>
-            </button>
+                  <button type="submit" class="btn btn-danger">
+                      <span class="glyphicon glyphicon-remove" type="submit"></span>Remove
+                      <input type="hidden" name="btnCartIDremove" value="${itemid}"/>
+                  </button>
+
               </form>
           </td>
         </tr>
         </c:forEach>
-<%} %>
+
         <tr>
           <td>   </td>
           <td>   </td>
@@ -123,5 +115,4 @@
 </div>
 </body>
 <!--%request.getSession(false).invalidate();%-->
-
 </html>

@@ -45,9 +45,6 @@ public class AddToCartControllerImpl implements  AddToCartController {
     public String addToCart(HttpServletRequest req, HttpServletResponse resp)
             throws DBException, SQLException {
 
-
-
-
         String cartprodid = req.getParameter("btnCartTVid");
         String cartprodtype = req.getParameter("btnCartTVtype");
         String cartprodbrand = req.getParameter("btnCartTVbrand");
@@ -69,13 +66,11 @@ public class AddToCartControllerImpl implements  AddToCartController {
             pvat.getCart().add(cart);
             productVATDAO.create(pvat);
             HttpSession session = req.getSession();
-            session.setAttribute("removeid", cartprodid);
-            //cartdao.create(cart);
-
+            String idaddcarcount =  req.getParameter("idAddCartCount");
+            session.setAttribute("addCartCount", idaddcarcount );
         }
         return cart.toString();
     }
-
 
     private Integer getImage(HttpServletRequest req,
                              HttpServletResponse resp) throws
@@ -97,7 +92,6 @@ public class AddToCartControllerImpl implements  AddToCartController {
         return ImageID;
 
     }
-
 
     @Transactional
     private Object twocontrollers(HttpServletRequest request, HttpServletResponse response)

@@ -56,15 +56,15 @@
 
 
       <!--Retrieve only selected TV products by screen size :-->
-      <c:forEach items='${tv.get4KUHD(screenID)}' var="tv">
+      <c:forEach items='${tv.get4KUHD(screenID)}' var="tv" varStatus="status">
         <h4><c:out  value="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  $${tv.tvprice}" /><!--<img src="images/cart.png">--></h4>
 
         <!--Draw image :-->
-        <c:set var="tvidId" value="${tv.tvid}" scope="request"/>
-        <%request.setAttribute("model", request.getAttribute("tvidId"));%>
-        <a href="tv?imgID=${tvidId}" target="_blank"><img src ="tv?imgID=<%=request.getAttribute("model")%>" width="115" border="0" ></a>
+        <c:set var="tvidId" value="${tv.tvid}" scope="session"/>
+        <%session.setAttribute("model", session.getAttribute("tvidId"));%>
+        <a href="tv?imgID=${tvidId}" target="_blank"><img src ="tv?imgID=<%=session.getAttribute("model")%>" width="115" border="0" ></a>
 
-        <form class="form-inline">
+        <form class="form-inline" method="post">
           <div class="checkbox">
             <!-- <label><input type="checkbox"></label> -->
           </div>
@@ -79,6 +79,7 @@
               <input type="hidden" name="btnCartTVdescr" value="${tv.tvdescription}"/>
               <input type="hidden" name="btnCartTVprice" value="${tv.tvprice}"/>
               <input type="hidden" name="btnCartState" value="<%=session.getAttribute("cartCount")%>"/>
+              <input type="hidden" name="idAddCartCount" value="${status.count}"/>
             </button>
           </form>
         </form>
@@ -90,16 +91,16 @@
         if ( request.getParameter("4kid99") != null && session.getAttribute("parameter") != null) { %>
 
       <!--Retrieve all TV  products on a page :-->
-      <c:forEach items = '${tv.getAll()}' var = "tv" >
+      <c:forEach items = '${tv.getAll()}' var = "tv" varStatus="status">
         <h4><c:out value ="${tv.tvid} ${tv.tvtype} ${tv.tvscreensize}  ${tv.tvebrand}  ${tv.tvdescription}  $${tv.tvprice}"/></h4>
 
         <!--Draw image :-->
-        <c:set var="tvidId" value="${tv.tvid}" scope="request" />
-        <%request.setAttribute("model", request.getAttribute("tvidId"));%>
-        <a href="tv?imgID=${tvidId}" target="_blank"><img src ="tv?imgID=<%=request.getAttribute("model")%>" width="115" border="0" ></a>
+        <c:set var="tvidId" value="${tv.tvid}" scope="session" />
+        <%session.setAttribute("model", session.getAttribute("tvidId"));%>
+        <a href="tv?imgID=${tvidId}" target="_blank"><img src ="tv?imgID=<%=session.getAttribute("model")%>" width="115" border="0" ></a>
         <!-- Add to Cart-->
         <hr style="border: none">
-        <form  id="Cart2">
+        <form  id="Cart2" method="post">
           <button class="btn btn-success" href="javascript:;" onclick="document.getElementById('Cart2').submit();">
             <span class="glyphicon glyphicon-shopping-cart" name="btnCart"  type="submit"></span>Add to Cart
             <input type="hidden" name="btnCart" value="${tv.tvid} ${tv.tvtype} ${tv.tvebrand} ${tv.tvdescription} $${tv.tvprice}"/>
