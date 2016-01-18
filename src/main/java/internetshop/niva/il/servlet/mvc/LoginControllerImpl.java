@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
@@ -30,14 +31,17 @@ public class LoginControllerImpl implements LoginController {
     public String dogetUser(HttpServletRequest request, HttpServletResponse response)
             throws DBException {
 
+        HttpSession session = request.getSession();
+
+        if (session.getAttribute("sID") != null) {
             String login = (String) request.getParameter("login");
             String email = (String) request.getParameter("InputEmail1");
             String firstName = (String) request.getParameter("inputName");
             String lastName = (String) request.getParameter("inputSurname");
             String pass = (String) request.getParameter("InputPassword1");
 
-            System.out.println("My login is "+login);
-            System.out.println("My email is "+email);
+            System.out.println("My login is " + login);
+            System.out.println("My email is " + email);
 
             User user = new User();
             user.setPassword(pass);
@@ -47,10 +51,13 @@ public class LoginControllerImpl implements LoginController {
 
             System.out.println(user.getPassword());
 
-        if (request.getParameter("login") != null) {
-            userDAO.create(user);
-        }
-            return  user.toString();
+            if (request.getParameter("login") != null) {
+                userDAO.create(user);
+            }
+
+            return user.toString();
+         }
+        return null;
         }
 
 

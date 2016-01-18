@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -97,10 +98,17 @@ public class AddToCartControllerImpl implements  AddToCartController {
     private Object twocontrollers(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, IOException {
 
-        HashMap<Integer, String> twocontrollers = new HashMap<Integer, String>();
+        HttpSession session = request.getSession();
 
-        twocontrollers.put(getImage(request,response), addToCart(request,response));
+        if ( session.getId() == session.getAttribute("sID") ) {
 
+            HashMap<Integer, String> twocontrollers = new HashMap<Integer, String>();
+
+            twocontrollers.put(getImage(request, response), addToCart(request, response));
+        } else {
+            PrintWriter out = response.getWriter();
+            out.println("<h1>" + "Wrong Session !" + "</h1>");
+        }
         return null;
     }
 

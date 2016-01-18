@@ -9,6 +9,7 @@ lv\javaguru\java2\servlet\HelloWorldServlet.class
 internetshop\niva\il\database\ProductVATDAO.class
 internetshop\niva\il\database\jdbc\DbCleaner.class
 lv\javaguru\java2\servlet\ParameterProcessingServlet.class
+internetshop\niva\il\database\hibernate\LoginWelcomeDAOImpl.class
 internetshop\niva\il\domain\User.class
 lv\javaguru\java2\domain\User.class
 internetshop\niva\il\domain\TV.class
@@ -23,14 +24,17 @@ internetshop\niva\il\servlet\mvc\MenuControllerImpl.class
 internetshop\niva\il\servlet\mvc\ProductController.class
 lv\javaguru\java2\database\DBException.class
 internetshop\niva\il\servlet\mvc\MVCController.class
+internetshop\niva\il\domain\LoginWelcome.class
 internetshop\niva\il\servlet\mvc\ShoppingCartController.class
 internetshop\niva\il\database\GoodsDAO.class
 internetshop\niva\il\servlet\mvc\SelectController.class
+internetshop\niva\il\database\LoginWelcomeDAO.class
 internetshop\niva\il\servlet\SelectServlet.class
 internetshop\niva\il\domain\GoodsType.class
 lv\javaguru\java2\database\jdbc\UserDAOImpl.class
 internetshop\niva\il\database\GoodsTypeDAO.class
 internetshop\niva\il\servlet\mvc\TVControllerImpl.class
+internetshop\niva\il\servlet\mvc\LoginWelcomeController.class
 internetshop\niva\il\servlet\spring\SpringConfig.class
 internetshop\niva\il\domain\ProductVAT.class
 internetshop\niva\il\servlet\mvc\CartController.class
@@ -56,6 +60,7 @@ internetshop\niva\il\database\jdbc\CustomerDAOImpl.class
 internetshop\niva\il\domain\Cart.class
 internetshop\niva\il\database\jdbc\DAOImplement.class
 internetshop\niva\il\database\jdbc\GoodsTypeDAOImpl.class
+internetshop\niva\il\servlet\mvc\LoginWelcomeControllerImpl.class
 internetshop\niva\il\servlet\ProductServlet.class
 lv\javaguru\java2\database\jdbc\DAOImpl.class
 lv\javaguru\java2\database\UserDAO.class

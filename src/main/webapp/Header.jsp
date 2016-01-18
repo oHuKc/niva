@@ -1,6 +1,4 @@
 <%@ page import="org.hibernate.Session" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:useBean id="cart" scope="session" class="internetshop.niva.il.database.jdbc.CartDAOImpl"/>
@@ -23,9 +21,6 @@
 <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +35,7 @@
   <li><a href="#">Gift ideas</a></li>
   <li><a href="login">Registry</a></li>
   <li><a href="#">Order Status</a></li>
-  <li><a href=#>Log in</a></li>
+  <li><a href="welcome">Log in</a></li>
 </ul>
 <nav class="navbar navbar-default">
 <div class="container-fluid">
@@ -71,23 +66,22 @@
         <a href="cart" aria-label="Cart" title="Cart" data-lid="hdr_carticon">
           <div class="count-container" aria-hidden="true">
             <span class="hidden-text"></span>
-          </div>
-          <span class="header-icon-cart"><img src="images/cart.png"></span></a>
-          <span class="badge" type="hidden">
-
-<!-- Cart State-->
-<c:forEach items='${cart.getAll()}' var = "cart" varStatus="count">
-  <c:set var ="size" value="${count.count}"/>
-</c:forEach>
-   <c:if test="${not empty size}">
-       <c:out value="${size}"/>
-   </c:if>
-    <c:if test="${empty size}">0</c:if>
-          </span></a>
+           </div>
+            <span class="header-icon-cart"><img src="images/cart.png"></span></a>
+            <span class="badge" type="hidden">
+             <!-- Cart State-->
+             <c:forEach items='${cart.getAll()}' var = "cart" varStatus="count">
+             <c:set var ="size" value="${count.count}"/>
+             </c:forEach>
+             <c:if test="${not empty size}">
+             <c:out value="${size}"/>
+             </c:if>
+             <c:if test="${empty size}">0</c:if>
+            </span></a>
       </div>
     </ul>
   </div><!-- /.navbar-collapse -->
-</div><!-- /.container-fluid -->
+ </div><!-- /.container-fluid -->
 </nav>
 </body>
 <footer class="footer navbar-fixed-bottom">

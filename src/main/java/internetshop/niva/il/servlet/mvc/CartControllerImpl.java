@@ -32,14 +32,18 @@ public class CartControllerImpl extends HttpServlet implements CartController {
     public String removeCartID(HttpServletResponse resp, HttpServletRequest req)
             throws DBException, SQLException {
 
-         String cartremoveid = req.getParameter("btnCartIDremove");
+        HttpSession session = req.getSession();
 
-        if (req.getParameter("btnCartIDremove") != null) {
+        if (session.getId() == session.getAttribute("sID") ) {
+            String cartremoveid = req.getParameter("btnCartIDremove");
 
-            System.out.print("Candidate ID to remove:" + cartremoveid +"\n");
+            if (req.getParameter("btnCartIDremove") != null) {
 
-            cartdao.delete(cartremoveid);
+                System.out.print("Candidate ID to remove:" + cartremoveid + "\n");
 
+                cartdao.delete(cartremoveid);
+
+            }
         }
         return  null;
     }

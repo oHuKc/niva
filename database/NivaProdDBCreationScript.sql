@@ -142,6 +142,29 @@ CREATE TABLE niva_production.wearable_technology
   DESCRIPTION CHAR(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
 
+
+#------------------------------------------------------------------------------
+DROP TABLE IF EXISTS  niva_production.users;
+CREATE TABLE niva_production.users
+(
+  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  email VARCHAR(100),
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  password VARCHAR(50)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
+#------------------------------------------------------------------------------
+DROP TABLE IF EXISTS  niva_production.welcome;
+CREATE TABLE niva_production.welcome
+(
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  USERNAME VARCHAR(50),
+  PASSWORD VARCHAR(50),
+  CREATE_DATE TIMESTAMP DEFAULT NOW()
+) COLLATE='latin1_swedish_ci'
+  ENGINE=InnoDB
+  ROW_FORMAT=DEFAULT
+  AUTO_INCREMENT=0;
 #------------------------------------------------------------------------------
 DROP TABLE IF EXISTS  niva_production.product_vat;
 CREATE TABLE niva_production.product_vat
