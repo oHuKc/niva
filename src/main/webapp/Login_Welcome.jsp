@@ -15,12 +15,22 @@
         <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
       </div>
       <div class="form-group">
-        <label for="InputPassword">Password</label>
-        <input type="password" class="form-control" id="InputPassword" placeholder="Password" name="InputPassword">
+        <label for="InputPassword">Password <h5>          <%
+          if (request.getAttribute("wrongpassword") != null ) {
+
+            request.getAttribute("wrongpassword");
+
+            System.out.print(request.getAttribute("wrongpassword"));
+          }
+        %></h5>
+        </label>
+        <input type="password" class="form-control" id="InputPassword" placeholder="Password" name="password">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
   </div>
 </div>
+
 </body>
+
 </html>

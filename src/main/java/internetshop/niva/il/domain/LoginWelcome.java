@@ -17,8 +17,8 @@ public class LoginWelcome {
     private Long id;
 
     @Id
-    @Column(name = "USERNAME", columnDefinition = "VARCHAR(50)")
-    private String username;
+    @Column(name = "LOGIN", columnDefinition = "VARCHAR(50)")
+    private String login;
 
     @Column(name = "PASSWORD", columnDefinition = "VARCHAR(50)")
     private String password;
@@ -27,9 +27,9 @@ public class LoginWelcome {
 
     public void setId(Long id) {this.id = id;}
 
-    public String getUsername(){return  username;}
+    public String getLogin(){return  login;}
 
-    public void  setUsername(String username) {this.username = username;}
+    public void  setLogin(String login) {this.login = login;}
 
     public String getPassword(){return password;}
 

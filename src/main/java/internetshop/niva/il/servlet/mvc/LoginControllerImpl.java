@@ -40,10 +40,8 @@ public class LoginControllerImpl implements LoginController {
             String lastName = (String) request.getParameter("inputSurname");
             String pass = (String) request.getParameter("InputPassword1");
 
-            System.out.println("My login is " + login);
-            System.out.println("My email is " + email);
-
             User user = new User();
+            user.setLogin(login);
             user.setPassword(pass);
             user.setEmail(email);
             user.setFirstName(firstName);
@@ -53,7 +51,16 @@ public class LoginControllerImpl implements LoginController {
 
             if (request.getParameter("login") != null) {
                 userDAO.create(user);
+
+                System.out.println("Registered login: " + login);
+                System.out.println("Registered password: " + email);
+
+               // if (userDAO.alreadyExists(login) == true) {
+               //    System.out.print("Username already exist!"+"\n");
+                    //userDAO.delete(user);
+              // }else {userDAO.create(user);}
             }
+
 
             return user.toString();
          }

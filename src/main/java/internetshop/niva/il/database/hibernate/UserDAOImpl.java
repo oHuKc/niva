@@ -4,12 +4,14 @@ import internetshop.niva.il.database.UserDAO;
 import internetshop.niva.il.database.DBException;
 import internetshop.niva.il.database.jdbc.DAOImplement;
 import internetshop.niva.il.domain.User;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -49,6 +51,10 @@ public class UserDAOImpl extends DAOImplement implements UserDAO {
         return (List<User>) sessionFactory.getCurrentSession().createCriteria(User.class).list();
     }
 
+    public User getUserLogin(String login) {
+        Session session = sessionFactory.getCurrentSession();
+        return (User)  session.get(User.class, login);
+    }
 
     public User getUserByLogin(String login) throws DBException {
         List result = sessionFactory.getCurrentSession().createCriteria(User.class).add(Restrictions.or(
@@ -57,5 +63,12 @@ public class UserDAOImpl extends DAOImplement implements UserDAO {
                 .list();
 
         return result.size() == 1 ? (User)result.get(0) : null;
+    }
+
+    @Transactional
+    public boolean alreadyExists(String login) {
+        Session session = sessionFactory.getCurrentSession();
+        session.get(User.class, login);
+        return session.get(User.class, login).equals(login);
     }
 }

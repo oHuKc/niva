@@ -10,7 +10,7 @@ import java.sql.Date;
 @Table(name = "users")
 public class User {
 
-    @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", columnDefinition = "INT")
     private Long id;
@@ -26,6 +26,10 @@ public class User {
 
     @Column(name = "password", columnDefinition = "VARCHAR(50)")
     private String password;
+
+    @Id
+    @Column(name = "login", columnDefinition = "VARCHAR(50)")
+    private String login;
 
     public Long getId() {
         return id;
@@ -67,6 +71,8 @@ public class User {
         this.password = password;
     }
 
+    public String getLogin() {return login;}
 
+    public void setLogin(String login) {this.login = login;}
 
 }

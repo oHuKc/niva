@@ -20,6 +20,8 @@ public interface UserDAO {
 
     List<User> getAll() throws internetshop.niva.il.database.DBException;
 
+    User getUserLogin(String login);
+
 
     /**
      * Check by login and email
@@ -28,5 +30,7 @@ public interface UserDAO {
      * @throws lv.javaguru.java2.database.DBException
      */
     User getUserByLogin(String login) throws internetshop.niva.il.database.DBException;
+
+    boolean alreadyExists(String login);
 
 }

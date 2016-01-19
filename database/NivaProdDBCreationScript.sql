@@ -142,29 +142,39 @@ CREATE TABLE niva_production.wearable_technology
   DESCRIPTION CHAR(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
 
-
 #------------------------------------------------------------------------------
 DROP TABLE IF EXISTS  niva_production.users;
 CREATE TABLE niva_production.users
 (
-  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  email VARCHAR(100),
-  first_name VARCHAR(50),
-  last_name VARCHAR(50),
-  password VARCHAR(50)
+  ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  EMAIL VARCHAR(100),
+  FIRST_NAME VARCHAR(50),
+  LAST_NAME VARCHAR(50),
+  PASSWORD VARCHAR(50),
+  LOGIN VARCHAR(50)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 0;
 #------------------------------------------------------------------------------
 DROP TABLE IF EXISTS  niva_production.welcome;
 CREATE TABLE niva_production.welcome
 (
   ID INT PRIMARY KEY AUTO_INCREMENT,
-  USERNAME VARCHAR(50),
+  LOGIN VARCHAR(50),
   PASSWORD VARCHAR(50),
-  CREATE_DATE TIMESTAMP DEFAULT NOW()
+  CREATE_DATE TIMESTAMP DEFAULT NOW(),
+  INDEX ID (ID),
+  CONSTRAINT ID FOREIGN KEY (ID) REFERENCES niva_production.users (ID)
 ) COLLATE='latin1_swedish_ci'
   ENGINE=InnoDB
   ROW_FORMAT=DEFAULT
   AUTO_INCREMENT=0;
+#------------------------------------------------------------------------------
+DROP TRIGGER  niva_production.welcome_trg;
+CREATE TRIGGER niva_production.welcome_trg
+AFTER INSERT ON niva_production.users
+FOR EACH ROW
+  BEGIN
+    INSERT INTO niva_production.welcome (LOGIN,PASSWORD) VALUES (new.LOGIN,new.PASSWORD);
+  END;
 #------------------------------------------------------------------------------
 DROP TABLE IF EXISTS  niva_production.product_vat;
 CREATE TABLE niva_production.product_vat
@@ -195,7 +205,7 @@ CREATE TABLE niva_production.cart
   TOTAL DECIMAL(10,2) DEFAULT 0,
   INDEX ORDER_ID (ORDER_ID),
   CONSTRAINT ORDER_ID FOREIGN KEY (ORDER_ID) REFERENCES niva_production.product_vat (ORDER_ID)
-)COLLATE='latin1_swedish_ci'
+) COLLATE='latin1_swedish_ci'
   ENGINE=InnoDB
   ROW_FORMAT=DEFAULT
   AUTO_INCREMENT=0;

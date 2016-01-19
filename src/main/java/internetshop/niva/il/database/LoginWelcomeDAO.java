@@ -7,6 +7,9 @@ import internetshop.niva.il.domain.LoginWelcome;
  */
 public interface LoginWelcomeDAO {
 
-    LoginWelcome getByUsername(String username);
+    LoginWelcome getByLogin(String login);
+
+    LoginWelcome getUserLogin(String login);
+
 
 }
