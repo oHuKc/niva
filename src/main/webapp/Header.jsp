@@ -35,7 +35,13 @@
   <li><a href="#">Gift ideas</a></li>
   <li><a href="login">Registry</a></li>
   <li><a href="#">Order Status</a></li>
-  <li><a href="welcome">Log in</a></li>
+  <li><a href="welcome">
+   <%
+      if (session.getAttribute("loggedin") == null ) {%>
+      Log in<%
+  } else { %>
+      Log Out <% } %>
+  </a></li></a></li>
 </ul>
 <nav class="navbar navbar-default">
 <div class="container-fluid">

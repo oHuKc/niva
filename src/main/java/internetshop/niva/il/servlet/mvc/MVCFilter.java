@@ -39,11 +39,11 @@ public class MVCFilter implements Filter {
         controllers = new HashMap<String, MVCController>();
 
         controllers.put("/menu", getBean(MenuController.class));
-        //controllers.put("/tv", getBean(ImageShowController.class));
         controllers.put("/tv", getBean(AddToCartController.class));
         controllers.put("/cart", getBean(CartController.class));
         controllers.put("/login", getBean(LoginController.class));
         controllers.put("/welcome", getBean(LoginWelcomeController.class));
+        controllers.put("/orderstatus", getBean(OrderStatusController.class));
 
         controllers.put("/mvc", getBean(HelloWorldController.class));
         controllers.put("/products", getBean(ProductController.class));

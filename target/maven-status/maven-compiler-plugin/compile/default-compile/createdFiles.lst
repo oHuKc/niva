@@ -18,6 +18,7 @@ lv\javaguru\java2\servlet\SessionUsageServlet.class
 internetshop\niva\il\database\hibernate\TVDAOImpl.class
 lv\javaguru\java2\servlet\RedirectToJSPServlet.class
 internetshop\niva\il\servlet\mvc\AddToCartControllerImpl.class
+internetshop\niva\il\servlet\mvc\OrderStatusController.class
 internetshop\niva\il\servlet\mvc\MenuController.class
 internetshop\niva\il\database\jdbc\CartDAOImpl.class
 internetshop\niva\il\servlet\mvc\MenuControllerImpl.class
@@ -64,4 +65,5 @@ internetshop\niva\il\servlet\mvc\LoginWelcomeControllerImpl.class
 internetshop\niva\il\servlet\ProductServlet.class
 lv\javaguru\java2\database\jdbc\DAOImpl.class
 lv\javaguru\java2\database\UserDAO.class
+internetshop\niva\il\servlet\mvc\OrderStatusControllerImpl.class
 internetshop\niva\il\servlet\mvc\AddToCartController.class

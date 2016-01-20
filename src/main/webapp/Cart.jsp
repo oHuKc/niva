@@ -45,11 +45,6 @@
           <td class="col-sm-8 col-md-6">
             <div class="media">
                 <a  class="pull-left" thref="#"><img src ="tv?imgID=<c:out value="${itemid}"/>" width="115" border="0" ></a>
-                <!--
-              <a class="thumbnail pull-left" href="#">
-               <img class="media-object" src="images/cart_product.png"><p>
-              </a> -->
-
               <div class="media-body">
                 <h5 class="media-heading">Product ID: <a href="#"><c:out value="${itemid}"/></a></h5>
                 <h5 class="media-heading">Product name: <a href="#"><c:out value="${cart.productname}"/></a></h5>

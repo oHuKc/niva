@@ -6,6 +6,7 @@ C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\in
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\LoginWelcomeControllerImpl.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\CartDAO.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\lv\javaguru\java2\servlet\RedirectToJSPServlet.java
+C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\OrderStatusControllerImpl.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\CartController.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\lv\javaguru\java2\database\jdbc\UserDAOImpl.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\lv\javaguru\java2\servlet\ParameterProcessingServlet.java
@@ -41,6 +42,7 @@ C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\in
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\hibernate\TVDAOImpl.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\MVCController.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\database\CustomerDAO.java
+C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\OrderStatusController.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\domain\GoodsType.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\internetshop\niva\il\servlet\mvc\LoginControllerImpl.java
 C:\Users\ilugovecs.EQPMT\Desktop\JavaTraining2015\Git_repo\niva\src\main\java\lv\javaguru\java2\database\UserDAO.java

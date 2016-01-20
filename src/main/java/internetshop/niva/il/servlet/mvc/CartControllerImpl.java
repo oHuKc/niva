@@ -26,7 +26,8 @@ import java.util.HashMap;
 @Component
 public class CartControllerImpl extends HttpServlet implements CartController {
 
-    @Autowired @Qualifier(value = "CartDAOImpl_Hibernate")
+    @Autowired
+    @Qualifier(value = "CartDAOImpl_Hibernate")
     private CartDAO cartdao;
 
     public String removeCartID(HttpServletResponse resp, HttpServletRequest req)
