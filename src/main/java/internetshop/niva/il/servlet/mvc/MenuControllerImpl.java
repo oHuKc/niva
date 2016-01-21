@@ -7,20 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.sql.SQLException;
 
 /**
  * Created by voyager on 2015.11.03..
  */
-@Component
-public class MenuControllerImpl extends HttpServlet implements MenuController {
+//@Component
+@Controller
+public class MenuControllerImpl{
 
     @Autowired
     @Qualifier( value = "TVDAOImpl_Hibernate")
@@ -74,13 +79,20 @@ if (session.getAttribute("sID") != null) {
     req.setAttribute("4kid17", uhd17);
     req.setAttribute("4kid18", uhd18);
     req.setAttribute("4kid19", uhd19);
-         }
+        }
         return null;
     }
-
+/*
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException {
         return  new MVCModel(doGetmMenu(request, response), "/Menu.jsp");
+    }
+*/
+    @RequestMapping(value = "/menu", method = {RequestMethod.GET})
+    public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, SQLException, DBException {
+
+        return new ModelAndView("/Menu.jsp", "model", doGetmMenu(request, response));
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @Table( name = "tv_hometheater", catalog = "niva_production")
 public class TV {
 
-    @Id
+
     @Column( name = "id", columnDefinition = "INT(11)")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long tvid;
@@ -36,7 +36,7 @@ public class TV {
 
     @Column( name = "DESCRIPTION", columnDefinition = "CHAR(100)")
     private String tvdescription;
-
+    @Id
     @Column( name = "SCREEN_TYPE_ID", columnDefinition = "INT(10)")
     private int tvscreentypeid;
 

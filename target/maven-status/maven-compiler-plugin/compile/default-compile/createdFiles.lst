@@ -1,6 +1,7 @@
 internetshop\niva\il\servlet\mvc\ImageShowControllerImpl.class
 internetshop\niva\il\servlet\mvc\HelloWorldController.class
 internetshop\niva\il\servlet\mvc\ImageShowController.class
+internetshop\niva\il\servlet\spring\WebMVCConfig.class
 internetshop\niva\il\servlet\mvc\LoginController.class
 internetshop\niva\il\database\jdbc\ProductVatDAOImpl.class
 internetshop\niva\il\servlet\mvc\LoginControllerImpl.class
@@ -32,6 +33,7 @@ internetshop\niva\il\servlet\mvc\SelectController.class
 internetshop\niva\il\database\LoginWelcomeDAO.class
 internetshop\niva\il\servlet\SelectServlet.class
 internetshop\niva\il\domain\GoodsType.class
+internetshop\niva\il\servlet\spring\SpringWebMvcInitializer.class
 lv\javaguru\java2\database\jdbc\UserDAOImpl.class
 internetshop\niva\il\database\GoodsTypeDAO.class
 internetshop\niva\il\servlet\mvc\TVControllerImpl.class

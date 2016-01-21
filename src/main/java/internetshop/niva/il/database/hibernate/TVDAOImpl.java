@@ -8,6 +8,7 @@ import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.sql.*;
@@ -53,12 +54,13 @@ public class TVDAOImpl extends DAOImplement implements TVDAO {
         return  tv = (List<TV>) criteria.list();
 
     }
-
+    @Transactional
     public List<TV> get4KUHD(int id) throws DBException {
-        List<TV> tv;
+       List<TV> tv;
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TV.class);
         criteria.add(Restrictions.eq("tvscreentypeid", id));
         return  criteria.list();
+
     }
 
     public TV getByScreenSize(String id) throws DBException {

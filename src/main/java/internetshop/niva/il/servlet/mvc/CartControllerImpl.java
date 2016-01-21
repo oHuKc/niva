@@ -8,6 +8,10 @@ import internetshop.niva.il.domain.ProductVAT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +27,9 @@ import java.util.HashMap;
  * Created by ilugovecs on 2015.11.17..
  */
 
-@Component
-public class CartControllerImpl extends HttpServlet implements CartController {
+//@Component
+@Controller
+public class CartControllerImpl  {
 
     @Autowired
     @Qualifier(value = "CartDAOImpl_Hibernate")
@@ -48,11 +53,18 @@ public class CartControllerImpl extends HttpServlet implements CartController {
         }
         return  null;
     }
-
+/*
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws  Exception
     {
         return new MVCModel(removeCartID(response, request), "/Cart.jsp");
+    }
+*/
+    @RequestMapping(value = "/cart", method = {RequestMethod.GET})
+    public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws DBException, SQLException {
+
+        return new ModelAndView("/Cart.jsp","model", removeCartID(response, request));
     }
 }

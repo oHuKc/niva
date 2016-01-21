@@ -7,6 +7,10 @@ import internetshop.niva.il.domain.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +23,9 @@ import java.util.HashMap;
 /**
  * Created by ilugovecs on 2016.01.20..
  */
-@Component
-public class OrderStatusControllerImpl extends HttpServlet implements OrderStatusController {
+//@Component
+@Controller
+public class OrderStatusControllerImpl {
 
     @Autowired
     @Qualifier(value = "CartDAOImpl_Hibernate")
@@ -84,9 +89,17 @@ if ( productvatdao.getAll().size() !=0) {
          return null;
     }
 
+    /*
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, IOException {
         return new MVCModel(twocontrollerscv(request, response), "/OrderStatus.jsp");
     }
+    */
+    @RequestMapping(value = "/orderstatus", method = {RequestMethod.GET})
+    public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, DBException {
+
+        return new ModelAndView("/OrderStatus.jsp", "model",twocontrollerscv(request, response) );
+    }
+
 }

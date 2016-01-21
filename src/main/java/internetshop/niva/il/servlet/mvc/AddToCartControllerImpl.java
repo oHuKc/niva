@@ -10,7 +10,11 @@ import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,8 +30,9 @@ import java.util.HashMap;
 /**
  * Created by ilugovecs on 2015.11.26..
  */
-@Component
-public class AddToCartControllerImpl implements  AddToCartController {
+//@Component
+@Controller
+public class AddToCartControllerImpl  {
 
     @Autowired
     @Qualifier(value = "CartDAOImpl_Hibernate")
@@ -111,10 +116,13 @@ public class AddToCartControllerImpl implements  AddToCartController {
         }
         return null;
     }
+@RequestMapping(value="/tv", method = {RequestMethod.GET})
+public ModelAndView processRequest (HttpServletRequest request, HttpServletResponse response)
+        throws IOException, SQLException, DBException {
+    // public MVCModel execute(HttpServletRequest request, HttpServletResponse response)throws Exception
 
-    public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
-            throws Exception
-    {return  new MVCModel(twocontrollers(request, response), "/TV.jsp");}
+    // {return  new MVCModel(twocontrollers(request, response), "/TV.jsp");}
+    return new ModelAndView("/TV.jsp", "model", twocontrollers(request, response));
 
-
+  }
 }

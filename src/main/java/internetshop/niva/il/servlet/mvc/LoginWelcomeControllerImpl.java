@@ -6,8 +6,10 @@ import internetshop.niva.il.database.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -23,8 +25,9 @@ import java.sql.SQLException;
 /**
  * Created by ilugovecs on 2016.01.18..
  */
-@Component
-public class LoginWelcomeControllerImpl extends HttpServlet implements LoginWelcomeController {
+//@Component
+@Controller
+public class LoginWelcomeControllerImpl {
 
     @Autowired
     @Qualifier(value = "LoginWelcomeDAO_Hibernate")
@@ -34,9 +37,7 @@ public class LoginWelcomeControllerImpl extends HttpServlet implements LoginWelc
     @Qualifier(value = "UserDAO_HIBERNATE")
     private UserDAO userdao;
 
-
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = {RequestMethod.GET})
     public String doLogin(HttpServletRequest req, HttpServletResponse resp) throws DBException,
             ServletException, IOException {
 
@@ -74,8 +75,14 @@ public class LoginWelcomeControllerImpl extends HttpServlet implements LoginWelc
 
         return  null;
     }
-
+/*
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new MVCModel(doLogin(request, response), "/Login_Welcome.jsp");
+    }
+*/
+    @RequestMapping(value = "/welcome", method = {RequestMethod.GET})
+    public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DBException {
+
+        return new ModelAndView("Login_Welcome.jsp", "model", doLogin(request, response));
     }
  }

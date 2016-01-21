@@ -64,7 +64,7 @@
         <%session.setAttribute("model", session.getAttribute("tvidId"));%>
         <a href="tv?imgID=${tvidId}" target="_blank"><img src ="tv?imgID=<%=session.getAttribute("model")%>" width="115" border="0" ></a>
 
-        <form class="form-inline" method="post">
+        <form class="form-inline" method="get">
           <div class="checkbox">
             <!-- <label><input type="checkbox"></label> -->
           </div>
@@ -100,7 +100,7 @@
         <a href="tv?imgID=${tvidId}" target="_blank"><img src ="tv?imgID=<%=session.getAttribute("model")%>" width="115" border="0" ></a>
         <!-- Add to Cart-->
         <hr style="border: none">
-        <form  id="Cart2" method="post">
+        <form  id="Cart2" method="get">
           <button class="btn btn-success" href="javascript:;" onclick="document.getElementById('Cart2').submit();">
             <span class="glyphicon glyphicon-shopping-cart" name="btnCart"  type="submit"></span>Add to Cart
             <input type="hidden" name="btnCart" value="${tv.tvid} ${tv.tvtype} ${tv.tvebrand} ${tv.tvdescription} $${tv.tvprice}"/>

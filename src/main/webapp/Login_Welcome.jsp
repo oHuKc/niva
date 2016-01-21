@@ -9,7 +9,7 @@
 </div>
 <div class="container-fluid" id="wrapper_div">
   <div id="content_div" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-    <form action="welcome" method="post">
+    <form action="welcome" method="get">
       <div class="form-group">
         <label for="login">Login</label>
         <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>

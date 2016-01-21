@@ -13,7 +13,7 @@
 
     <div id="content_div" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
-        <form action="login" method="post">
+        <form action="login" method="get">
 
             <div class="form-group">
                 <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>

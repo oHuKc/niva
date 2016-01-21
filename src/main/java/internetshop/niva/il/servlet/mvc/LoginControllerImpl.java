@@ -6,7 +6,11 @@ import internetshop.niva.il.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +24,9 @@ import java.sql.SQLException;
 /**
  * Created by vitanovo on 07.12.2015.
  */
-@Component
-public class LoginControllerImpl implements LoginController {
+//@Component
+@Controller
+public class LoginControllerImpl {
 
     @Autowired
     @Qualifier(value = "UserDAO_HIBERNATE")
@@ -67,12 +72,16 @@ public class LoginControllerImpl implements LoginController {
         return null;
         }
 
-
+/*
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, ServletException, Exception {
-
         return new MVCModel(dogetUser(request, response), "/Login.jsp");
-
+    }
+*/
+    @RequestMapping(value = "/login", method = {RequestMethod.GET})
+    public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws DBException {
+        return new ModelAndView("/Login.jsp", "model", dogetUser(request, response));
     }
 }

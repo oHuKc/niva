@@ -1,4 +1,3 @@
-<%@ page import="org.hibernate.Session" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
@@ -59,7 +58,7 @@
         <li><a href="#">4K Ultra HD TVs</a>
           <ul id="4K-Ultra-HD">
 
-            <form  method="post"  action="/java2/tv" id="4kuhd1">
+            <form  method="get"  action="/java2/tv" id="4kuhd1">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd1').submit();">
                 <!-- tvdaoimpl.getByScreenSize("1").getTvscreensize()-->
                 <%=request.getAttribute("4kid1")%>
@@ -67,39 +66,39 @@
               </a></li>
             </form>
 
-            <form  method="post" action="/java2/tv" id="4kuhd2">
+            <form  method="get" action="/java2/tv" id="4kuhd2">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd2').submit();">
                 <%=request.getAttribute("4kid2")%>
                 <input type="hidden" name="4kid2" value="2" />
               </a></li>
             </form>
 
-            <form  method="post" action="/java2/tv" id="4kuhd3">
+            <form  method="get" action="/java2/tv" id="4kuhd3">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd3').submit();">
                 <%=request.getAttribute("4kid3")%>
                 <input type="hidden" name="4kid3" value="3" /></a></li>
             </form>
 
-            <form  method="post" action="/java2/tv" id="4kuhd4">
+            <form  method="get" action="/java2/tv" id="4kuhd4">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd4').submit();">
                 <%=request.getAttribute("4kid4")%>
                 <input type="hidden" name="4kid4" value="4" /></a></li>
             </form>
 
 
-            <form  method="post" action="/java2/tv" id="4kuhd5">
+            <form  method="get" action="/java2/tv" id="4kuhd5">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd5').submit();">
                 <%=request.getAttribute("4kid5")%>
                 <input type="hidden" name="4kid5" value="5" /></a></li>
             </form>
 
-            <form  method="post" action="/java2/tv" id="4kuhd6">
+            <form  method="get" action="/java2/tv" id="4kuhd6">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd6').submit();">
                 <%=request.getAttribute("4kid6")%>
                 <input type="hidden" name="4kid6" value="6" /></a></li>
             </form>
 
-            <form  method="post" action="/java2/tv" id="4kuhd7">
+            <form  method="get" action="/java2/tv" id="4kuhd7">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd7').submit();">
                 <%=request.getAttribute("4kid7")%>
                 <input type="hidden" name="4kid7" value="7" /></a></li>
@@ -110,61 +109,61 @@
 
         <li><a href="#">LED TVs</a>
           <ul>
-            <form  method="post"  action="/java2/tv" id="4kuhd10">
+            <form  method="get"  action="/java2/tv" id="4kuhd10">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd10').submit();">
                 <%=request.getAttribute("4kid10")%>
                 <input type="hidden" name="4kid10" value="10" /></a></li>
             </form>
 
-            <form  method="post"  action="/java2/tv" id="4kuhd11">
+            <form  method="get"  action="/java2/tv" id="4kuhd11">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd11').submit();">
                 <%=request.getAttribute("4kid11")%>
                 <input type="hidden" name="4kid11" value="11" /></a></li>
             </form>
 
-            <form  method="post"  action="/java2/tv" id="4kuhd12">
+            <form  method="get"  action="/java2/tv" id="4kuhd12">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd12').submit();">
                 <%=request.getAttribute("4kid12")%>
                 <input type="hidden" name="4kid12" value="12" /></a></li>
             </form>
 
-            <form  method="post"  action="/java2/tv" id="4kuhd13">
+            <form  method="get"  action="/java2/tv" id="4kuhd13">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd13').submit();">
                 <%=request.getAttribute("4kid13")%>
                 <input type="hidden" name="4kid13" value="13" /></a></li>
             </form>
 
-            <form  method="post"  action="/java2/tv" id="4kuhd14">
+            <form  method="get"  action="/java2/tv" id="4kuhd14">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd14').submit();">
                 <%=request.getAttribute("4kid14")%>
                 <input type="hidden" name="4kid14" value="14" /></a></li>
             </form>
 
-            <form  method="post"  action="/java2/tv" id="4kuhd15">
+            <form  method="get"  action="/java2/tv" id="4kuhd15">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd15').submit();">
                 <%=request.getAttribute("4kid15")%>
                 <input type="hidden" name="4kid15" value="15" /></a></li>
             </form>
 
-            <form  method="post"  action="/java2/tv" id="4kuhd16">
+            <form  method="get"  action="/java2/tv" id="4kuhd16">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd16').submit();">
                 <%=request.getAttribute("4kid16")%>
                 <input type="hidden" name="4kid16" value="16" /></a></li>
             </form>
 
-            <form  method="post"  action="/java2/tv" id="4kuhd17">
+            <form  method="get"  action="/java2/tv" id="4kuhd17">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd17').submit();">
                 <%=request.getAttribute("4kid17")%>
                 <input type="hidden" name="4kid17" value="17" /></a></li>
             </form>
 
-            <form  method="post"  action="/java2/tv" id="4kuhd18">
+            <form  method="get"  action="/java2/tv" id="4kuhd18">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd18').submit();">
                 <%=request.getAttribute("4kid18")%>
                 <input type="hidden" name="4kid18" value="18" /></a></li>
             </form>
 
-            <form  method="post"  action="/java2/tv" id="4kuhd19">
+            <form  method="get"  action="/java2/tv" id="4kuhd19">
               <li><a href="javascript:;" onclick="document.getElementById('4kuhd19').submit();">
                 <%=request.getAttribute("4kid19")%>
                 <input type="hidden" name="4kid18" value="19" /></a></li>
