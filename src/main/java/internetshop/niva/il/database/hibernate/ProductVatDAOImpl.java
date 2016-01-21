@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Igor on 2015.12.21..
  */
@@ -46,6 +48,9 @@ public class ProductVatDAOImpl extends DAOImplement implements ProductVATDAO {
         session.flush();
     }
 
+    public List<ProductVAT> getAll() throws DBException {
+        return (List<ProductVAT>) sessionFactory.getCurrentSession().createCriteria(ProductVAT.class).list();
+    }
 }
 
 

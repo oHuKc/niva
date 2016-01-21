@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ilugovecs on 2015.12.22..
@@ -70,5 +72,34 @@ public class ProductVatDAOImpl extends DAOImplement{
                 }catch (SQLException ignore) {}
             }
         }
+    }
+
+    public List<ProductVAT> getAll() throws DBException {
+        List<ProductVAT> users = new ArrayList<ProductVAT>();
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from product_vat ORDER BY ORDER_ID DESC LIMIT 30");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next() ) {
+                ProductVAT productvat = new ProductVAT();
+                productvat.setProductid(resultSet.getString("PRODUCT_ID"));
+                productvat.setTabledate(resultSet.getString("DATE"));
+                productvat.setPrice(resultSet.getString("PRICE"));
+                productvat.setPricetotal(resultSet.getString("PRICE_TOTAL"));
+                productvat.setVat(resultSet.getString("VAT"));
+                productvat.setVatname(resultSet.getString("VAT_NAME"));
+                users.add(productvat);
+
+            }
+        } catch (Throwable e) {
+            System.out.println("Exception while getting cart products list CartDAOImpl.getAll()");
+            e.printStackTrace();
+            throw new DBException(e);
+        } finally {
+            closeConnection(connection);
+        }
+        return users;
     }
 }

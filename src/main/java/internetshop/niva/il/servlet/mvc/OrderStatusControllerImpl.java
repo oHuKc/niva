@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 /**
  * Created by ilugovecs on 2016.01.20..
@@ -34,9 +35,10 @@ public class OrderStatusControllerImpl extends HttpServlet implements OrderStatu
             throws DBException, SQLException, IOException {
 
 
-       if (cartdao.getAll().size() != 0) {
+        int cartsize = cartdao.getAll().size();
 
-            int cartsize = cartdao.getAll().size();
+
+       if (cartdao.getAll().size() != 0) {
 
            for (int i = 0; i < cartsize; i ++) {
 
@@ -46,6 +48,7 @@ public class OrderStatusControllerImpl extends HttpServlet implements OrderStatu
                String productdescription = cartdao.getAll().get(i).getProductdescription();
 
                String cartrecord = productid + " " + productname + " " + productbrand +" "+ productdescription;
+
 
                req.setAttribute("crecords", cartrecord);
 
@@ -57,14 +60,33 @@ public class OrderStatusControllerImpl extends HttpServlet implements OrderStatu
     }
 
 
-    public String getProductVatRecords() {
+    public String getProductVatRecords(HttpServletRequest req, HttpServletResponse resp) throws DBException {
 
+if ( productvatdao.getAll().size() !=0) {
+
+    String pvatsize = String.valueOf(productvatdao.getAll().size());
+
+    req.setAttribute("psize", pvatsize);
+}
         return null;
+    }
+
+
+
+    @Transactional
+    private Object twocontrollerscv(HttpServletRequest request, HttpServletResponse response)
+            throws DBException, SQLException, IOException {
+
+        HashMap<String, String> twocontrollerscv = new HashMap<String, String>();
+
+        twocontrollerscv.put(getCartRecords(request, response), getProductVatRecords(request, response));
+
+         return null;
     }
 
     @Transactional
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response)
             throws DBException, SQLException, IOException {
-        return new MVCModel(getCartRecords(request, response), "/OrderStatus.jsp");
+        return new MVCModel(twocontrollerscv(request, response), "/OrderStatus.jsp");
     }
 }
