@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -78,10 +79,9 @@ public class AddToCartControllerImpl  {
         return cart.toString();
     }
 
-    private Integer getImage(HttpServletRequest req,
-                             HttpServletResponse resp) throws
+    private Integer getImage(HttpServletRequest req, HttpServletResponse resp) throws
             HibernateException, IOException, DBException, SQLException {
-        Connection connection = null;
+
         if (req.getParameter("imgID") != null) {
             try {
                 ImageID = Integer.parseInt(req.getParameter("imgID"));
@@ -91,12 +91,11 @@ public class AddToCartControllerImpl  {
                 outputStream.write(imgData);
                 resp.getOutputStream().flush();
                 resp.getOutputStream().close();
-            } catch (HibernateException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return ImageID;
-
+        return  null;
     }
 
     @Transactional
@@ -119,10 +118,11 @@ public class AddToCartControllerImpl  {
 @RequestMapping(value="/tv", method = {RequestMethod.GET})
 public ModelAndView processRequest (HttpServletRequest request, HttpServletResponse response)
         throws IOException, SQLException, DBException {
+
     // public MVCModel execute(HttpServletRequest request, HttpServletResponse response)throws Exception
-
     // {return  new MVCModel(twocontrollers(request, response), "/TV.jsp");}
-    return new ModelAndView("/TV.jsp", "model", twocontrollers(request, response));
 
+        return new ModelAndView("/TV.jsp", "model", twocontrollers(request, response));
   }
+
 }

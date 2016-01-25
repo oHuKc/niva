@@ -206,14 +206,14 @@ public class TVDAOImpl extends DAOImplement  {
                     img = resultSet.getBlob(1);
                     imgData = img.getBytes(1, (int) img.length());
                 }
-                return imgData;
+                return null;
             } catch (SQLException e) {
                 System.out.println("Exception occured while execute TVDAOImpl.getImage()");
                 e.printStackTrace();
                 throw  new DBException(e);
             }finally {
                 if ( connection != null ) {
-                    //closeConnection(connection);
+                    closeConnection(connection);
                     try {
                         connection.close();
                     }catch (SQLException ignore) {}

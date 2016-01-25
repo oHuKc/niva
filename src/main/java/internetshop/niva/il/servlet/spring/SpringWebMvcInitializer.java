@@ -27,16 +27,6 @@ public class SpringWebMvcInitializer extends
         applicationContext.register(WebMVCConfig.class);
         return applicationContext;
     }
-
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-    }
-
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-
-        configurer.enable();
-    }
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
