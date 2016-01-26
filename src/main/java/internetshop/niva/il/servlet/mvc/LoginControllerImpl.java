@@ -5,11 +5,14 @@ import internetshop.niva.il.database.UserDAO;
 import internetshop.niva.il.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
@@ -79,8 +82,9 @@ public class LoginControllerImpl {
         return new MVCModel(dogetUser(request, response), "/Login.jsp");
     }
 */
-    @RequestMapping(value = "/login", method = {RequestMethod.GET})
-    public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/login", method = {RequestMethod.GET , RequestMethod.POST})
+    @ResponseStatus(value = HttpStatus.OK)
+    public ModelAndView processRequest( HttpServletRequest request, HttpServletResponse response)
             throws DBException {
         return new ModelAndView("/Login.jsp", "model", dogetUser(request, response));
     }

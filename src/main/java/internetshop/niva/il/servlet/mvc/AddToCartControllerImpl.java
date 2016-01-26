@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,6 +29,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by ilugovecs on 2015.11.26..
@@ -78,7 +81,7 @@ public class AddToCartControllerImpl  {
         }
         return cart.toString();
     }
-
+@Transactional
     private Integer getImage(HttpServletRequest req, HttpServletResponse resp) throws
             HibernateException, IOException, DBException, SQLException {
 
@@ -115,14 +118,19 @@ public class AddToCartControllerImpl  {
         }
         return null;
     }
-@RequestMapping(value="/tv", method = {RequestMethod.GET})
-public ModelAndView processRequest (HttpServletRequest request, HttpServletResponse response)
-        throws IOException, SQLException, DBException {
 
-    // public MVCModel execute(HttpServletRequest request, HttpServletResponse response)throws Exception
-    // {return  new MVCModel(twocontrollers(request, response), "/TV.jsp");}
+@RequestMapping(value="/tv", method = {RequestMethod.GET , RequestMethod.POST})
+public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws IOException, SQLException, DBException, ServletException {
 
-        return new ModelAndView("/TV.jsp", "model", twocontrollers(request, response));
+    ModelAndView model = new ModelAndView("/TV.jsp");
+    model.addObject("tv",twocontrollers(request, response));
+
+   RequestDispatcher requestDispatcher = request.getRequestDispatcher(model.getViewName());
+    if (!response.isCommitted()) { //To remove SEVERE: Servlet.service() for servlet [default] Exception
+        requestDispatcher.forward(request, response);
+        return model;
+    }
+    return null;
   }
-
 }
