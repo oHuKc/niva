@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.sql.SQLException;
 
 /**
@@ -64,7 +65,7 @@ public class LoginWelcomeControllerImpl {
 
               //System.out.print("Login and Password are correct. Welcome." +"\n");
 
-                resp.sendRedirect("http://localhost:8080/java2/orderstatus");
+                resp.sendRedirect("http://"+InetAddress.getLocalHost().getHostAddress()+":8080"+"/java2/orderstatus");
 
                 HttpSession session = req.getSession();
 
