@@ -78,6 +78,7 @@ public class AddToCartControllerImpl  {
             HttpSession session = req.getSession();
             String idaddcarcount =  req.getParameter("idAddCartCount");
             session.setAttribute("addCartCount", idaddcarcount );
+
         }
         return cart.toString();
     }

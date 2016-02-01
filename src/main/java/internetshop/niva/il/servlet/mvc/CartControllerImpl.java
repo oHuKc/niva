@@ -39,9 +39,9 @@ public class CartControllerImpl  {
             throws DBException, SQLException {
 
         HttpSession session = req.getSession();
-
+        String cartremoveid = req.getParameter("btnCartIDremove");
         if (session.getId() == session.getAttribute("sID") ) {
-            String cartremoveid = req.getParameter("btnCartIDremove");
+
 
             if (req.getParameter("btnCartIDremove") != null) {
 

@@ -41,7 +41,12 @@ public class MenuControllerImpl{
        System.out.print("Session ID: " + session.getId()+"\n");
 
 
-if (session.getAttribute("sID") != null) {
+        if (session.isNew() == true) {
+
+            session.setAttribute("loggedStatus", "Sign In");
+        }
+
+        if (session.getAttribute("sID") != null) {
     //Menu
     String uhd1 = String.valueOf(tvdao.get4KUHD(1).get(0).getTvscreensize());
     String uhd2 = String.valueOf(tvdao.get4KUHD(2).get(0).getTvscreensize());

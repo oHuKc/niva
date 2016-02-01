@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 /**
  * Created by ilugovecs on 2016.01.18..
@@ -41,6 +43,8 @@ public class LoginWelcomeControllerImpl {
     @RequestMapping(value = "/", method = {RequestMethod.GET})
     public String doLogin(HttpServletRequest req, HttpServletResponse resp) throws DBException,
             ServletException, IOException {
+
+                HttpSession session = req.getSession();
 
         if((req.getParameter("login") != null) && (req.getParameter("password") != null ))
         {
@@ -63,27 +67,49 @@ public class LoginWelcomeControllerImpl {
 
                 req.setAttribute("welcome", "Login and Password are correct. Welcome." +"\n");
 
-              //System.out.print("Login and Password are correct. Welcome." +"\n");
+               //System.out.print("Login and Password are correct. Welcome." +"\n");
 
                 resp.sendRedirect("http://"+InetAddress.getLocalHost().getHostAddress()+":8080"+"/java2/orderstatus");
 
-                HttpSession session = req.getSession();
-
-                session.setAttribute("loggedin", 1);
+               session.setAttribute("loggedStatus", "Log Out");
             }
-
         }
 
         return  null;
     }
+
+    @RequestMapping(value = "/java2/welcome", method = {RequestMethod.GET})
+    ///@Transactional
+    public String doLogout(HttpServletRequest req, HttpServletResponse resp) {
+       HttpSession session = req.getSession();
+
+        if (session.getAttribute("logout") != null) {
+            session.setAttribute("loggedStatus", "Sign In");
+            session.invalidate();
+        }
+
+        return null;
+    }
+
+    @Transactional
+    private Object twocontrollers(HttpServletRequest request, HttpServletResponse response)
+            throws DBException, SQLException, IOException, ServletException {
+
+            HashMap<String, String> twocontrollers = new HashMap<String, String>();
+
+            twocontrollers.put(doLogin(request, response), doLogout(request, response));
+
+        return null;
+    }
+
 /*
     public MVCModel execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new MVCModel(doLogin(request, response), "/Login_Welcome.jsp");
     }
 */
     @RequestMapping(value = "/welcome", method = {RequestMethod.GET})
-    public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DBException {
+    public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DBException, SQLException {
 
-        return new ModelAndView("Login_Welcome.jsp", "model", doLogin(request, response));
+        return new ModelAndView("Login_Welcome.jsp", "model", twocontrollers(request, response));
     }
  }

@@ -35,13 +35,13 @@
   <li><a href="#">Gift ideas</a></li>
   <li><a href="login">Registry</a></li>
   <li><a href="#">Order Status</a></li>
-  <li><a href="welcome">
-   <%
-      if (session.getAttribute("loggedin") == null ) {%>
-      Log in<%
-  } else { %>
-      Log Out <% } %>
-  </a></li></a></li>
+    <li><a href="welcome">
+        <%=session.getAttribute("loggedStatus")%></a></li>
+            <form  method="get" action="/java2/orderstatus" id="loggedStatus">
+                <a href="javascript:;" onclick="document.getElementById('loggedStatus').submit();"></a>
+                    <input type="hidden" name="logout" value="0" />
+            </form>
+
 </ul>
 <nav class="navbar navbar-default">
 <div class="container-fluid">

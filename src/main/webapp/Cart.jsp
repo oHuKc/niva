@@ -1,7 +1,7 @@
 <%@ page import="java.util.Vector" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="cart" scope="session" class="internetshop.niva.il.database.jdbc.CartDAOImpl"/>
 <jsp:useBean id="tv" scope="session" class="internetshop.niva.il.database.jdbc.TVDAOImpl"/>
 <%--
@@ -55,8 +55,8 @@
           <td class="col-sm-1 col-md-1" style="text-align: center">
             <!--<input type="email" class="form-control" id="exampleInputEmail1" value="1"> -->
           </td>
-          <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="$${cart.productprice}"/></strong></td>
-          <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="$${cart.productprice * 1.21}"/></strong></td>
+          <td class="col-sm-1 col-md-1 text-center"><strong>$<fmt:formatNumber maxFractionDigits="2" value='${cart.productprice}'/></strong></td>
+          <td class="col-sm-1 col-md-1 text-center"><strong>$<fmt:formatNumber maxFractionDigits="2" value='${cart.productprice * 1.21}'/></strong></td>
           <td class="col-sm-1 col-md-1">
               <form id="CartRemove">
                   <button type="submit" class="btn btn-danger">
@@ -74,21 +74,21 @@
           <td>   </td>
           <td>   </td>
           <td><h5>Subtotal</h5></td>
-          <td class="text-right"><h5><strong><c:out value="$${subtotal}"/></strong></h5></td>
+          <td class="text-right"><h5><strong>$<fmt:formatNumber maxFractionDigits="2" value='${subtotal}'/></strong></h5></td>
         </tr>
         <tr>
           <td>   </td>
           <td>   </td>
           <td>   </td>
           <td><h5>Estimated shipping</h5></td>
-          <td class="text-right"><h5><strong><c:out value="$${shipping}"/></strong></h5></td>
+          <td class="text-right"><h5><strong>$<fmt:formatNumber maxFractionDigits="2" value='${shipping}'/></strong></h5></td>
         </tr>
         <tr>
           <td>   </td>
           <td>   </td>
           <td>   </td>
           <td><h3>Total</h3></td>
-          <td class="text-right"><h3><strong><c:out value="$${total}"/></strong></h3></td>
+          <td class="text-right"><h3><strong>$<fmt:formatNumber maxFractionDigits="2" value='${total}'/></strong></h3></td>
         </tr>
         <tr>
           <td>   </td>

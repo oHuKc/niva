@@ -55,7 +55,6 @@ public class LoginControllerImpl extends Encryption {
             String pass = (String) request.getParameter("InputPassword1");
 
 
-
             User user = new User();
             user.setLogin(login);
             user.setPassword(pass);
@@ -63,10 +62,7 @@ public class LoginControllerImpl extends Encryption {
             user.setFirstName(firstName);
             user.setLastName(lastName);
 
-
-
             System.out.println(user.getPassword());
-
 
             if (request.getParameter("login") != null) {
 
